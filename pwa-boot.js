@@ -1,7 +1,7 @@
 /* Runs before SNAP starts: gives it the on-device test database (pre-filled with the fictional demo company) and registers offline support. */
 window.SnapPlatform = SnapLocalPlatform.create({
-  seedUrl: 'seed/demo-seed.json',
-  versionUrl: 'seed/version.json',
+  seedUrl: 'demo-seed.json',
+  versionUrl: 'version.json',
   downloads: SnapDownloads.createWeb()
 });
 if ('serviceWorker' in navigator) {

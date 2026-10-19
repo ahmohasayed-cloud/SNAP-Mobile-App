@@ -10,10 +10,10 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="SNAP">
-<link rel="icon" type="image/png" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<script src="platform/snap-downloads.js"></script>
-<script src="platform/snap-platform-local.js"></script>
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script src="snap-downloads.js"></script>
+<script src="snap-platform-local.js"></script>
 <script src="pwa-boot.js"></script>
 <script>
 /* SNAP defence-in-depth HTML sanitizer.
@@ -8545,8 +8545,8 @@ const REPORTS = {};
 function registerReport(route, fn){ REPORTS[route] = fn; }
 /* Libraries are served from this app's own published files (vendor/) — no third-party code runs by default. The CDN copy is only a fallback and is pinned by a Subresource Integrity hash, so a tampered CDN file is refused by the browser. */
 const LIB_SRC = {
-  pdf:  { local:'vendor/jspdf.umd.min.js',    cdn:'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',        sri:'sha384-JcnsjUPPylna1s1fvi1u12X5qjY5OL56iySh75FdtrwhO/SWXgMjoVqcKyIIWOLk' },
-  pptx: { local:'vendor/pptxgen.bundle.js',   cdn:'https://cdnjs.cloudflare.com/ajax/libs/pptxgenjs/3.12.0/pptxgen.bundle.js', sri:'sha384-Cck14aA9cifjYolcnjebXRfWGkz5ltHMBiG4px/j8GS+xQcb7OhNQWZYyWjQ+UwQ' }
+  pdf:  { local:'jspdf.umd.min.js',    cdn:'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',        sri:'sha384-JcnsjUPPylna1s1fvi1u12X5qjY5OL56iySh75FdtrwhO/SWXgMjoVqcKyIIWOLk' },
+  pptx: { local:'pptxgen.bundle.js',   cdn:'https://cdnjs.cloudflare.com/ajax/libs/pptxgenjs/3.12.0/pptxgen.bundle.js', sri:'sha384-Cck14aA9cifjYolcnjebXRfWGkz5ltHMBiG4px/j8GS+xQcb7OhNQWZYyWjQ+UwQ' }
 };
 const libPromises = {};
 function injectScript(src, sri){
