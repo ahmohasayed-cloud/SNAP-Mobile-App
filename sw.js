@@ -1,5 +1,5 @@
 /* SNAP test app — offline support. Network first (so a new version shows up straight away), cached copy when offline. */
-const CACHE = 'snap-pwa-flat-170d4a6207-2542395d';
+const CACHE = 'snap-pwa-flat-697c5efa1b-2542395d';
 const CORE = ["./", "index.html", "manifest.webmanifest", "pwa-boot.js", "snap-downloads.js", "snap-platform-local.js", "icon-192.png", "icon-512.png", "apple-touch-icon.png", "version.json", "demo-seed.json", "jspdf.umd.min.js", "pptxgen.bundle.js"];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k.startsWith('snap-pwa-')).map(k => caches.delete(k)))).then(() => self.clients.claim())); });

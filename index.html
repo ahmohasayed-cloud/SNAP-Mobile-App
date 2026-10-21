@@ -870,6 +870,50 @@
   .t-cards td .pill{ white-space:normal; max-width:100%; line-height:1.35; }
   .t-cards td .pill + .pill{ margin-top:4px; }
 }
+/* Idea Hub on phones: the header bulb is replaced by a floating button, the menu pill sits with the other tabs */
+.ih-fab{ position:fixed; right:14px; bottom:calc(16px + env(safe-area-inset-bottom,0px)); width:50px; height:50px; border-radius:50%; border:0; background:var(--accent-dark); color:#fff; display:none; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(51,42,68,.35); z-index:60; cursor:pointer; }
+.ih-fab svg{ width:24px; height:24px; stroke:#fff; }
+html[dir="rtl"] .ih-fab{ right:auto; left:14px; }
+@media (max-width:700px){
+  #ideaBtn{ display:none !important; }
+  .ih-fab:not([style*="display: none"]){ display:flex; }
+  .top-nav .nav-direct-wrap{ margin-inline-start:0; }
+}
+@media (min-width:701px){ .ih-fab{ display:none !important; } }
+/* ---------- Idea Hub styling (all screen sizes) ---------- */
+.ih-bulb{ width:56px; height:56px; border-radius:16px; background:#FBF0D9; color:#B7791F; display:flex; align-items:center; justify-content:center; flex:none; }
+.ih-bulb svg{ width:30px; height:30px; stroke:currentColor; }
+.ih-bulb.sm{ width:40px; height:40px; border-radius:12px; } .ih-bulb.sm svg{ width:22px; height:22px; }
+.ih-dash-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.ih-dash-note{ margin-top:10px; font-size:13px; color:var(--text-muted); } .ih-dash-note strong{ color:var(--text); }
+.ih-hero{ display:flex; align-items:center; gap:18px; background:linear-gradient(135deg,var(--accent-tint),#FBF0D9); border:1px solid var(--border); border-radius:16px; padding:22px; margin-bottom:16px; }
+.ih-hero > div:first-child{ flex:1; min-width:0; } .ih-hero h2{ margin:2px 0 6px; font-size:22px; } .ih-hero p{ margin:0 0 12px; color:var(--text-muted); line-height:1.55; }
+.ih-eyebrow{ font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); }
+.ih-hero-art{ width:84px; height:84px; border-radius:24px; background:#fff; color:#B7791F; display:flex; align-items:center; justify-content:center; flex:none; box-shadow:var(--shadow-sm); } .ih-hero-art svg{ width:44px; height:44px; stroke:currentColor; }
+.ih-tiles{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.ih-tile{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:14px; } .ih-tile p{ margin:4px 0 0; font-size:13px; color:var(--text-muted); line-height:1.5; }
+.ih-tile-ic{ width:34px; height:34px; border-radius:10px; background:var(--accent-tint); color:var(--accent); display:flex; align-items:center; justify-content:center; margin-bottom:8px; } .ih-tile-ic svg{ width:18px; height:18px; stroke:currentColor; }
+.ih-prompts{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; } .ih-prompts span{ background:var(--accent-tint); color:var(--accent-dark); border-radius:999px; padding:6px 12px; font-size:13px; }
+.ih-steps{ display:grid; gap:10px; } .ih-step{ display:flex; gap:12px; align-items:flex-start; } .ih-step p{ margin:2px 0 0; font-size:13px; color:var(--text-muted); }
+.ih-step .n{ width:28px; height:28px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex:none; }
+.ih-card{ margin-bottom:12px; } .ih-rec{ display:flex; flex-wrap:wrap; gap:14px 22px; margin:10px 0; } .ih-rec .k{ display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--text-muted); } .ih-rec .v{ font-size:13.5px; }
+.ih-note{ background:var(--accent-tint); border-radius:10px; padding:10px 12px; margin:8px 0; font-size:13.5px; } .ih-note p{ margin:4px 0 0; }
+.ih-events{ display:flex; flex-direction:column; gap:4px; font-size:12.5px; color:var(--text-muted); margin:8px 0; }
+.ih-actions{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.ih-row{ margin-bottom:10px; } .ih-row > span{ display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--text-muted); } .ih-row p{ margin:2px 0 0; line-height:1.55; }
+.ih-review{ border-top:1px solid var(--border); margin-top:12px; padding-top:10px; }
+.ih-receipt{ text-align:center; } .ih-receipt .ih-bulb{ margin:0 auto; } .ih-next{ background:var(--accent-tint); border-radius:10px; padding:10px 12px; text-align:start; font-size:13.5px; } .ih-next p{ margin:4px 0 0; }
+.ih-fp{ font-family:var(--font-mono,monospace); font-size:11.5px; word-break:break-all; background:var(--surface-2,#F4F2F8); border-radius:8px; padding:8px 10px; text-align:start; }
+@media (max-width:700px){
+  .ih-hero{ flex-direction:column-reverse; align-items:flex-start; padding:16px; } .ih-hero h2{ font-size:19px; } .ih-hero-art{ width:56px; height:56px; border-radius:16px; } .ih-hero-art svg{ width:30px; height:30px; }
+  .ih-tiles{ grid-template-columns:1fr; } .ih-cta{ width:100%; justify-content:center; }
+  .ih-dash-row > div:nth-child(2){ min-width:0 !important; flex:1 1 calc(100% - 60px); } .ih-dash-row .btn{ width:100%; justify-content:center; }
+  .ih-actions .btn{ flex:1 1 calc(50% - 8px); justify-content:center; }
+  .ih-modal{ width:100% !important; max-width:100% !important; }
+}
+.ih-cta{ background:var(--accent-dark); color:#fff; border-color:transparent; } .ih-cta svg{ stroke:#fff; }
+@media (max-width:700px){ .top-nav .nav-direct span{ display:none; } .top-nav .nav-direct{ padding-left:10px; padding-right:10px; } }
+@media (max-width:700px){ .top-nav{ padding:0 6px; gap:0; } .top-nav .group-tab{ padding-left:6px; padding-right:6px; } .top-nav .nav-direct{ padding-left:9px; padding-right:9px; } }
 </style>
 </head>
 <body>
@@ -983,6 +1027,7 @@
       <button data-view="admin">Admin</button>
       <button data-view="employee">Employee</button>
     </div>
+    <button class="icon-btn" id="ideaBtn" title="Share an idea" aria-label="Share an idea" style="display:none"></button>
     <button class="icon-btn" id="exportBtn" title="Export this page" style="display:none"></button>
     <button class="icon-btn" id="kbdBtn" title="Keyboard shortcuts"></button>
     <button class="icon-btn" id="langBtn" title="Language">ع</button>
@@ -1968,11 +2013,15 @@ function go(route, ui){
 }
 
 function renderNav(){
-  const visibleGroups = NAV_GROUPS.map(g => ({ label: g.label, items: g.items.filter(it => navAllowed(it)) })).filter(g => g.items.length);
+  const visibleGroups = NAV_GROUPS.map(g => ({ label: g.label, direct: g.direct, items: g.items.filter(it => navAllowed(it)) })).filter(g => g.items.length);
   if(!visibleGroups.length) return;
   const activeGroup = visibleGroups.find(g => g.items.some(it => it.key===state.route)) || visibleGroups[0];
   $('#topNavList').innerHTML = visibleGroups.map((g, i) => {
     const color = g.items[0].color;
+    if(g.direct){   // a standalone button that opens its page straight away (Idea Hub)
+      const it = g.items[0], on = state.route === it.key;
+      return `<div class="nav-dropdown nav-direct-wrap"><button class="group-tab nav-direct ${on?'active '+color:''}" data-route="${it.key}" title="${esc(g.label)}" aria-label="${esc(g.label)}">${icon(it.icon)}<span>${esc(g.label)}</span></button></div>`;
+    }
     const isActive = g.label === activeGroup.label;
     return `<div class="nav-dropdown">
       <button class="group-tab ${isActive?'active '+color:''}" data-idx="${i}">${icon(g.items[0].icon)}<span>${esc(g.label)}</span>${icon('chevDown','class="chev"')}</button>
@@ -1981,7 +2030,8 @@ function renderNav(){
       </div>
     </div>`;
   }).join('');
-  $all('.group-tab', $('#topNavList')).forEach(btn => btn.onclick = (e) => {
+  $all('.nav-direct', $('#topNavList')).forEach(btn => btn.onclick = (e) => { e.stopPropagation(); $all('.nav-dropdown-panel').forEach(p => p.classList.remove('open')); go(btn.dataset.route); });
+  $all('.group-tab:not(.nav-direct)', $('#topNavList')).forEach(btn => btn.onclick = (e) => {
     e.stopPropagation();
     const panel = document.getElementById('navPanel'+btn.dataset.idx);
     const wasOpen = panel.classList.contains('open');
@@ -2000,6 +2050,7 @@ function renderHeaderChrome(){
   const notifCount = computeNotifications().length;
   bell.innerHTML = icon('bell') + (notifCount ? `<span class="notif-badge">${notifCount}</span>` : '');
   renderProfileChip();
+  const ib = $('#ideaBtn'); if(ib){ let ok = false; try{ ok = typeof navAllowed === 'function' && !!NAV_INDEX.ideahub && navAllowed(NAV_INDEX.ideahub) && (typeof featureOn !== 'function' || featureOn('ideahub')); }catch(e){} ib.style.display = ok ? '' : 'none'; if(ok){ ib.innerHTML = icon('bulb'); ib.onclick = () => { if(typeof ihOpenSubmit === 'function') ihOpenSubmit(); }; } }
   const viewToggle = $('#viewToggle');
   if(isRecognizedAdmin()){
     viewToggle.style.display = 'inline-flex';
@@ -2425,6 +2476,7 @@ RENDERERS.dashboard = function(actionHost){
       ${typeof ideDashCard === 'function' ? ideDashCard() : ''}
       ${typeof cscerDashCard === 'function' ? cscerDashCard() : ''}
       ${typeof pollsDashCard === 'function' ? pollsDashCard() : ''}
+      ${typeof ideaDashCard === 'function' ? ideaDashCard() : ''}
       <div class="grid-2">
         <div class="card">
           <h3>Welcome${me?', '+esc(me.name.split(' ')[0]):''}</h3>
@@ -2488,6 +2540,7 @@ RENDERERS.dashboard = function(actionHost){
     ${typeof ideDashCard === 'function' ? ideDashCard() : ''}
       ${typeof cscerDashCard === 'function' ? cscerDashCard() : ''}
       ${typeof pollsDashCard === 'function' ? pollsDashCard() : ''}
+      ${typeof ideaDashCard === 'function' ? ideaDashCard() : ''}
     <div class="grid-3" style="margin-bottom:16px">
       <div class="card">
         <h3>Headcount by Department</h3><p class="card-sub">Updates live as people join or move.</p>
@@ -8578,7 +8631,7 @@ const OQ = { items:[], flushing:false, lastSynced:0 };
 const OQ_KEY = 'snap-offline-queue';
 OQ.load = function(){ try{ const raw = JSON.parse(localStorage.getItem(OQ_KEY) || '[]'); if(Array.isArray(raw)) OQ.items = raw; }catch(e){ OQ.items = []; } };
 /* Sensitive collections are NEVER written to this device's storage — they are only held in memory (lost on reload) so confidential HR data can't be left behind on a shared or stolen computer. */
-const OQ_NO_PERSIST = new Set(['payrollRuns','compensation','employeePII','compProposals','compBands','compCycles','erCases','erConcerns','erNotices','surveyResponses','employeeLogins','activations','loginLocks','talentProfiles','successionPlans','talentPools','teamNotes','files','devPlans','securityLog','ideSelfId','ideAccommodations','cerIdeas']);
+const OQ_NO_PERSIST = new Set(['payrollRuns','compensation','employeePII','compProposals','compBands','compCycles','erCases','erConcerns','erNotices','surveyResponses','employeeLogins','activations','loginLocks','talentProfiles','successionPlans','talentPools','teamNotes','files','devPlans','securityLog','ideSelfId','ideAccommodations','cerIdeas','ideaVault','ideaReviews']);
 OQ.persist = function(){ try{ localStorage.setItem(OQ_KEY, JSON.stringify(OQ.items.filter(i => !i.big && !OQ_NO_PERSIST.has(i.c)))); }catch(e){} };
 /** Removes every queued change from memory and from this device (used on sign-out and idle timeout). */
 OQ.clearAll = function(){ OQ.items = []; try{ localStorage.removeItem(OQ_KEY); }catch(e){} };
@@ -10278,6 +10331,123 @@ AR_PATTERNS.push(
   [/^(\d) stars?$/, m => `${m[1]} نجوم`],
   [/^Poll Results — (.+)$/, m => `نتائج الاستطلاع — ${m[1]}`],
   [/^(.+) \((Live|Scheduled|Draft|Closed)\)$/, m => `${m[1]} (${AR[m[2]] || m[2]})`]
+);
+
+/* ---- Idea Hub ---- */
+/* Ideas, names, departments and anything people typed stay as entered. The certificate page is a separate document and stays in English. */
+const ihArKind = { 'Initiative':'مبادرة' };
+const ihArStageWord = s => ({ 'Received':'تم الاستلام', 'In Review':'قيد المراجعة', 'Shared with Department':'تمت مشاركتها مع القسم', 'Piloting':'قيد التجريب', 'Implemented':'تم التنفيذ', 'Kept on File':'محفوظة في الملف', 'Withdrawn':'مسحوبة' })[s] || null;
+function ihArTime(s){ return arDate(s).replace(', ', '، '); }
+function ihArEvent(t){
+  let m;
+  if(t === 'Idea received') return 'تم استلام الفكرة';
+  if(t === 'Update added by the author') return 'أضاف صاحب الفكرة تحديثًا';
+  if(t === 'Withdrawn by the author') return 'سحبها صاحبها';
+  if((m = /^Moved to (.+)$/.exec(t))) return 'نُقلت إلى: ' + (ihArStageWord(m[1]) || m[1]);
+  if((m = /^Shared with (.+)$/.exec(t))) return 'شُوركت مع ' + m[1];
+  return null;
+}
+/** "a · b · c" lines made of references, dates, types, topics and stages. */
+function ihArJoin(s){
+  const lead = s.startsWith('· '), parts = (lead ? s.slice(2) : s).split(' · '); let hit = false;
+  const out = parts.map(p => {
+    if(/^IH-\d{4}-[0-9A-F]{8}$/.test(p) || /^\d+$/.test(p)) return p;
+    if(/^\d{1,2} \w+ \d{4}, \d{2}:\d{2}$/.test(p)){ hit = true; return ihArTime(p); }
+    if(ihArKind[p]){ hit = true; return ihArKind[p]; }
+    if(p === 'wants to help develop it'){ hit = true; return 'يرغب في المساعدة على تطويرها'; }
+    if(p === 'wants to help'){ hit = true; return 'يرغب في المساعدة'; }
+    if(p === 'asks not to be credited by name'){ hit = true; return 'يطلب عدم ذكر اسمه'; }
+    const e = ihArEvent(p); if(e){ hit = true; return e; }
+    const st = ihArStageWord(p); if(st){ hit = true; return st; }
+    const a = AR[p]; if(a){ hit = true; return a; }
+    return p;
+  });
+  return hit ? (lead ? '· ' : '') + out.join(' · ') : null;
+}
+Object.assign(AR, {
+  'Idea Hub':'مركز الأفكار', 'Ideas':'الأفكار', 'Share an Idea':'شارك فكرة', 'My Ideas':'أفكاري', 'How It Works':'كيف يعمل', 'Your Ideas':'أفكارك', 
+  'All Ideas':'كل الأفكار', 'Verify a Record':'التحقق من سجل', 'Overview':'نظرة عامة',
+  'Share an Idea or Initiative':'شارك فكرة أو مبادرة', 'Submit My Idea':'أرسل فكرتي', 'Add Update':'إضافة التحديث', 'Save Review':'حفظ المراجعة',
+  'Share ideas and initiatives any time. Your authorship is recorded, and the right people review it at the right time.':'شارك أفكارك ومبادراتك في أي وقت. يُسجَّل أنك صاحبها، ويراجعها المعنيون في الوقت المناسب.',
+  'Share an idea or initiative any time. Your authorship is recorded.':'شارك فكرة أو مبادرة في أي وقت. يُسجَّل أنك صاحبها.',
+  'Got an idea?':'هل لديك فكرة؟', 'Got an idea? We want to hear it.':'هل لديك فكرة؟ نريد أن نسمعها.',
+  'Share an idea or an initiative any time it comes to you. Something that would make work better, serve customers better or help the people around us. Big or small, it counts.':'شارك فكرة أو مبادرة في أي وقت تخطر لك. أي شيء يجعل العمل أفضل أو يخدم العملاء بصورة أفضل أو يساعد من حولنا. كبيرة كانت أو صغيرة، فهي تُحتسب.',
+  'Your authorship is recorded':'يُسجَّل أنك صاحب الفكرة', 'Your name and the exact time are saved with a unique fingerprint, and you can download a certificate.':'يُحفظ اسمك والوقت بالضبط مع بصمة فريدة، ويمكنك تنزيل شهادة.',
+  'Private to a small team':'خاصة بفريق صغير', 'Only you and the people trusted with the Idea Hub can read your idea.':'لا يقرأ فكرتك إلا أنت ومن أُوكلت إليهم مهمة مركز الأفكار.',
+  'Reviewed at the right time':'تُراجَع في الوقت المناسب', 'Every idea is read and considered with the right department at the right moment. You don’t need to wait for an answer.':'تُقرأ كل فكرة وتُدرس مع القسم المناسب في اللحظة المناسبة. لا حاجة لانتظار رد.',
+  'Not sure where to start?':'لست متأكدًا من أين تبدأ؟', 'What slows you down every week?':'ما الذي يبطئ عملك كل أسبوع؟', 'What do customers keep asking for?':'ما الذي يطلبه العملاء باستمرار؟', 'What would you stop, start or simplify?':'ما الذي توقفه أو تبدأه أو تبسطه؟', 'What could we do for our community?':'ماذا يمكننا أن نفعل لمجتمعنا؟',
+  'See My Ideas':'عرض أفكاري', 'Your latest:':'آخر أفكارك:',
+  'Big or small, we want it. Your name and the exact time are recorded as proof that it is yours. Ideas are reviewed at the right time by the right department, so please don’t expect an immediate reply.':'كبيرة كانت أو صغيرة، نريدها. يُسجَّل اسمك والوقت بالضبط كدليل على أنها لك. تُراجَع الأفكار في الوقت المناسب من القسم المناسب، فلا تتوقع ردًا فوريًا من فضلك.',
+  'Your idea in a few words':'فكرتك في بضع كلمات', 'Your idea in a few words *':'فكرتك في بضع كلمات *', 'e.g. A self-service kiosk for SIM replacement':'مثال: كشك خدمة ذاتية لاستبدال الشريحة',
+  'Is it an idea or an initiative?':'هل هي فكرة أم مبادرة؟', 'What is it about?':'ما موضوعها؟', 'What problem or opportunity do you see?':'ما المشكلة أو الفرصة التي تراها؟', 'What problem or opportunity do you see? *':'ما المشكلة أو الفرصة التي تراها؟ *',
+  'What do you suggest?':'ماذا تقترح؟', 'What do you suggest? *':'ماذا تقترح؟ *', 'What would it need? (people, tools, budget)':'ماذا تحتاج؟ (أشخاص، أدوات، ميزانية)',
+  'Anyone else who helped shape it?':'هل شاركك أحد في صياغتها؟', 'Names, if any':'الأسماء إن وجدت', 'A link or reference (optional)':'رابط أو مرجع (اختياري)',
+  'I would like to help develop this idea':'أرغب في المساعدة على تطوير هذه الفكرة', 'You may credit me by name if it is recognised or used':'يمكنكم ذكر اسمي إذا حظيت الفكرة بالتقدير أو الاستخدام',
+  'This is my own idea, or I have named everyone who contributed':'هذه فكرتي، أو ذكرت كل من ساهم فيها',
+  'I understand it will be reviewed when the time is right, and I should not expect an answer straight away':'أفهم أنها ستُراجَع في الوقت المناسب، وأنه لا ينبغي أن أتوقع ردًا فوريًا',
+  'Please tick both confirmations at the bottom.':'يرجى وضع علامة على التأكيدين في الأسفل.', 'Sign in to share an idea.':'سجّل الدخول لمشاركة فكرة.', 'The Idea Hub is switched off.':'مركز الأفكار متوقف.',
+  'Initiative':'مبادرة',
+  'Employee experience':'تجربة الموظف', 'Process and efficiency':'العمليات والكفاءة', 'Customer experience':'تجربة العميل', 'Products and services':'المنتجات والخدمات', 'Technology and digital':'التقنية والتحول الرقمي', 'People and culture':'الأفراد والثقافة', 'Sustainability and community':'الاستدامة والمجتمع', 'Cost and revenue':'التكلفة والإيرادات',
+  'Received':'تم الاستلام', 'In Review':'قيد المراجعة', 'Shared with Department':'تمت مشاركتها مع القسم', 'Piloting':'قيد التجريب', 'Implemented':'تم التنفيذ', 'Kept on File':'محفوظة في الملف', 'Withdrawn':'مسحوبة',
+  'Your idea is safely recorded. No action needed.':'فكرتك مسجَّلة بأمان. لا يلزمك أي إجراء.', 'The review team is reading and assessing it.':'فريق المراجعة يقرؤها ويقيّمها.', 'It has been passed to the department best placed to take it forward.':'أُحيلت إلى القسم الأنسب لمتابعتها.', 'A small trial is under way.':'تجربة صغيرة جارية.', 'It is now part of how we work. Thank you.':'أصبحت الآن جزءًا من طريقة عملنا. شكرًا لك.',
+  'It is kept for the right moment. Ideas are never deleted, and you can add to it at any time.':'محفوظة للوقت المناسب. لا تُحذف الأفكار أبدًا، ويمكنك الإضافة إليها في أي وقت.', 'You withdrew this idea. The record is kept.':'سحبتَ هذه الفكرة. السجل محفوظ.',
+  'A note from the review team':'ملاحظة من فريق المراجعة', 'Reference':'المرجع', 'Fingerprint':'البصمة', 'Record':'السجل', 'Intact':'سليم', 'Changed since submission':'تغيّر منذ الإرسال',
+  'Certificate (PDF)':'الشهادة (PDF)', 'Printable page':'صفحة للطباعة', 'Add an update':'إضافة تحديث', 'Withdraw Idea':'سحب الفكرة', 'Check Record':'تحقق من السجل',
+  'Only you and the Idea Hub review team can see these. Ideas are reviewed when the time is right; there is nothing you need to do.':'لا يراها إلا أنت وفريق مراجعة مركز الأفكار. تُراجَع الأفكار في الوقت المناسب، ولا يلزمك فعل شيء.',
+  'When you share an idea it appears here with its reference, fingerprint and certificate.':'عندما تشارك فكرة تظهر هنا مع مرجعها وبصمتها وشهادتها.',
+  'Withdraw this idea? The record is kept, but it will no longer be reviewed.':'سحب هذه الفكرة؟ يبقى السجل محفوظًا، لكنها لن تُراجَع بعد الآن.', 'Idea withdrawn':'تم سحب الفكرة',
+  'Your original idea can’t be changed, so its record stays exact. Anything you add here is saved with its own time and fingerprint.':'لا يمكن تغيير فكرتك الأصلية، لذا يبقى سجلها دقيقًا. كل ما تضيفه هنا يُحفظ بوقته وبصمته الخاصين.',
+  'What would you like to add?':'ماذا تود أن تضيف؟', 'What would you like to add? *':'ماذا تود أن تضيف؟ *', 'Please write something to add.':'يرجى كتابة ما تريد إضافته.', 'Update added to your idea':'تمت إضافة التحديث إلى فكرتك',
+  'Your idea is recorded':'تم تسجيل فكرتك', 'Your idea was recorded':'تم تسجيل فكرتك', 'What happens next':'ماذا يحدث بعد ذلك',
+  'Your idea has been stored privately with your name and the time. It will be looked at when the time is right, with the department best placed to take it forward. There is no need to wait for a reply, and you can share as many ideas as you like.':'حُفظت فكرتك بشكل خاص مع اسمك والوقت. ستُراجَع في الوقت المناسب مع القسم الأنسب لمتابعتها. لا حاجة لانتظار رد، ويمكنك مشاركة ما تشاء من الأفكار.',
+  'Preparing certificate…':'جارٍ إعداد الشهادة…', 'Certificate ready':'الشهادة جاهزة', 'Certificate ready — open it and choose Print to save a PDF':'الشهادة جاهزة — افتحها واختر «طباعة» لحفظها بصيغة PDF',
+  'Downloads aren’t available in this view.':'التنزيل غير متاح في هذا العرض.', 'PDF can’t draw Arabic text — use the printable page instead.':'لا يمكن لملف PDF عرض النص العربي — استخدم صفحة الطباعة بدلًا منه.', 'Could not create the certificate.':'تعذّر إنشاء الشهادة.',
+  'Waiting for a First Look':'بانتظار نظرة أولى', 'Being Reviewed or Developed':'قيد المراجعة أو التطوير', 'Ideas Received':'الأفكار المستلمة', 'People Who Shared':'من شاركوا بأفكار', 'People Who Shared an Idea':'من شاركوا بفكرة', 'Average Days to a First Look':'متوسط الأيام حتى النظرة الأولى', 'Ideas With a First Look':'أفكار حظيت بنظرة أولى', 'Implemented Ideas':'الأفكار المنفذة',
+  'Where ideas are today':'أين تقف الأفكار اليوم', 'The journey from capture to impact.':'الرحلة من الالتقاط إلى الأثر.', 'New ideas by month':'الأفكار الجديدة حسب الشهر', 'Last six months.':'آخر ستة أشهر.', 'By topic':'حسب الموضوع', 'What people are thinking about.':'ما يفكر فيه الناس.', 'By department':'حسب القسم', 'Where ideas come from.':'من أين تأتي الأفكار.',
+    'Ideas are confidential. Only people with the Idea Hub privilege see this page, and an author’s own ideas stay readable by them alone.':'الأفكار سرية. لا يرى هذه الصفحة إلا من لديهم صلاحية مركز الأفكار، وتبقى أفكار كل صاحب فكرة مقروءة له وحده.',
+  'Search ideas, people, references…':'ابحث في الأفكار والأشخاص والمراجع…', 'Active (not withdrawn)':'النشطة (غير المسحوبة)', 'All stages':'كل المراحل', 'All topics':'كل المواضيع', 'Topic':'الموضوع', 'Priority':'الأولوية', 'Not scored':'بلا تقييم', 'From':'من', 'Stage':'المرحلة',
+  'Confidential: visible to the review team only.':'سري: يراه فريق المراجعة فقط.', 'No ideas match':'لا توجد أفكار مطابقة', 'Try a different stage, topic or search.':'جرّب مرحلة أو موضوعًا أو بحثًا آخر.', 'Ideas appear here as employees share them.':'تظهر الأفكار هنا عندما يشاركها الموظفون.', 
+  'The problem or opportunity':'المشكلة أو الفرصة', 'The idea':'الفكرة', 'Who benefits, and how':'من المستفيد وكيف', 'What it needs':'ما تحتاجه', 'Other contributors':'مساهمون آخرون', 'Link or reference':'رابط أو مرجع',
+  'Department it is shared with':'القسم الذي تُشارَك معه', 'Impact':'الأثر', 'Feasibility':'قابلية التنفيذ', 'Fit with strategy':'الاتساق مع الاستراتيجية',
+  'Note to the author (optional — shown on their card)':'ملاحظة لصاحب الفكرة (اختيارية — تظهر على بطاقته)', 'Internal notes (never shown to the author)':'ملاحظات داخلية (لا تُعرض لصاحب الفكرة أبدًا)', 'Authorship record':'سجل التأليف',
+  'Choose the department it is shared with.':'اختر القسم الذي ستُشارَك معه.', 'Idea review saved':'تم حفظ مراجعة الفكرة',
+  'Verify an authorship record':'التحقق من سجل تأليف', 'Paste the reference (such as IH-2026-1A2B3C4D) or the fingerprint from a certificate. SNAP recalculates the fingerprint from the stored idea and tells you whether it matches.':'الصق المرجع (مثل IH-2026-1A2B3C4D) أو البصمة من الشهادة. يعيد سناب حساب البصمة من الفكرة المخزنة ويخبرك إن كانت تطابقها.',
+  'Reference or fingerprint':'المرجع أو البصمة', 'The record is genuine and unchanged':'السجل أصلي ولم يتغير', 'The stored record no longer matches its fingerprint':'السجل المخزن لم يعد يطابق بصمته',
+  'Stored fingerprint':'البصمة المخزنة', 'Recalculated':'المعاد حسابها', 'Open the idea':'فتح الفكرة', 'No record found':'لم يُعثر على سجل', 'Check the reference or fingerprint and try again. Withdrawn ideas are still searchable.':'تحقق من المرجع أو البصمة وحاول مجددًا. الأفكار المسحوبة لا تزال قابلة للبحث.',
+  'Integrity of every idea':'سلامة كل فكرة', 'Every record matches the fingerprint taken at submission.':'كل السجلات تطابق البصمة المأخوذة عند الإرسال.',
+  'From your idea to real impact':'من فكرتك إلى أثر حقيقي', 'The journey follows ISO 56002 (innovation management) and stage-gate practice.':'تتبع الرحلة معيار ISO 56002 (إدارة الابتكار) وممارسة البوابات المرحلية.',
+  'Your idea is recorded with your name and the time.':'تُسجَّل فكرتك باسمك والوقت.', 'The review team reads it and gives it a first assessment.':'يقرؤها فريق المراجعة ويجري تقييمًا أوليًا.', 'It goes to the department best placed to take it on.':'تذهب إلى القسم الأنسب لتبنّيها.', 'A small trial shows whether it works.':'تُظهر تجربة صغيرة ما إذا كانت تنجح.', 'It becomes part of how we work, and you are recognised.':'تصبح جزءًا من طريقة عملنا، ويُقدَّر دورك.', 'Not for now, but never lost. It can come back when the time is right.':'ليس الآن، لكنها لا تضيع أبدًا. يمكن أن تعود عندما يحين الوقت.',
+  'About your authorship record':'عن سجل تأليفك', 'Every idea gets a reference and a fingerprint (SHA-256) made from your words, your name and the time you sent it. If a single letter changed afterwards the fingerprint would no longer match, so the record shows what you said and when. You can download a certificate at any time.':'تحصل كل فكرة على مرجع وبصمة (SHA-256) مصنوعة من كلماتك واسمك ووقت إرسالها. لو تغيّر حرف واحد بعد ذلك لما طابقت البصمة، فيُظهر السجل ما قلته ومتى. يمكنك تنزيل شهادة في أي وقت.',
+  'This record shows that the author named above sent the idea described here to the company’s Idea Hub on the date and time shown, and that the content has not changed since: any change would alter the fingerprint. It is a record of submission and authorship kept in the company’s files. It does not by itself register, create or transfer any copyright or other intellectual property right. Ownership and use of ideas created in the course of employment are governed by the author’s employment contract and the company’s policies.':'يبيّن هذا السجل أن صاحب الفكرة المذكور أعلاه أرسل الفكرة الموصوفة هنا إلى مركز الأفكار في الشركة في التاريخ والوقت المبيّنين، وأن المحتوى لم يتغير منذ ذلك الحين: فأي تغيير سيغيّر البصمة. وهو سجل للإرسال والتأليف محفوظ في ملفات الشركة، ولا يسجّل بحد ذاته أي حق مؤلف أو حق ملكية فكرية آخر ولا ينشئه ولا ينقله. وتخضع ملكية الأفكار التي تُبتكر أثناء العمل واستخدامها لعقد عمل صاحبها وسياسات الشركة.',
+  'Privacy and what to expect':'الخصوصية وما يمكن توقعه', 'Only you and people given the Idea Hub privilege can read your ideas. Scores and internal notes are kept apart from your idea and are never shown to you or to other employees.':'لا يقرأ أفكارك إلا أنت ومن مُنحوا صلاحية مركز الأفكار. تُحفظ الدرجات والملاحظات الداخلية بمعزل عن فكرتك ولا تُعرض عليك ولا على الموظفين الآخرين.',
+  'Ideas are looked at when the time is right, with the right department. You may not hear back quickly, or at all for some time. That does not mean your idea was ignored. If it moves forward, the status on':'تُراجَع الأفكار عندما يحين الوقت المناسب، مع القسم المناسب. قد لا تتلقى ردًا سريعًا، أو قد لا تتلقى ردًا لفترة. لا يعني ذلك أن فكرتك أُهملت. إذا تقدمت، تتغير الحالة في',
+  'changes and you will get a notification.':'وسيصلك إشعار.',
+  'Open the Idea Hub':'فتح مركز الأفكار', 'ideas waiting for a first look':'أفكار بانتظار نظرة أولى', 'idea waiting for a first look':'فكرة بانتظار نظرة أولى', 'Idea Hub — see and review submitted ideas':'مركز الأفكار — عرض الأفكار المرسلة ومراجعتها',
+  'Your idea was recorded.':'تم تسجيل فكرتك.',
+  'Idea Hub: Ideas, Initiatives, Reviews & Authorship Records':'مركز الأفكار: الأفكار والمبادرات والمراجعات وسجلات التأليف', 'Idea Hub: Ideas, Initiatives, Reviews & Authorship Records…':'مركز الأفكار: الأفكار والمبادرات والمراجعات وسجلات التأليف…', 'Idea Hub Ideas':'أفكار مركز الأفكار', 'Idea Hub Reviews':'مراجعات مركز الأفكار',
+  'Every employee can share ideas and initiatives at any time. Authorship is recorded with a fingerprint and certificate, ideas stay private, and the right team reviews them at the right time (ISO 56002).':'يستطيع كل موظف مشاركة أفكاره ومبادراته في أي وقت. يُسجَّل التأليف ببصمة وشهادة، وتبقى الأفكار خاصة، ويراجعها الفريق المناسب في الوقت المناسب (ISO 56002).',
+  'Idea submitted to the Idea Hub':'أُرسلت فكرة إلى مركز الأفكار'
+});
+AR_PATTERNS.push(
+  [/^IH-\d{4}-[0-9A-F]{8}$/, m => m[0]],
+  [/^(.+) · (.+) · submitted (.+)$/, m => `${m[1]} · ${m[2]} · أُرسلت ${ihArTime(m[3])}`],
+  [/^(It has been passed to the department best placed to take it forward\.) Department: (.+)\.$/, m => `${AR[m[1]]} القسم: ${m[2]}.`],
+  [/^[0-9a-f]{64}$/, m => m[0]],
+  [/^([0-9A-F]{4} ){3}[0-9A-F]{4} …$/, m => m[0]],
+  [/^(\d+) ideas? checked\.$/, m => `تم فحص ${m[1]} ${Number(m[1]) === 1 ? 'فكرة' : 'أفكار'}.`],
+  [/^(\d+) records? no longer match(?:es)? the fingerprint taken at submission\.$/, m => `${m[1]} من السجلات لم تعد تطابق البصمة المأخوذة عند الإرسال.`],
+  [/^(\d+) updates? added after submission$/, m => 'أُضيف ' + plArCount(Number(m[1]), 'تحديث واحد', 'تحديثان', 'تحديثات', 'تحديثًا') + ' بعد الإرسال'],
+  [/^You have shared (\d+) ideas?$/, m => `لقد شاركت ${Number(m[1]) === 1 ? 'فكرة واحدة' : m[1] + ' أفكار'}`],
+  [/^Share an idea or initiative any time\. Your authorship is recorded · you have shared (\d+)\.$/, m => `شارك فكرة أو مبادرة في أي وقت. يُسجَّل أنك صاحبها · شاركت ${m[1]}.`],
+  [/^Thank you, (.+)$/, m => `شكرًا لك، ${m[1]}`],
+  [/^Add to “(.+)”$/, m => `إضافة إلى «${m[1]}»`],
+  [/^(Received|In Review|Shared with Department|Piloting|Implemented|Kept on File|Withdrawn) \((\d+)\)$/, m => `${ihArStageWord(m[1])} (${m[2]})`],
+  [/^(\d+) d$/, m => `${m[1]} يوم`],
+  [/^(\d+) new ideas? waiting for a first look$/, m => `${m[1]} ${Number(m[1]) === 1 ? 'فكرة جديدة' : 'أفكار جديدة'} بانتظار نظرة أولى`],
+  [/^Your idea “(.+)” has moved: (.+)$/, m => `انتقلت فكرتك «${m[1]}»: ${/^shared with (.+)$/i.test(m[2]) ? 'شُوركت مع ' + m[2].replace(/^shared with /i, '') : (ihArStageWord(m[2].replace(/^./, c => c.toUpperCase())) || m[2])}`],
+  [/^Moved to (.+)$|^Shared with (.+)$|^Idea received$|^Update added by the author$|^Withdrawn by the author$/, m => ihArEvent(m[0])],
+  [/^\d{1,2} \w+ \d{4}, \d{2}:\d{2}$/, m => ihArTime(m[0])],
+  [/^(?:· )?.+ · .+$|^· .+$/, m => ihArJoin(m[0])]
 );
 
 /* ---- Arabic: full UI sweep (labels, buttons, hints, notes, toasts) ---- */
@@ -19055,6 +19225,377 @@ registerReport('polls', () => {
 addNavItem('Overview', { key:'polls', label:'Polls', icon:'poll', roles:['admin', 'employee'], color:'violet', when:() => isEmployeeRole() || adminHasPriv('polls') }, 'announcements');
 addMeta('polls', { title:'Polls', subtitle:'Ask a quick question, push it to employees and see how many have their say.' }, { title:'Polls', subtitle:'Quick questions from HR. Your vote shapes what we do next.' });
 
+/* ============================== IDEA HUB: a place for every employee's ideas and initiatives ==============================
+   Any employee can submit an idea or an initiative at any time. SNAP records who submitted what and when (an authorship record with a
+   SHA-256 fingerprint and a downloadable certificate). Ideas are private: the author sees their own, and only people with the
+   "Idea Hub" privilege (the Master Admin always has it) can see the rest. Nobody is promised an answer: ideas are reviewed at the right time
+   with the right department. Practice follows ISO 56002 (innovation management): capture, screen, evaluate, develop, pilot, scale.
+   Storage: `ideaVault` (per-person documents, like CER ideas) holds the idea and what the author may see; `ideaReviews` (admin only) holds scores and internal notes. */
+PRIV_KEYS.push('ideas');
+Object.assign(PRIV_LABELS, { ideas:'Idea Hub — see and review submitted ideas' });
+Object.assign(PVC, { ideaVault:1 });
+Object.assign(ICONS, { bulb:'<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>' });
+
+const IH_STAGES = ['Received', 'In Review', 'Shared with Department', 'Piloting', 'Implemented', 'Kept on File', 'Withdrawn'];
+const IH_TONE = { 'Received':'grey', 'In Review':'gold', 'Shared with Department':'blue', 'Piloting':'blue', 'Implemented':'green', 'Kept on File':'grey', 'Withdrawn':'grey' };
+const IH_STAGE_HELP = {
+  'Received':'Your idea is safely recorded. No action needed.',
+  'In Review':'The review team is reading and assessing it.',
+  'Shared with Department':'It has been passed to the department best placed to take it forward.',
+  'Piloting':'A small trial is under way.',
+  'Implemented':'It is now part of how we work. Thank you.',
+  'Kept on File':'It is kept for the right moment. Ideas are never deleted, and you can add to it at any time.',
+  'Withdrawn':'You withdrew this idea. The record is kept.'
+};
+const IH_KINDS = ['Idea', 'Initiative'];
+const IH_CATS = ['Employee experience', 'Process and efficiency', 'Customer experience', 'Products and services', 'Technology and digital', 'People and culture', 'Sustainability and community', 'Cost and revenue', 'Other'];
+
+/* ---------- SHA-256 (pure JavaScript, so the same code runs in the page and in the tests) ---------- */
+const IH_K = (() => { const k = [], pr = []; for(let n = 2; pr.length < 64; n++){ if(pr.every(p => n % p)) pr.push(n); } pr.forEach(p => k.push(Math.floor((Math.cbrt(p) % 1) * 4294967296))); return k; })();
+const IH_H0 = (() => { const h = [], pr = [2, 3, 5, 7, 11, 13, 17, 19]; pr.forEach(p => h.push(Math.floor((Math.sqrt(p) % 1) * 4294967296))); return h; })();
+function ihSha256(msg){
+  const bytes = Array.from(new TextEncoder().encode(String(msg == null ? '' : msg))), len = bytes.length;
+  bytes.push(0x80); while(bytes.length % 64 !== 56) bytes.push(0);
+  const hi = Math.floor(len * 8 / 4294967296), lo = (len * 8) >>> 0;
+  [hi, lo].forEach(w => { for(let s = 24; s >= 0; s -= 8) bytes.push((w >>> s) & 255); });
+  const H = IH_H0.slice(), W = new Array(64), rr = (x, n) => (x >>> n) | (x << (32 - n));
+  for(let o = 0; o < bytes.length; o += 64){
+    for(let i = 0; i < 16; i++) W[i] = ((bytes[o + 4*i] << 24) | (bytes[o + 4*i + 1] << 16) | (bytes[o + 4*i + 2] << 8) | bytes[o + 4*i + 3]) >>> 0;
+    for(let i = 16; i < 64; i++){ const s0 = rr(W[i-15], 7) ^ rr(W[i-15], 18) ^ (W[i-15] >>> 3), s1 = rr(W[i-2], 17) ^ rr(W[i-2], 19) ^ (W[i-2] >>> 10); W[i] = (W[i-16] + s0 + W[i-7] + s1) >>> 0; }
+    let [a, b, c, d, e, f, g, h] = H;
+    for(let i = 0; i < 64; i++){
+      const S1 = rr(e, 6) ^ rr(e, 11) ^ rr(e, 25), ch = (e & f) ^ (~e & g), t1 = (h + S1 + ch + IH_K[i] + W[i]) >>> 0;
+      const S0 = rr(a, 2) ^ rr(a, 13) ^ rr(a, 22), mj = (a & b) ^ (a & c) ^ (b & c), t2 = (S0 + mj) >>> 0;
+      h = g; g = f; f = e; e = (d + t1) >>> 0; d = c; c = b; b = a; a = (t1 + t2) >>> 0;
+    }
+    [a, b, c, d, e, f, g, h].forEach((v, i) => { H[i] = (H[i] + v) >>> 0; });
+  }
+  return H.map(v => v.toString(16).padStart(8, '0')).join('');
+}
+
+/* ---------- the authorship record ---------- */
+/** Everything that identifies the idea and when it was sent, in a fixed order. Change any of it and the fingerprint no longer matches. */
+function ihCanon(r){
+  return JSON.stringify(['snap-idea-v1', r.employeeId || '', r.employeeNumber || '', r.employeeName || '', r.kind || '', r.category || '', r.title || '', r.problem || '', r.idea || '', r.benefit || '', r.resources || '', r.coAuthors || '', r.link || '', r.submittedAt || '', r.prevHash || '']);
+}
+const ihFingerprint = r => ihSha256(ihCanon(r));
+const ihRef = r => 'IH-' + String(r.submittedAt || '').slice(0, 4) + '-' + String(r.hash || ihFingerprint(r)).slice(0, 8).toUpperCase();
+const ihIntact = r => !!r && !!r.hash && ihFingerprint(r) === r.hash;
+const ihAddendumHash = (parent, a) => ihSha256(['snap-idea-update-v1', parent, a.at, a.text].join('|'));
+const ihAddendaIntact = r => { let p = r.hash || ''; return (r.addenda || []).every(a => { const h = ihAddendumHash(p, a); p = a.hash; return h === a.hash; }); };
+const ihShort = h => h ? String(h).slice(0, 16).toUpperCase().replace(/(.{4})(?=.)/g, '$1 ') + ' …' : '—';
+const ihWhen = iso => { if(!iso) return '—'; const d = new Date(iso); return isNaN(d) ? '—' : d.toLocaleString('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' }); };
+
+/* ---------- my own ideas (the author can write but not read the shared collection) ---------- */
+const IH_MINE = { list:null, busy:false };
+async function ihLoadMine(){
+  if(IH_MINE.busy) return; IH_MINE.busy = true;
+  try{ const uid = await viewerUid(), s = await col('ideaVault').doc(uid).get(), me = state.ui.selfEmployeeId; IH_MINE.list = (s.exists ? (s.data().items || []) : []).map(it => Object.assign({}, it, { id:uid + '~' + it.iid })).filter(it => it.employeeId === me); }
+  catch(e){ IH_MINE.list = []; }
+  IH_MINE.busy = false; scheduleRender();
+}
+function ihMine(){ if(IH_MINE.list === null) ihLoadMine(); return IH_MINE.list || []; }
+function ihResetMine(){ IH_MINE.list = null; }
+const ihAll = () => (state.ideaVault || []).slice();
+const ihCanReview = () => !isEmployeeRole() && adminHasPriv('ideas');
+const ihReviewOf = ref => (state.ideaReviews || []).find(r => r.ref === ref) || null;
+const ihPriority = rv => rv && rv.impact && rv.feasibility && rv.fit ? Math.round((Number(rv.impact) + Number(rv.feasibility) + Number(rv.fit)) / 15 * 100) : null;
+const ihDepartments = () => Array.from(new Set(activeEmployees().map(e => e.department).filter(Boolean))).sort();
+const ihSort = list => list.slice().sort((a, b) => String(b.submittedAt || '').localeCompare(String(a.submittedAt || '')));
+
+/* ---------- the certificate ---------- */
+const IH_STATEMENT = 'This record shows that the author named above sent the idea described here to the company’s Idea Hub on the date and time shown, and that the content has not changed since: any change would alter the fingerprint. It is a record of submission and authorship kept in the company’s files. It does not by itself register, create or transfer any copyright or other intellectual property right. Ownership and use of ideas created in the course of employment are governed by the author’s employment contract and the company’s policies.';
+function ihCertHtml(r){
+  const row = (k, v) => v ? `<tr><th>${esc(k)}</th><td dir="auto">${esc(v).replace(/\n/g, '<br>')}</td></tr>` : '';
+  const upd = (r.addenda || []).map(a => `<tr><th>Update · ${esc(ihWhen(a.at))}</th><td dir="auto">${esc(a.text).replace(/\n/g, '<br>')}<div class="fp">Fingerprint ${esc(a.hash)}</div></td></tr>`).join('');
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Idea authorship record ${esc(r.ref)}</title><style>
+@page{size:A4;margin:14mm}*{box-sizing:border-box}body{font-family:'DM Sans',Arial,sans-serif;color:#1E0F3C;margin:0;background:#F5F3F9}
+.page{max-width:780px;margin:0 auto;background:#fff;min-height:100vh}.band{background:#5B2C91;color:#fff;padding:26px 34px}.band small{letter-spacing:3px;text-transform:uppercase;color:#CFE6FA;font-weight:700;font-size:11px}
+.band h1{margin:6px 0 2px;font-size:28px}.band p{margin:0;color:#E6DDF3;font-size:13px}.body{padding:26px 34px}.ref{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.ref div{background:#F5F3F9;border-radius:10px;padding:10px 14px;min-width:150px}.ref b{display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#5B2C91}.ref span{font-size:15px;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:13px}th{width:30%;text-align:start;vertical-align:top;color:#5B2C91;padding:8px 10px;border-top:1px solid #E6DDF3}td{padding:8px 10px;border-top:1px solid #E6DDF3;line-height:1.5}
+.fp{font-family:Consolas,monospace;font-size:11px;color:#6B6480;word-break:break-all;margin-top:4px}.box{margin-top:18px;background:#F5F3F9;border-left:5px solid #2B6FD6;border-radius:8px;padding:12px 14px;font-size:12px;line-height:1.55;color:#4A4360}
+.foot{padding:12px 34px 26px;font-size:11px;color:#6B6480}@media print{body{background:#fff}.page{min-height:0}}</style></head><body><div class="page">
+<div class="band"><small>SNAP · Idea Hub</small><h1>Idea authorship record</h1><p>Certificate of submission</p></div><div class="body">
+<div class="ref"><div><b>Reference</b><span>${esc(r.ref)}</span></div><div><b>Submitted</b><span>${esc(ihWhen(r.submittedAt))}</span></div><div><b>Author</b><span dir="auto">${esc(r.employeeName)}${r.employeeNumber ? ' · ' + esc(r.employeeNumber) : ''}</span></div></div>
+<table>${row('Title', r.title)}${row('Type', r.kind)}${row('Category', r.category)}${row('Department', r.department)}${row('The problem or opportunity', r.problem)}${row('The idea', r.idea)}${row('Who benefits, and how', r.benefit)}${row('What it needs', r.resources)}${row('Other contributors', r.coAuthors)}${row('Link or reference', r.link)}${upd}
+<tr><th>Fingerprint (SHA-256)</th><td><div class="fp" style="font-size:12px">${esc(r.hash)}</div></td></tr></table>
+<div class="box">${esc(IH_STATEMENT)}</div></div>
+<div class="foot">Time is the device clock of the author at submission, shown in UTC: ${esc(String(r.submittedAt))}. Generated ${esc(new Date().toUTCString())}. To check this record, give the reference and fingerprint to the Idea Hub review team.</div></div></body></html>`;
+}
+async function ihCertPdf(r){
+  await loadLib('pdf');
+  const { jsPDF } = window.jspdf, doc = new jsPDF({ unit:'mm', format:'a4' });
+  const W = doc.internal.pageSize.getWidth(), H = doc.internal.pageSize.getHeight(), M = 16, CW = W - M * 2;
+  const hex = h => [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+  doc.setFillColor(...hex('5B2C91')); doc.rect(0, 0, W, 38, 'F');
+  doc.setTextColor(...hex('CFE6FA')); doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.text('SNAP  ·  IDEA HUB', M, 13);
+  doc.setTextColor(255, 255, 255); doc.setFontSize(22); doc.text('Idea authorship record', M, 24);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(...hex('E6DDF3')); doc.text('Certificate of submission', M, 31);
+  let y = 50;
+  const need = h => { if(y + h > H - 18){ doc.addPage(); y = 20; } };
+  const para = (text, size, color, bold, gap) => { doc.setFont('helvetica', bold ? 'bold' : 'normal'); doc.setFontSize(size); doc.setTextColor(...hex(color)); const lines = doc.splitTextToSize(String(text), CW); lines.forEach(l => { need(size * 0.5); doc.text(l, M, y); y += size * 0.5; }); y += gap == null ? 2 : gap; };
+  [['Reference', r.ref], ['Submitted (UTC)', ihWhen(r.submittedAt)], ['Author', r.employeeName + (r.employeeNumber ? '  ·  ' + r.employeeNumber : '')]].forEach(([k, v]) => { para(k.toUpperCase(), 8, '5B2C91', true, 0); para(v, 12, '1E0F3C', true, 3); });
+  y += 2;
+  [['Title', r.title], ['Type', r.kind], ['Category', r.category], ['Department', r.department], ['The problem or opportunity', r.problem], ['The idea', r.idea], ['Who benefits, and how', r.benefit], ['What it needs', r.resources], ['Other contributors', r.coAuthors], ['Link or reference', r.link]].forEach(([k, v]) => { if(!v) return; need(14); para(k, 9, '5B2C91', true, 0.5); para(v, 10.5, '1E0F3C', false, 3.5); });
+  (r.addenda || []).forEach(a => { need(14); para('Update · ' + ihWhen(a.at), 9, '5B2C91', true, 0.5); para(a.text, 10.5, '1E0F3C', false, 1); doc.setFont('courier', 'normal'); para('Fingerprint ' + a.hash, 7, '6B6480', false, 3.5); });
+  need(30); y += 2; para('FINGERPRINT (SHA-256)', 8, '5B2C91', true, 0.5); doc.setFont('courier', 'normal'); doc.setFontSize(9); doc.setTextColor(...hex('1E0F3C')); doc.splitTextToSize(r.hash, CW).forEach(l => { doc.text(l, M, y); y += 4.5; }); y += 5;
+  need(36); doc.setFillColor(...hex('F5F3F9')); const lines = doc.splitTextToSize(IH_STATEMENT, CW - 8); doc.rect(M, y - 4, CW, lines.length * 4.3 + 8, 'F'); doc.setFillColor(...hex('2B6FD6')); doc.rect(M, y - 4, 1.4, lines.length * 4.3 + 8, 'F');
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(...hex('4A4360')); lines.forEach(l => { doc.text(l, M + 5, y); y += 4.3; });
+  return doc.output('arraybuffer');
+}
+async function ihDownloadCert(r, fmt){
+  if(!downloadsCap){ toast('Downloads aren’t available in this view.', true); return; }
+  const base = `snap-idea-record-${r.ref}`;
+  try{
+    if(fmt === 'pdf'){
+      if(ARABIC_RE.test([r.title, r.problem, r.idea, r.benefit, r.resources, r.coAuthors, r.employeeName, r.department].join(' ')) || (r.addenda || []).some(a => ARABIC_RE.test(a.text))){ toast('PDF can’t draw Arabic text — use the printable page instead.', true); return; }
+      toast('Preparing certificate…'); await downloadsCap.save({ filename:base + '.pdf', data:await ihCertPdf(r) }); toast('Certificate ready'); return;
+    }
+    await downloadsCap.save({ filename:base + '.html', data:ihCertHtml(r) }); toast('Certificate ready — open it and choose Print to save a PDF');
+  }catch(err){ if(err && err.code === 'declined') return; console.error(err); toast('Could not create the certificate.', true); }
+}
+
+/* ---------- submitting ---------- */
+function ihOpenSubmit(){
+  const me = selfEmployee(); if(!me) return toast('Sign in to share an idea.', true);
+  if(typeof featureOn === 'function' && !featureOn('ideahub')) return toast('The Idea Hub is switched off.', true);
+  openForm('Share an Idea or Initiative', [
+    { html:'<p class="sub-note" style="margin:0 0 10px">Big or small, we want it. Your name and the exact time are recorded as proof that it is yours. Ideas are reviewed at the right time by the right department, so please don’t expect an immediate reply.</p>' },
+    { name:'title', label:'Your idea in a few words', required:true, placeholder:'e.g. A self-service kiosk for SIM replacement' },
+    { name:'kind', label:'Is it an idea or an initiative?', type:'select', options:IH_KINDS, half:true },
+    { name:'category', label:'What is it about?', type:'select', options:IH_CATS, half:true },
+    { name:'problem', label:'What problem or opportunity do you see?', type:'textarea', rows:3, required:true },
+    { name:'idea', label:'What do you suggest?', type:'textarea', rows:4, required:true },
+    { name:'benefit', label:'Who benefits, and how?', type:'textarea', rows:2 },
+    { name:'resources', label:'What would it need? (people, tools, budget)', type:'textarea', rows:2 },
+    { name:'coAuthors', label:'Anyone else who helped shape it?', placeholder:'Names, if any' },
+    { name:'link', label:'A link or reference (optional)' },
+    { name:'lead', label:'', type:'checkbox', checkLabel:'I would like to help develop this idea' },
+    { name:'credit', label:'', type:'checkbox', checkLabel:'You may credit me by name if it is recognised or used', value:true },
+    { name:'own', label:'', type:'checkbox', checkLabel:'This is my own idea, or I have named everyone who contributed' },
+    { name:'ack', label:'', type:'checkbox', checkLabel:'I understand it will be reviewed when the time is right, and I should not expect an answer straight away' }
+  ], null, async d => {
+    if(!d.own || !d.ack) throw { code:'invalid_argument', message:'Please tick both confirmations at the bottom.' };
+    const rec = await ihCreate(me, d);
+    ihResetMine(); setTimeout(() => ihReceipt(rec), 60); render();
+  }, 'Submit My Idea');
+}
+async function ihCreate(me, d){
+  const mine = ihMine().filter(i => i.hash).sort((a, b) => String(a.submittedAt).localeCompare(String(b.submittedAt)));
+  const core = { employeeId:me.id, employeeNumber:me.employeeNumber || '', employeeName:me.name, department:me.department || '', kind:d.kind || IH_KINDS[0], category:d.category || IH_CATS[0], title:String(d.title).trim(), problem:String(d.problem).trim(), idea:String(d.idea).trim(), benefit:String(d.benefit || '').trim(), resources:String(d.resources || '').trim(), coAuthors:String(d.coAuthors || '').trim(), link:String(d.link || '').trim(), submittedAt:new Date().toISOString(), prevHash:mine.length ? mine[mine.length - 1].hash : '' };
+  const hash = ihFingerprint(core), item = Object.assign({}, core, { hash, ref:ihRef(Object.assign({}, core, { hash })), stage:'Received', lead:!!d.lead, credit:!!d.credit, addenda:[], events:[{ at:core.submittedAt, text:'Idea received' }] });
+  await createDoc('ideaVault', item);
+  audit('Idea submitted to the Idea Hub');
+  toast('Your idea was recorded');
+  return item;
+}
+function ihReceipt(r){
+  ihModal('Your idea is recorded', `<div class="ih-receipt"><div class="ih-bulb">${icon('bulb')}</div><h3 style="margin:6px 0 2px">Thank you, ${esc((r.employeeName || '').split(' ')[0])}</h3>
+    <p class="sub-note" style="margin:0 0 12px">Reference <strong>${esc(r.ref)}</strong> · ${esc(ihWhen(r.submittedAt))}</p>
+    <div class="ih-next"><strong>What happens next</strong><p>Your idea has been stored privately with your name and the time. It will be looked at when the time is right, with the department best placed to take it forward. There is no need to wait for a reply, and you can share as many ideas as you like.</p></div>
+    <p class="sub-note" style="margin:10px 0 4px">Fingerprint</p><div class="ih-fp">${esc(r.hash)}</div>
+    <div class="ih-actions"><button class="btn primary" data-ihc="pdf">${icon('download')}Certificate (PDF)</button><button class="btn" data-ihc="html">${icon('fileText')}Printable page</button></div></div>`, close => {
+    $all('[data-ihc]', $('#ihBody')).forEach(b => b.onclick = () => ihDownloadCert(r, b.dataset.ihc));
+  });
+}
+function ihModal(title, html, wire, wide){
+  const root = $('#modalRoot');
+  root.innerHTML = `<div class="modal-backdrop" id="ihBackdrop"><div class="modal ih-modal" style="max-width:${wide ? '860px' : '540px'};width:96%"><div class="modal-head"><h3>${title}</h3><button type="button" class="icon-btn" id="modalCancel">${icon('close')}</button></div><div id="ihBody" style="max-height:78vh;overflow:auto;padding-right:2px">${html}</div></div></div>`;
+  root.style.display = 'block';
+  const close = () => { root.style.display = 'none'; root.innerHTML = ''; };
+  $('#modalCancel').onclick = close; $('#ihBackdrop').addEventListener('click', e => { if(e.target.id === 'ihBackdrop') close(); });
+  if(wire) wire(close);
+  if(typeof i18nApply === 'function') i18nApply();
+  return close;
+}
+
+/* ---------- the page ---------- */
+RENDERERS.ideahub = function(actionHost){
+  const review = ihCanReview();
+  if(review) useCollections(['ideaVault', 'ideaReviews', 'employees']);
+  ihMine();
+  const tabs = [
+    { key:'share', label:'Share an Idea', group:'Your Ideas', render:(a, h) => renderIhShare(a, h) },
+    { key:'mine', label:'My Ideas', group:'Your Ideas', render:(a, h) => renderIhMine(a, h), badge:() => { const n = ihMine().filter(i => i.stage !== 'Withdrawn').length; return n ? String(n) : ''; } }
+  ];
+  if(review) tabs.unshift(
+    { key:'overview', label:'Overview', group:'Review', render:(a, h) => renderIhOverview(a, h) },
+    { key:'all', label:'All Ideas', group:'Review', render:(a, h) => renderIhAll(a, h), badge:() => { const n = ihAll().filter(i => i.stage === 'Received').length; return n ? String(n) : ''; } },
+    { key:'verify', label:'Verify a Record', group:'Review', render:(a, h) => renderIhVerify(a, h) }
+  );
+  tabs.push({ key:'about', label:'How It Works', group:'About', render:(a, h) => renderIhAbout(a, h) });
+  return renderModuleShell(actionHost, 'ihTab', tabs, review ? 'overview' : 'share');
+};
+
+function renderIhShare(actionHost, host){
+  actionHost.innerHTML = `<button class="btn primary" id="ihNew">${icon('plus')}Share an Idea</button>`; $('#ihNew').onclick = ihOpenSubmit;
+  const mine = ihMine().filter(i => i.stage !== 'Withdrawn');
+  const tile = (ic, t, p) => `<div class="ih-tile"><div class="ih-tile-ic">${icon(ic)}</div><strong>${t}</strong><p>${p}</p></div>`;
+  host.innerHTML = `<div class="ih-hero"><div><div class="ih-eyebrow">Idea Hub</div><h2>Got an idea? We want to hear it.</h2><p>Share an idea or an initiative any time it comes to you. Something that would make work better, serve customers better or help the people around us. Big or small, it counts.</p><button class="btn ih-cta" id="ihHeroBtn">${icon('bulb')}Share an Idea</button></div><div class="ih-hero-art">${icon('bulb')}</div></div>
+    <div class="ih-tiles">${tile('shield', 'Your authorship is recorded', 'Your name and the exact time are saved with a unique fingerprint, and you can download a certificate.')}${tile('lock', 'Private to a small team', 'Only you and the people trusted with the Idea Hub can read your idea.')}${tile('clock', 'Reviewed at the right time', 'Every idea is read and considered with the right department at the right moment. You don’t need to wait for an answer.')}</div>
+    ${mine.length ? `<div class="card" style="margin-top:16px"><h3>You have shared ${mine.length} idea${mine.length === 1 ? '' : 's'}</h3><p class="card-sub" style="margin-bottom:8px">Your latest: <strong>${esc(ihSort(mine)[0].title)}</strong> · ${esc(ihSort(mine)[0].stage)}</p><button class="btn" id="ihGoMine">See My Ideas</button></div>` : ''}
+    <div class="card" style="margin-top:16px"><h3>Not sure where to start?</h3><div class="ih-prompts"><span>What slows you down every week?</span><span>What do customers keep asking for?</span><span>What would you stop, start or simplify?</span><span>What could we do for our community?</span></div></div>`;
+  $('#ihHeroBtn').onclick = ihOpenSubmit;
+  const g = $('#ihGoMine'); if(g) g.onclick = () => { state.ui.ihTab = 'mine'; render(); };
+}
+
+function ihCard(r, own){
+  const ok = ihIntact(r) && ihAddendaIntact(r);
+  const ev = (r.events || []).slice().sort((a, b) => String(b.at).localeCompare(String(a.at))).slice(0, 4);
+  return `<div class="card ih-card"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-start"><div><strong style="font-size:15px">${esc(r.title)}</strong><div class="sub-note">${esc(r.kind)} · ${esc(r.category)} · ${esc(ihWhen(r.submittedAt))}</div></div>${chip(r.stage, IH_TONE[r.stage] || 'grey')}</div>
+    <p class="sub-note" style="margin:8px 0">${esc(IH_STAGE_HELP[r.stage] || '')}${r.stage === 'Shared with Department' && r.routedTo ? ' Department: ' + esc(r.routedTo) + '.' : ''}</p>
+    ${r.note ? `<div class="ih-note"><strong>A note from the review team</strong><p>${esc(r.note)}</p></div>` : ''}
+    <div class="ih-rec"><div><span class="k">Reference</span><span class="v">${esc(r.ref)}</span></div><div><span class="k">Fingerprint</span><span class="v mono">${esc(ihShort(r.hash))}</span></div><div><span class="k">Record</span><span class="v">${ok ? chip('Intact', 'green') : chip('Changed since submission', 'red')}</span></div></div>
+    ${(r.addenda || []).length ? `<div class="sub-note" style="margin-top:8px">${(r.addenda || []).length} update${(r.addenda || []).length === 1 ? '' : 's'} added after submission</div>` : ''}
+    ${ev.length > 1 ? `<div class="ih-events">${ev.map(e => `<span>${esc(ihWhen(e.at))} · ${esc(e.text)}</span>`).join('')}</div>` : ''}
+    ${own ? `<div class="ih-actions"><button class="btn small" data-ih-cert="${esc(r.id)}" data-f="pdf">${icon('download')}Certificate (PDF)</button><button class="btn small" data-ih-cert="${esc(r.id)}" data-f="html">${icon('fileText')}Printable page</button>${r.stage !== 'Withdrawn' && r.stage !== 'Implemented' ? `<button class="btn small" data-ih-add="${esc(r.id)}">${icon('plus')}Add an update</button><button class="btn small ghost" data-ih-wd="${esc(r.id)}">Withdraw Idea</button>` : ''}</div>` : ''}</div>`;
+}
+function renderIhMine(actionHost, host){
+  actionHost.innerHTML = `<button class="btn primary" id="ihNew">${icon('plus')}Share an Idea</button>`; $('#ihNew').onclick = ihOpenSubmit;
+  const mine = ihSort(ihMine());
+  host.innerHTML = mine.length ? `<p class="sub-note" style="margin:0 0 12px">Only you and the Idea Hub review team can see these. Ideas are reviewed when the time is right; there is nothing you need to do.</p>` + mine.map(r => ihCard(r, true)).join('')
+    : emptyBox('bulb', 'amber', 'No ideas yet', 'When you share an idea it appears here with its reference, fingerprint and certificate.');
+  $all('[data-ih-cert]', host).forEach(b => b.onclick = () => { const r = mine.find(x => x.id === b.dataset.ihCert); if(r) ihDownloadCert(r, b.dataset.f); });
+  $all('[data-ih-add]', host).forEach(b => b.onclick = () => { const r = mine.find(x => x.id === b.dataset.ihAdd); if(r) ihOpenUpdate(r); });
+  $all('[data-ih-wd]', host).forEach(b => b.onclick = async () => { const r = mine.find(x => x.id === b.dataset.ihWd); if(!r || !(await confirmAction('Withdraw this idea? The record is kept, but it will no longer be reviewed.'))) return; try{ await updateDoc('ideaVault', r.id, { stage:'Withdrawn', stageAt:new Date().toISOString(), events:(r.events || []).concat([{ at:new Date().toISOString(), text:'Withdrawn by the author' }]) }); ihResetMine(); notify('Idea withdrawn'); render(); }catch(err){ toast(errorMessage(err), true); } });
+}
+function ihOpenUpdate(r){
+  openForm(`Add to “${r.title}”`, [
+    { html:'<p class="sub-note" style="margin:0 0 8px">Your original idea can’t be changed, so its record stays exact. Anything you add here is saved with its own time and fingerprint.</p>' },
+    { name:'text', label:'What would you like to add?', type:'textarea', rows:4, required:true }
+  ], null, async d => {
+    const text = String(d.text || '').trim(); if(!text) throw { code:'invalid_argument', message:'Please write something to add.' };
+    const prev = (r.addenda || []).length ? r.addenda[r.addenda.length - 1].hash : r.hash, a = { at:new Date().toISOString(), text }; a.hash = ihAddendumHash(prev, a);
+    await updateDoc('ideaVault', r.id, { addenda:(r.addenda || []).concat([a]), events:(r.events || []).concat([{ at:a.at, text:'Update added by the author' }]) });
+    ihResetMine(); notify('Update added to your idea'); render();
+  }, 'Add Update');
+}
+
+/* ---------- review team ---------- */
+const IH_COLS = [{ h:'Reference', f:i => esc(i.ref || '—') }, { h:'Idea', f:i => esc(i.title || '—') }, { h:'From', f:i => esc(i.employeeName || '—') }, { h:'Stage', f:i => esc(i.stage || '—') }, { h:'Submitted', f:i => esc(fmtDate(i.submittedAt)) }];
+function ihStats(){
+  const all = ihAll(), live = all.filter(i => i.stage !== 'Withdrawn'), by = s => live.filter(i => i.stage === s);
+  const q0 = addDaysISO(localISO(), -90), recent = live.filter(i => String(i.submittedAt).slice(0, 10) >= q0);
+  const looked = live.filter(i => i.firstReviewAt), days = looked.length ? Math.round(looked.reduce((t, i) => t + Math.max(0, (new Date(i.firstReviewAt) - new Date(i.submittedAt)) / 86400000), 0) / looked.length) : null;
+  return { all, live, received:by('Received'), progress:live.filter(i => ['In Review', 'Shared with Department', 'Piloting'].includes(i.stage)), done:by('Implemented'), kept:by('Kept on File'), recent, people:new Set(live.map(i => i.employeeId)), days };
+}
+function renderIhOverview(actionHost, host){
+  actionHost.innerHTML = '';
+  const s = ihStats();
+  const countBy = (list, f) => { const m = {}; list.forEach(i => { const k = f(i) || 'Not set'; (m[k] = m[k] || []).push(i); }); return Object.entries(m).sort((a, b) => b[1].length - a[1].length); };
+  const months = []; for(let k = 5; k >= 0; k--){ const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - k); months.push(d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0')); }
+  host.innerHTML = kpiRow([
+    { icon:'bulb', value:s.live.length, label:'Ideas Received', list:s.live, cols:IH_COLS, dtitle:'All Ideas' },
+    { icon:'clock', value:s.received.length, label:'Waiting for a First Look', list:s.received, cols:IH_COLS, dtitle:'Waiting for a First Look' },
+    { icon:'target', value:s.progress.length, label:'Being Reviewed or Developed', list:s.progress, cols:IH_COLS, dtitle:'Being Reviewed or Developed' },
+    { icon:'check', value:s.done.length, label:'Implemented', list:s.done, cols:IH_COLS, dtitle:'Implemented Ideas' },
+    { icon:'users', value:s.people.size, label:'People Who Shared', list:activeEmployees().filter(e => s.people.has(e.id)), kind:'employees', dtitle:'People Who Shared an Idea' },
+    { icon:'history', value:s.days == null ? '—' : s.days + ' d', label:'Average Days to a First Look', list:s.live.filter(i => i.firstReviewAt), cols:IH_COLS, dtitle:'Ideas With a First Look' }
+  ])
+  + `<div class="split" style="margin-top:16px"><div class="card"><h3>Where ideas are today</h3><p class="card-sub">The journey from capture to impact.</p>${barRows(IH_STAGES.filter(x => x !== 'Withdrawn').map(st => ({ label:st, value:s.live.filter(i => i.stage === st).length, list:s.live.filter(i => i.stage === st), cols:IH_COLS, dtitle:st })), { empty:'No ideas yet.' })}</div>
+    <div class="card"><h3>New ideas by month</h3><p class="card-sub">Last six months.</p>${barRows(months.map(m => ({ label:new Date(m + '-01').toLocaleString('en-GB', { month:'short', year:'numeric' }), value:s.live.filter(i => String(i.submittedAt).slice(0, 7) === m).length })), { empty:'No ideas yet.' })}</div></div>
+    <div class="split" style="margin-top:16px"><div class="card"><h3>By topic</h3><p class="card-sub">What people are thinking about.</p>${barRows(countBy(s.live, i => i.category).map(([k, v]) => ({ label:k, value:v.length, list:v, cols:IH_COLS, dtitle:k })), { empty:'No ideas yet.' })}</div>
+    <div class="card"><h3>By department</h3><p class="card-sub">Where ideas come from.</p>${barRows(countBy(s.live, i => i.department).slice(0, 8).map(([k, v]) => ({ label:k, value:v.length, list:v, cols:IH_COLS, dtitle:k })), { empty:'No ideas yet.' })}</div></div>
+    <p class="sub-note" style="margin-top:14px">Ideas are confidential. Only people with the Idea Hub privilege see this page, and an author’s own ideas stay readable by them alone.</p>`;
+}
+function renderIhAll(actionHost, host){
+  actionHost.innerHTML = '';
+  const f = { stage:state.ui.ihStage || 'Active', cat:state.ui.ihCat || 'All', q:state.ui.ihQ || '' }, all = ihAll();
+  let list = ihSort(all).filter(i => f.stage === 'All' ? true : f.stage === 'Active' ? i.stage !== 'Withdrawn' : i.stage === f.stage).filter(i => f.cat === 'All' || i.category === f.cat);
+  if(f.q) list = list.filter(i => [i.title, i.employeeName, i.ref, i.department, i.idea, i.problem].join(' ').toLowerCase().includes(f.q.toLowerCase()));
+  host.innerHTML = `<div class="toolbar"><input id="ihQ" type="text" placeholder="Search ideas, people, references…" value="${esc(f.q)}" style="min-width:240px"><select id="ihStageSel"><option value="Active" ${f.stage === 'Active' ? 'selected' : ''}>Active (not withdrawn)</option><option value="All" ${f.stage === 'All' ? 'selected' : ''}>All stages</option>${IH_STAGES.map(s => `<option value="${s}" ${f.stage === s ? 'selected' : ''}>${s} (${all.filter(i => i.stage === s).length})</option>`).join('')}</select><select id="ihCatSel"><option value="All">All topics</option>${IH_CATS.map(c => `<option ${f.cat === c ? 'selected' : ''}>${esc(c)}</option>`).join('')}</select><span class="sub-note">Confidential: visible to the review team only.</span></div>`
+    + (list.length ? `<div class="card"><div class="table-wrap" style="border:none;box-shadow:none;padding:0"><table><thead><tr><th>Idea</th><th>From</th><th>Topic</th><th>Submitted</th><th>Stage</th><th>Priority</th><th></th></tr></thead><tbody>${list.map(i => { const rv = ihReviewOf(i.ref), p = ihPriority(rv); return `<tr><td style="max-width:340px"><strong>${esc(i.title)}</strong><div class="sub-note">${esc(i.ref)} · ${esc(i.kind)}${i.lead ? ' · wants to help' : ''}</div></td><td>${esc(i.employeeName)}<div class="sub-note">${esc(i.department || '')}</div></td><td>${esc(i.category)}</td><td>${esc(fmtDate(i.submittedAt))}</td><td>${chip(i.stage, IH_TONE[i.stage] || 'grey')}${i.stage === 'Shared with Department' && i.routedTo ? `<div class="sub-note">${esc(i.routedTo)}</div>` : ''}</td><td>${p == null ? '<span class="sub-note">Not scored</span>' : `<strong>${p}</strong>/100`}</td><td><button class="btn small" data-ih-rev="${esc(i.id)}">Review</button></td></tr>`; }).join('')}</tbody></table></div></div>` : emptyBox('bulb', 'amber', 'No ideas match', all.length ? 'Try a different stage, topic or search.' : 'Ideas appear here as employees share them.'));
+  $('#ihQ').onchange = e => { state.ui.ihQ = e.target.value; render(); };
+  $('#ihStageSel').onchange = e => { state.ui.ihStage = e.target.value; render(); };
+  $('#ihCatSel').onchange = e => { state.ui.ihCat = e.target.value; render(); };
+  $all('[data-ih-rev]', host).forEach(b => b.onclick = () => ihOpenReview(byId('ideaVault', b.dataset.ihRev)));
+}
+function ihOpenReview(r){
+  if(!r) return;
+  const rv = ihReviewOf(r.ref) || {}, ok = ihIntact(r) && ihAddendaIntact(r);
+  const row = (k, v) => v ? `<div class="ih-row"><span>${esc(k)}</span><p dir="auto">${esc(v).replace(/\n/g, '<br>')}</p></div>` : '';
+  const sel = (id, v) => `<select id="${id}"><option value="">Not scored</option>${[1, 2, 3, 4, 5].map(n => `<option value="${n}" ${String(v) === String(n) ? 'selected' : ''}>${n}</option>`).join('')}</select>`;
+  const depts = ihDepartments();
+  ihModal(esc(r.title), `<div class="sub-note" style="margin-bottom:8px"><strong>${esc(r.employeeName)}</strong>${r.employeeNumber ? ' · ' + esc(r.employeeNumber) : ''}${r.department ? ' · ' + esc(r.department) : ''} · ${esc(r.kind)} · ${esc(r.category)}${r.lead ? ' · wants to help develop it' : ''}${r.credit ? '' : ' · asks not to be credited by name'}</div>
+    <div class="ih-rec" style="margin-bottom:10px"><div><span class="k">Reference</span><span class="v">${esc(r.ref)}</span></div><div><span class="k">Submitted</span><span class="v">${esc(ihWhen(r.submittedAt))}</span></div><div><span class="k">Record</span><span class="v">${ok ? chip('Intact', 'green') : chip('Changed since submission', 'red')}</span></div></div>
+    ${row('The problem or opportunity', r.problem)}${row('The idea', r.idea)}${row('Who benefits, and how', r.benefit)}${row('What it needs', r.resources)}${row('Other contributors', r.coAuthors)}${row('Link or reference', r.link)}
+    ${(r.addenda || []).map(a => row('Update · ' + ihWhen(a.at), a.text)).join('')}
+    <div class="ih-review"><h4>Review</h4>
+    <div class="field-row"><div class="field"><label>Stage</label><select id="ihSt">${IH_STAGES.filter(s => s !== 'Withdrawn' || r.stage === 'Withdrawn').map(s => `<option ${r.stage === s ? 'selected' : ''}>${s}</option>`).join('')}</select></div><div class="field"><label>Department it is shared with</label><select id="ihDept"><option value="">—</option>${depts.map(d => `<option ${r.routedTo === d ? 'selected' : ''}>${esc(d)}</option>`).join('')}</select></div></div>
+    <div class="field-row" style="grid-template-columns:repeat(3,1fr)"><div class="field"><label>Impact</label>${sel('ihImp', rv.impact)}</div><div class="field"><label>Feasibility</label>${sel('ihFea', rv.feasibility)}</div><div class="field"><label>Fit with strategy</label>${sel('ihFit', rv.fit)}</div></div>
+    <div class="field"><label>Note to the author (optional — shown on their card)</label><textarea id="ihNote" rows="2">${esc(r.note || '')}</textarea></div>
+    <div class="field"><label>Internal notes (never shown to the author)</label><textarea id="ihInt" rows="3">${esc(rv.internalNotes || '')}</textarea></div>
+    <div class="ih-actions"><button class="btn primary" id="ihSave">Save Review</button><button class="btn" id="ihCertA" data-f="html">${icon('fileText')}Authorship record</button></div></div>`, close => {
+    $('#ihCertA').onclick = () => ihDownloadCert(r, 'html');
+    $('#ihSave').onclick = async () => {
+      const st = $('#ihSt').value, dept = $('#ihDept').value;
+      if(st === 'Shared with Department' && !dept) return toast('Choose the department it is shared with.', true);
+      const now = new Date().toISOString(), me = selfEmployee(), by = me ? me.name : 'Review team';
+      const patch = { stage:st, routedTo:st === 'Shared with Department' || dept ? dept : '', note:$('#ihNote').value.trim() };
+      if(st !== r.stage){ patch.stageAt = now; patch.events = (r.events || []).concat([{ at:now, text:st === 'Shared with Department' && dept ? 'Shared with ' + dept : 'Moved to ' + st }]); }
+      if(st !== 'Received' && !r.firstReviewAt) patch.firstReviewAt = now;
+      const review = { ref:r.ref, impact:$('#ihImp').value, feasibility:$('#ihFea').value, fit:$('#ihFit').value, internalNotes:$('#ihInt').value.trim(), updatedBy:by, updatedAt:now };
+      try{
+        await updateDoc('ideaVault', r.id, patch);
+        if(rv.id) await updateDoc('ideaReviews', rv.id, review); else await setDoc('ideaReviews', r.ref, review);
+        close(); notify('Idea review saved'); render();
+      }catch(err){ toast(errorMessage(err), true); }
+    };
+  }, true);
+}
+function renderIhVerify(actionHost, host){
+  actionHost.innerHTML = '';
+  const q = (state.ui.ihVerifyQ || '').trim();
+  const hit = q ? ihAll().find(i => i.ref.toLowerCase() === q.toLowerCase() || (q.length >= 8 && String(i.hash).toLowerCase().startsWith(q.replace(/\s+/g, '').toLowerCase()))) : null;
+  host.innerHTML = `<div class="card"><h3>Verify an authorship record</h3><p class="card-sub">Paste the reference (such as IH-2026-1A2B3C4D) or the fingerprint from a certificate. SNAP recalculates the fingerprint from the stored idea and tells you whether it matches.</p>
+    <div class="toolbar" style="margin:8px 0 0"><input id="ihVQ" type="text" placeholder="Reference or fingerprint" value="${esc(q)}" style="min-width:300px"><button class="btn primary" id="ihVGo">${icon('search')}Check Record</button></div></div>
+    ${q ? (hit ? (() => { const ok = ihIntact(hit) && ihAddendaIntact(hit); return `<div class="card" style="margin-top:14px;border-left:5px solid ${ok ? '#1F6E63' : '#B3261E'}"><h3>${ok ? 'The record is genuine and unchanged' : 'The stored record no longer matches its fingerprint'}</h3><p class="card-sub">${esc(hit.title)} · ${esc(hit.employeeName)} · submitted ${esc(ihWhen(hit.submittedAt))}</p><div class="ih-rec"><div><span class="k">Reference</span><span class="v">${esc(hit.ref)}</span></div><div><span class="k">Stored fingerprint</span><span class="v mono">${esc(ihShort(hit.hash))}</span></div><div><span class="k">Recalculated</span><span class="v mono">${esc(ihShort(ihFingerprint(hit)))}</span></div></div><div class="ih-actions"><button class="btn" id="ihVOpen">Open the idea</button></div></div>`; })() : `<div class="card" style="margin-top:14px">${emptyBox('search', 'slate', 'No record found', 'Check the reference or fingerprint and try again. Withdrawn ideas are still searchable.')}</div>`) : ''}
+    <div class="card" style="margin-top:14px"><h3>Integrity of every idea</h3><p class="card-sub">${ihAll().length} idea${ihAll().length === 1 ? '' : 's'} checked.</p>${(() => { const bad = ihAll().filter(i => !(ihIntact(i) && ihAddendaIntact(i))); return bad.length ? `<p style="color:#B3261E;font-weight:700">${bad.length} record${bad.length === 1 ? '' : 's'} no longer match${bad.length === 1 ? 'es' : ''} the fingerprint taken at submission.</p>` + dataTable(IH_COLS, bad, {}) : '<p style="color:#1F6E63;font-weight:700">Every record matches the fingerprint taken at submission.</p>'; })()}</div>`;
+  const go_ = () => { state.ui.ihVerifyQ = $('#ihVQ').value; render(); };
+  $('#ihVGo').onclick = go_; $('#ihVQ').onkeydown = e => { if(e.key === 'Enter'){ e.preventDefault(); go_(); } };
+  const o = $('#ihVOpen'); if(o) o.onclick = () => ihOpenReview(hit);
+}
+
+/* ---------- about ---------- */
+function renderIhAbout(actionHost, host){
+  actionHost.innerHTML = '';
+  const step = (n, t, p) => `<div class="ih-step"><div class="n">${n}</div><div><strong>${t}</strong><p>${p}</p></div></div>`;
+  host.innerHTML = `<div class="card"><h3>From your idea to real impact</h3><p class="card-sub">The journey follows ISO 56002 (innovation management) and stage-gate practice.</p>
+    <div class="ih-steps">${step(1, 'Received', 'Your idea is recorded with your name and the time.')}${step(2, 'In Review', 'The review team reads it and gives it a first assessment.')}${step(3, 'Shared with Department', 'It goes to the department best placed to take it on.')}${step(4, 'Piloting', 'A small trial shows whether it works.')}${step(5, 'Implemented', 'It becomes part of how we work, and you are recognised.')}${step(6, 'Kept on File', 'Not for now, but never lost. It can come back when the time is right.')}</div></div>
+    <div class="split" style="margin-top:16px"><div class="card"><h3>About your authorship record</h3><p style="font-size:13.5px;line-height:1.6;margin:6px 0 0">Every idea gets a reference and a fingerprint (SHA-256) made from your words, your name and the time you sent it. If a single letter changed afterwards the fingerprint would no longer match, so the record shows what you said and when. You can download a certificate at any time.</p><p class="sub-note" style="margin-top:8px">${esc(IH_STATEMENT)}</p></div>
+    <div class="card"><h3>Privacy and what to expect</h3><p style="font-size:13.5px;line-height:1.6;margin:6px 0 0">Only you and people given the Idea Hub privilege can read your ideas. Scores and internal notes are kept apart from your idea and are never shown to you or to other employees.</p><p style="font-size:13.5px;line-height:1.6;margin:8px 0 0">Ideas are looked at when the time is right, with the right department. You may not hear back quickly, or at all for some time. That does not mean your idea was ignored. If it moves forward, the status on <strong>My Ideas</strong> changes and you will get a notification.</p></div></div>`;
+}
+
+/* ---------- dashboard card, notifications, header button ---------- */
+function ideaDashCard(){
+  try{
+    if(!navAllowed(NAV_INDEX.ideahub || { roles:[], key:'ideahub' })) return '';
+    const rev = ihCanReview(), mine = ihMine().filter(i => i.stage !== 'Withdrawn');
+    let extra = '';
+    if(rev){ useCollections(['ideaVault']); const n = ihAll().filter(i => i.stage === 'Received').length; extra = `<div class="ih-dash-note"><strong>${n}</strong> idea${n === 1 ? '' : 's'} waiting for a first look <button class="link-btn" id="ihDashGo">Open the Idea Hub</button></div>`; }
+    return `<div class="card ih-dash" style="margin-bottom:16px"><div class="ih-dash-row"><div class="ih-bulb sm">${icon('bulb')}</div><div style="flex:1;min-width:200px"><h3 style="margin:0">Got an idea?</h3><p class="card-sub" style="margin:2px 0 0">Share an idea or initiative any time. Your authorship is recorded${mine.length ? ` · you have shared ${mine.length}` : ''}.</p></div><button class="btn primary" data-ih-new>${icon('bulb')}Share an Idea</button></div>${extra}</div>`;
+  }catch(e){ console.error(e); return ''; }
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest && e.target.closest('[data-ih-new]'); if(b){ e.preventDefault(); ihOpenSubmit(); return; }
+  if(e.target.closest && e.target.closest('#ihDashGo')) go('ideahub', { ihTab:'all' });
+});
+NOTIF_PROVIDERS.push(() => {
+  const out = [];
+  if(typeof featureOn === 'function' && !featureOn('ideahub')) return out;
+  if(ihCanReview()){
+    const n = ihAll().filter(i => i.stage === 'Received').length;
+    if(n) out.push({ type:'Idea Hub', text:`${n} new idea${n === 1 ? '' : 's'} waiting for a first look`, date:localISO(), action:() => go('ideahub', { ihTab:'all', ihStage:'Received' }) });
+  }
+  const since = addDaysISO(localISO(), -14);
+  ihMine().filter(i => i.stageAt && i.stage !== 'Received' && i.stage !== 'Withdrawn' && String(i.stageAt).slice(0, 10) >= since).forEach(i => out.push({ type:'Idea Hub', text:`Your idea “${i.title}” has moved: ${i.stage === 'Shared with Department' && i.routedTo ? 'shared with ' + i.routedTo : i.stage.toLowerCase()}`, date:String(i.stageAt).slice(0, 10), action:() => go('ideahub', { ihTab:'mine' }) }));
+  return out;
+});
+addNavItem('Idea Hub', { key:'ideahub', label:'Idea Hub', icon:'bulb', roles:['admin', 'employee'], color:'amber' });
+(NAV_GROUPS.find(g => g.label === 'Idea Hub') || {}).direct = true;
+addMeta('ideahub', { title:'Idea Hub', subtitle:'Share ideas and initiatives any time. Your authorship is recorded, and the right people review it at the right time.' }, { title:'Idea Hub', subtitle:'Share an idea or initiative any time. Your authorship is recorded.' });
+
 /* ============================== DEMO DATA ============================== */
 /* A removable demo organisation for testing every part of SNAP: a full company from the CEO down to the newest joiner, plus realistic records for each section.
    Every demo record has an id that starts with "demo_" and a `demo:true` flag, so one click removes all of it and nothing real is ever touched.
@@ -22420,6 +22961,68 @@ demoGen('polls', 'Polls: Live, Closed, Draft & Scheduled, With Votes', 'Surveys'
   });
 });
 
+/* ============================== DEMO DATA: IDEA HUB ============================== */
+/* One generator, 'ideahub': about two dozen ideas and initiatives at every stage, sent by different people, each with a real fingerprint and reference so the verify page
+   shows genuine records. A few have updates from the author; reviewed ideas carry scores in the admin-only reviews collection. All helpers carry the prefix dih. */
+const DIH_IDEAS = [
+  { t:'Self-service SIM replacement kiosks', k:'Initiative', c:'Customer experience', p:'Customers queue for up to an hour in our stores just to replace a lost SIM card.', i:'Put self-service kiosks in the busiest stores. The customer scans an ID, verifies by SMS and the SIM is issued on the spot.', b:'Shorter queues, happier customers and store staff free for advice and sales.', r:'Kiosk hardware for ten stores, an ID verification service and two weeks of integration work.', ago:150, st:'Piloting', dept:true, sc:[5, 4, 5], lead:true, n:'Thank you. A pilot is under way in two stores and your input shaped it.', add:'We could also use the kiosk for plan changes and bill payments.' },
+  { t:'One-tap leave approval from the manager’s phone', k:'Idea', c:'Employee experience', p:'Managers approve leave late because it needs a laptop and several clicks.', i:'Send a notification with Approve and Decline buttons that work from a phone, with the team calendar shown underneath.', b:'Faster answers for employees and fewer reminders for HR.', r:'Small change to notifications; no new tools.', ago:210, st:'Implemented', dept:true, sc:[4, 5, 4], lead:false, n:'Live now. Thank you for the idea.' },
+  { t:'Quiet focus hours on Wednesday mornings', k:'Idea', c:'People and culture', p:'Meetings fill every morning and deep work happens late in the evening.', i:'Make Wednesday morning meeting-free for everyone, so teams can plan, write and think.', b:'Better focus, fewer late finishes and a healthier workload.', r:'A company-wide agreement and a calendar reminder.', ago:180, st:'Implemented', dept:true, sc:[4, 5, 5], lead:true, n:'This is now a company practice. Thank you.' },
+  { t:'Reuse old routers for school internet labs', k:'Initiative', c:'Sustainability and community', p:'Returned routers are stored for years while many schools have no reliable internet.', i:'Refurbish returned routers and install them in school computer labs, with volunteers teaching basic IT.', b:'Less e-waste and connected classrooms in our communities.', r:'A refurbishment bench, a few volunteers and transport to schools.', ago:120, st:'Shared with Department', dept:true, sc:[5, 3, 5], lead:true, n:'We have shared this with the team that owns community programmes.' },
+  { t:'Chatbot for the first answers about benefits and leave', k:'Idea', c:'Technology and digital', p:'HR answers the same ten questions every day by phone and email.', i:'Add a chat assistant to the employee page that answers questions about leave, benefits and payslips, and passes harder ones to HR.', b:'Instant answers at any hour and more time for HR on complex cases.', r:'Knowledge articles already exist; needs a chat interface.', ago:95, st:'In Review', dept:false, sc:[4, 3, 4], lead:false },
+  { t:'Prepaid top-up reminders based on usage', k:'Idea', c:'Products and services', p:'Prepaid customers run out of balance at the worst moment and switch to a competitor.', i:'Send a friendly reminder before the balance runs out, with a one-tap top-up and a small bonus for early top-up.', b:'Fewer lost customers and more predictable revenue.', r:'Usage data already exists; needs a message template and a bonus rule.', ago:75, st:'Shared with Department', dept:true, sc:[5, 4, 4], lead:false, n:'Shared with the team that owns prepaid products.' },
+  { t:'Buddy programme for new joiners in the regions', k:'Initiative', c:'Employee experience', p:'New colleagues outside Baghdad often feel disconnected in their first months.', i:'Pair every new joiner with a buddy for 90 days, with a short guide, a monthly check-in and a small recognition for buddies.', b:'Faster settling in, lower early resignations and stronger local culture.', r:'A one-page guide and a recognition budget.', ago:140, st:'Piloting', dept:true, sc:[4, 5, 4], lead:true, n:'Piloting in two regions. We will share the results with you.' },
+  { t:'Paperless handover for field engineers', k:'Idea', c:'Process and efficiency', p:'Field teams fill paper forms after each job and someone re-types them at the office.', i:'Use a simple mobile form with photos and a signature, saved straight to the job record.', b:'No re-typing, fewer errors and faster invoicing.', r:'A mobile form tool and short training.', ago:60, st:'In Review', dept:false, sc:[4, 4, 3], lead:true },
+  { t:'Flexible start times for customer care shifts', k:'Idea', c:'Employee experience', p:'Fixed shift starts make commuting hard in peak traffic and cause late arrivals.', i:'Allow a 45-minute window for shift start, with the shift end moving to match.', b:'Less stress and better punctuality.', r:'Rota adjustment only.', ago:200, st:'Kept on File', dept:false, sc:[3, 3, 3], lead:false, n:'Thank you. This does not fit our current service levels but we are keeping it for the next rota review.' },
+  { t:'Carbon label on every procurement order', k:'Idea', c:'Sustainability and community', p:'We do not see the carbon footprint of what we buy.', i:'Ask suppliers for a simple carbon figure and show it on each purchase request, so buyers can compare.', b:'Smarter purchasing and better sustainability reporting.', r:'A new field in the request form and a supplier questionnaire.', ago:110, st:'Kept on File', dept:false, sc:[4, 2, 4], lead:true, n:'A great fit for next year’s supplier programme. We have kept it on file.' },
+  { t:'Customer loyalty tiers for long-standing subscribers', k:'Idea', c:'Cost and revenue', p:'Customers who stay for many years get no more than new customers.', i:'Create bronze, silver and gold tiers by years with us, with small perks such as priority care and bonus data.', b:'Loyalty, lower churn and a reason to stay.', r:'Tier rules and a perks budget.', ago:40, st:'In Review', dept:false, sc:[5, 3, 4], lead:false },
+  { t:'Open workshop: employees pitch ideas to leaders every quarter', k:'Initiative', c:'People and culture', p:'Good ideas get lost because there is no regular place to present them.', i:'Hold a short quarterly session where five employees present ideas to senior leaders, and the best get time and a mentor.', b:'A culture of ownership and a steady stream of improvements.', r:'Two hours a quarter and a small budget for prototypes.', ago:25, st:'Received', dept:false, lead:true },
+  { t:'Show data usage in the app as a daily bar', k:'Idea', c:'Customer experience', p:'Customers only see their data usage as a total and are surprised by the end of the month.', i:'Show a simple daily bar chart with a forecast to the end of the plan.', b:'Fewer complaints and fewer surprise top-ups.', r:'App design and data from billing.', ago:18, st:'Received', dept:false, lead:false },
+  { t:'Standing desks and walking meeting rooms', k:'Idea', c:'Employee experience', p:'Many colleagues sit for most of the day and report back pain.', i:'Offer sit-stand desks on request and mark two meeting rooms for walking meetings.', b:'Better health and energy.', r:'A small furniture budget.', ago:12, st:'Received', dept:false, lead:false },
+  { t:'Smart reply suggestions for customer care agents', k:'Idea', c:'Technology and digital', p:'Agents type similar replies all day, which is slow and uneven in tone.', i:'Suggest short replies based on the customer’s question, which the agent can edit and send.', b:'Faster handling and a consistent voice.', r:'An assistant tool and agent feedback during testing.', ago:9, st:'Received', dept:false, lead:true },
+  { t:'Joint training day with local universities', k:'Initiative', c:'Sustainability and community', p:'Graduates often do not know what skills telecom needs.', i:'Invite final-year students for a practical day with our engineers, with case studies and a short talk on careers.', b:'A stronger talent pipeline and a better reputation.', r:'A venue, a day of engineers’ time and lunch.', ago:6, st:'Received', dept:false, lead:true },
+  { t:'Recycle SIM cards and packaging at stores', k:'Initiative', c:'Sustainability and community', p:'Packaging and old SIM cards end up in the bin.', i:'Place collection boxes in stores and send the contents to a recycler, with a small reward for customers who return them.', b:'Less waste and a visible sustainability message.', r:'Boxes and a recycler contract.', ago:3, st:'Received', dept:false, lead:false },
+  { t:'Auto-reset for common IT passwords', k:'Idea', c:'Technology and digital', p:'Password resets are among the most common IT tickets.', i:'Let employees reset their own password with a phone code, without raising a ticket.', b:'Fewer tickets and less waiting.', r:'A self-service reset tool.', ago:130, st:'Implemented', dept:true, sc:[4, 5, 4], lead:false, n:'Live for everyone. Thank you.' },
+  { t:'مكتبة مصغّرة لتبادل الكتب في كل مبنى', k:'Initiative', c:'People and culture', p:'لا يوجد مكان بسيط لتبادل الكتب والمعرفة بين الزملاء.', i:'تخصيص رفّ في كل مبنى لتبادل الكتب، مع نشاط شهري قصير لعرض كتاب مفيد.', b:'ثقافة قراءة وتعلّم وتواصل أفضل بين الفرق.', r:'رفوف وبعض الكتب المبدئية.', ago:85, st:'Shared with Department', dept:true, sc:[3, 5, 4], lead:true, n:'شاركناها مع فريق التعلّم والتطوير.' },
+  { t:'تذكير تلقائي بتجديد الباقة قبل انتهائها', k:'Idea', c:'Products and services', p:'ينسى كثير من العملاء تجديد باقاتهم فتنقطع الخدمة.', i:'إرسال رسالة قبل ثلاثة أيام من انتهاء الباقة مع رابط للتجديد بنقرة واحدة.', b:'عملاء أكثر رضا وإيراد أكثر استقرارًا.', r:'قالب رسالة وقاعدة توقيت.', ago:35, st:'In Review', dept:false, sc:[4, 5, 3], lead:false },
+  { t:'لوحة شكر شهرية لفرق الدعم الخلفي', k:'Idea', c:'People and culture', p:'فرق الدعم الخلفي نادرًا ما تُذكر رغم أن عملها أساسي.', i:'لوحة شهرية تُظهر رسائل شكر من الزملاء لفرق الدعم، مع تقدير بسيط في الاجتماع العام.', b:'روح معنوية أعلى وتقدير أوسع.', r:'مساحة على الصفحة الداخلية.', ago:160, st:'Kept on File', dept:false, sc:[3, 5, 3], lead:false, n:'شكرًا لك. حفظنا الفكرة لمراجعة برنامج التقدير القادم.' },
+  { t:'Printed monthly newsletter for stores without reliable internet', k:'Idea', c:'Employee experience', p:'Some store teams miss company news.', i:'Send a one-page printed summary each month to every store.', b:'Everyone informed.', r:'Printing costs.', ago:50, st:'Withdrawn', dept:false, lead:false }
+];
+demoGen('ideahub', 'Idea Hub: Ideas, Initiatives, Reviews & Authorship Records', 'Sustainability & Entrepreneurship', ctx => {
+  const act = ctx.active.filter(e => e._role !== 'ceo');
+  if(!act.length || typeof ihFingerprint !== 'function') return;
+  const depts = Array.from(new Set(act.map(e => e.department).filter(Boolean))), rev = (ctx.hrAdmin || {}).name || 'HR';
+  const pool = ctx.shuffle(act), made = [];
+  DIH_IDEAS.forEach((x, i) => {
+    const e = pool[i % pool.length]; if(!e) return;
+    const at = ctx.ts(x.ago, ctx.int(8, 16));
+    made.push({ x, e, at });
+  });
+  /* each person's ideas chain in time order */
+  const last = {};
+  made.sort((a, b) => a.at.localeCompare(b.at)).forEach(({ x, e, at }) => {
+    const core = { employeeId:e.id, employeeNumber:e.employeeNumber || '', employeeName:e.name, department:e.department || '', kind:x.k, category:x.c, title:x.t, problem:x.p, idea:x.i, benefit:x.b, resources:x.r || '', coAuthors:'', link:'', submittedAt:at, prevHash:last[e.id] || '' };
+    const hash = ihFingerprint(core), ref = ihRef(Object.assign({}, core, { hash }));
+    last[e.id] = hash;
+    const events = [{ at, text:'Idea received' }], item = Object.assign({}, core, { hash, ref, stage:x.st, lead:!!x.lead, credit:ctx.chance(0.85), addenda:[], events });
+    const first = x.st === 'Received' ? null : ctx.ts(Math.max(1, x.ago - ctx.int(6, 25)), ctx.int(9, 15));
+    if(x.st === 'Withdrawn'){ const w = ctx.ts(Math.max(1, x.ago - ctx.int(2, 6)), 12); events.push({ at:w, text:'Withdrawn by the author' }); item.stageAt = w; }
+    else if(first){
+      item.firstReviewAt = first; item.stageAt = first;
+      const route = x.dept ? ctx.pick(depts) : '';
+      if(['Shared with Department', 'Piloting', 'Implemented'].includes(x.st) && route){ item.routedTo = route; events.push({ at:first, text:'Shared with ' + route }); }
+      else events.push({ at:first, text:'Moved to ' + (x.st === 'Kept on File' ? 'Kept on File' : 'In Review') });
+      if(x.st === 'Piloting' || x.st === 'Implemented'){ const m = ctx.ts(Math.max(1, x.ago - ctx.int(30, 60)), 11); events.push({ at:m, text:'Moved to Piloting' }); item.stageAt = m; }
+      if(x.st === 'Implemented'){ const m = ctx.ts(Math.max(1, x.ago - ctx.int(70, 100)), 11); events.push({ at:m, text:'Moved to Implemented' }); item.stageAt = m; }
+      events.sort((a, b) => a.at.localeCompare(b.at)); item.stageAt = events[events.length - 1].at;
+      if(x.n) item.note = x.n;
+    }
+    if(x.add){ const a = { at:ctx.ts(Math.max(1, x.ago - 10), 14), text:x.add }; a.hash = ihAddendumHash(item.hash, a); item.addenda.push(a); events.push({ at:a.at, text:'Update added by the author' }); }
+    ctx.pvc('ideaVault', item);
+    if(x.sc && first) ctx.put('ideaReviews', ref, { ref, impact:String(x.sc[0]), feasibility:String(x.sc[1]), fit:String(x.sc[2]), internalNotes:x.st === 'Kept on File' ? 'Good idea, wrong moment. Revisit at the next planning cycle.' : 'Promising. Needs an owner and a small budget line.', updatedBy:rev, updatedAt:first });
+  });
+});
+
 /* ============================== REGISTRATION OF NEW PAGES ============================== */
 addNavItem('Overview', {key:'announcements', label:'Announcements', icon:'megaphone', roles:['admin','employee'], color:'violet'}, 'dashboard');
 addMeta('announcements', { title:'Announcements', subtitle:'Messages from HR to everyone, a division, a department or all managers.' }, { title:'Announcements', subtitle:'What HR wants you to know.' });
@@ -22459,10 +23062,26 @@ addMeta('featureflags', { title:'Feature Flags', subtitle:'Switch whole modules 
       });
     });
   }
-  function schedule(){ clearTimeout(timer); timer = setTimeout(labelize, 40); }
+  /* a floating "Share an Idea" button on phones (the header bulb is hidden there to keep the header clear) */
+  function fab(){
+    try{
+      const phone = !!(window.matchMedia && window.matchMedia('(max-width:700px)').matches);
+      const bulb = document.getElementById('ideaBtn'); const ok = phone && bulb && bulb.style.display !== 'none' && typeof ihOpenSubmit === 'function';
+      let f = document.getElementById('ihFab');
+      if(!ok){ if(f) f.style.display = 'none'; return; }
+      if(!f){ f = document.createElement('button'); f.id = 'ihFab'; f.type = 'button'; f.className = 'ih-fab'; f.setAttribute('aria-label', 'Share an idea'); f.onclick = () => ihOpenSubmit(); document.body.appendChild(f); }
+      if(!f.firstChild) f.innerHTML = bulb.innerHTML;
+      f.style.display = '';
+    }catch(e){}
+  }
+  let lastTab = '';
+  function tabIntoView(){   // keep the open menu tab in sight when the tab row scrolls sideways
+    try{ const a = document.querySelector('#topNavList .group-tab.active'); const k = a ? a.textContent : ''; if(a && k !== lastTab){ lastTab = k; a.scrollIntoView({ inline:'center', block:'nearest' }); } }catch(e){}
+  }
+  function schedule(){ clearTimeout(timer); timer = setTimeout(() => { labelize(); fab(); tabIntoView(); }, 40); }
   function start(){
     try{ new MutationObserver(schedule).observe(document.body, { childList:true, subtree:true, characterData:true }); }catch(e){ /* very old browser: tables simply stay as tables */ }
-    labelize();
+    labelize(); fab();
   }
   if(document.body) start(); else document.addEventListener('DOMContentLoaded', start);
 })();
