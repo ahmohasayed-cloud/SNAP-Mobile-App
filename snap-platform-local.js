@@ -105,7 +105,14 @@
         try { var v = await fetchJson(opts.versionUrl, true); if (v && v.version) { opts.seedVersion = v.version; if (!needSeed && v.version !== have) needSeed = true; } } catch (e) { /* offline: keep what is here */ }
       }
       if (needSeed && opts.seedUrl) {
-        await loadSeed(await fetchJson(opts.seedUrl, true));
+        var seedData = await fetchJson(opts.seedUrl, true);
+        if (opts.extraUrl) {   // a few extra records that belong to this test app only (for example the owner's own sign-in)
+          try {
+            var extra = await fetchJson(opts.extraUrl, true), cols = seedData.collections || seedData;
+            Object.keys(extra).forEach(function (c) { cols[c] = Object.assign({}, cols[c] || {}, extra[c]); });
+          } catch (e) { /* optional file */ }
+        }
+        await loadSeed(seedData);
       }
       if (wantReset && typeof history !== 'undefined' && history.replaceState) {
         try { history.replaceState(null, '', location.pathname + (location.search || '').replace(/([?&])reset=1&?/, '$1').replace(/[?&]$/, '') + (location.hash || '')); } catch (e) { /* ignore */ }

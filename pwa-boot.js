@@ -11,7 +11,7 @@
   try { downloads = native && plugins.Filesystem && plugins.Share ? SnapDownloads.createNative({ Filesystem: plugins.Filesystem, Share: plugins.Share }) : SnapDownloads.createWeb(); }
   catch (e) { downloads = SnapDownloads.createWeb(); }
 
-  window.SnapPlatform = SnapLocalPlatform.create({ seedUrl: 'demo-data.json', versionUrl: 'version.json', downloads: downloads });
+  window.SnapPlatform = SnapLocalPlatform.create({ seedUrl: 'demo-data.json', extraUrl: 'local-accounts.json', versionUrl: 'version.json', downloads: downloads });
   window.claude = window.SnapPlatform;        // replaces the in-memory stand-in that the web page ships with
 
   /* safe areas (notch, home bar) and a calm status bar; no effect in a normal browser tab */
@@ -19,7 +19,9 @@
     var vp = document.querySelector('meta[name=viewport]');
     if (vp && !/viewport-fit/.test(vp.content)) vp.content += ', viewport-fit=cover';
     var st = document.createElement('style');
-    st.textContent = 'body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);padding-bottom:env(safe-area-inset-bottom)}';
+    st.textContent = 'body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);padding-bottom:env(safe-area-inset-bottom)}' +
+      /* "How SNAP Works" round buttons: wide enough that a word such as "Compensation" is never cut in two */
+      '@media (max-width:780px){.hw-bubbles{grid-template-columns:repeat(auto-fill,minmax(98px,1fr))!important}.hw-bub b{overflow-wrap:normal!important;word-break:normal!important}}';
     document.head.appendChild(st);
     if (native && plugins.StatusBar) { plugins.StatusBar.setOverlaysWebView && plugins.StatusBar.setOverlaysWebView({ overlay: false }).catch(function () {}); }
     if (native && plugins.SplashScreen) window.addEventListener('load', function () { plugins.SplashScreen.hide().catch(function () {}); });

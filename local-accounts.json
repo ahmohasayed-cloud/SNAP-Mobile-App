@@ -1,0 +1,55 @@
+{
+ "employees": {
+  "tm1": {
+   "id": "tm1",
+   "employeeNumber": "ZIQ03903",
+   "name": "Ahmed Mohamed Sayed Ahmed",
+   "nameArabic": "",
+   "jobTitle": "SNAP Master Administrator",
+   "jobTitleArabic": "مسؤول النظام الرئيسي",
+   "grade": "G7",
+   "level": "7",
+   "position": "SNAP Master Administrator",
+   "assignmentCategory": "Permanent",
+   "hireDate": "2020-06-06",
+   "organization": "Orion Telecom",
+   "costCenter": "HR-OPS",
+   "groupName": "Orion Telecom Group",
+   "division": "Human Resources",
+   "department": "HR Operations",
+   "unit": "Employee Services",
+   "section": "",
+   "location": "Basra",
+   "officeLocation": "Floor 5, Basra Office",
+   "chiefDirector": "Hamza Al-Kurdi",
+   "contractType": "Indefinite",
+   "probationEndDate": "",
+   "evalEligibility": "Eligible",
+   "email": "test.master@example.test",
+   "phone": "",
+   "phoneType": "Mobile",
+   "managerName": "Sundus Al-Maliki",
+   "status": "Active",
+   "employmentType": "Full-time",
+   "ssStatus": "Registered"
+  }
+ },
+ "employeeLogins": {
+  "tm1": {
+   "employeeId": "tm1",
+   "employeeName": "Ahmed Mohamed Sayed Ahmed",
+   "salt": "f0e5ad0f2644950d046ba2c6cbcc41b5",
+   "passwordHash": "b5864decf43934433b915bf935714dc99d16e66a10f1125702430267712f82c3",
+   "iter": 600000,
+   "algo": "pbkdf2-sha256"
+  }
+ },
+ "admins": {
+  "tm_admin": {
+   "employeeId": "tm1",
+   "employeeName": "Ahmed Mohamed Sayed Ahmed",
+   "isMaster": true,
+   "privileges": {}
+  }
+ }
+}
