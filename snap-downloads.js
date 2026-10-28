@@ -17,7 +17,8 @@
   var MIME = {
     csv: 'text/csv;charset=utf-8', json: 'application/json;charset=utf-8', txt: 'text/plain;charset=utf-8',
     pdf: 'application/pdf', pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-    xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', html: 'text/html;charset=utf-8'
+    xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', html: 'text/html;charset=utf-8',
+    png: 'image/png', svg: 'image/svg+xml;charset=utf-8'
   };
   function mimeFor(filename) { var m = /\.([a-z0-9]+)$/i.exec(filename || ''); return (m && MIME[m[1].toLowerCase()]) || 'application/octet-stream'; }
 

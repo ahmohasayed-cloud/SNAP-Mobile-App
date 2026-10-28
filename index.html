@@ -296,9 +296,9 @@
   .stat-badge.rose{ background:var(--rose-tint); color:var(--rose); }
 
   .main{ padding:28px 36px 60px; max-width:1320px; margin:0 auto; }
-  #content > *{ animation:contentFadeIn .32s var(--ease-out) both; }
+  #content.arriving > *{ animation:contentFadeIn .32s var(--ease-out) both; }
   @keyframes contentFadeIn{ from{ opacity:0; transform:translateY(7px); } to{ opacity:1; transform:translateY(0); } }
-  .kpi-row > *, .grid-3 > .card, .grid-2 > .card{ animation:contentFadeIn .32s var(--ease-out) both; }
+  #content.arriving .kpi-row > *, #content.arriving .grid-3 > .card, #content.arriving .grid-2 > .card{ animation:contentFadeIn .32s var(--ease-out) both; }
   .kpi-row > *:nth-child(1), .grid-3 > .card:nth-child(1), .grid-2 > .card:nth-child(1){ animation-delay:.02s; }
   .kpi-row > *:nth-child(2), .grid-3 > .card:nth-child(2), .grid-2 > .card:nth-child(2){ animation-delay:.06s; }
   .kpi-row > *:nth-child(3), .grid-3 > .card:nth-child(3){ animation-delay:.10s; }
@@ -914,6 +914,81 @@ html[dir="rtl"] .ih-fab{ right:auto; left:14px; }
 .ih-cta{ background:var(--accent-dark); color:#fff; border-color:transparent; } .ih-cta svg{ stroke:#fff; }
 @media (max-width:700px){ .top-nav .nav-direct span{ display:none; } .top-nav .nav-direct{ padding-left:10px; padding-right:10px; } }
 @media (max-width:700px){ .top-nav{ padding:0 6px; gap:0; } .top-nav .group-tab{ padding-left:6px; padding-right:6px; } .top-nav .nav-direct{ padding-left:9px; padding-right:9px; } }
+
+/* ===== v76: welcome banner, Home, Executive Summary ===== */
+.welcome-banner{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; background:linear-gradient(135deg,var(--accent-tint),var(--surface)); border:1px solid var(--border); border-radius:16px; padding:18px 20px; margin-bottom:16px; }
+.wb-text{ min-width:0; flex:1 1 220px; } .wb-hello{ font-size:21px; font-weight:700; color:var(--text); overflow-wrap:anywhere; } .wb-sub{ font-size:13px; color:var(--text-muted); margin-top:2px; }
+.wb-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.wb-chip{ display:inline-flex; align-items:center; gap:7px; border:1px solid var(--border); background:var(--surface); color:var(--text); border-radius:999px; padding:7px 12px; font:inherit; font-size:13px; cursor:pointer; min-height:36px; }
+.wb-chip svg{ width:15px; height:15px; color:var(--accent); } .wb-chip .wb-n{ font-weight:700; } .wb-chip.has{ border-color:var(--accent); background:var(--accent-tint); } .wb-chip:hover{ border-color:var(--accent); }
+.home-card{ margin-bottom:14px; } .home-list{ display:flex; flex-direction:column; gap:6px; }
+.home-row{ display:flex; align-items:center; gap:12px; width:100%; border:1px solid var(--border); background:var(--surface); border-radius:12px; padding:10px 12px; font:inherit; color:var(--text); text-align:start; cursor:pointer; min-height:48px; }
+.home-row:hover{ border-color:var(--accent); } .home-text{ flex:1; min-width:0; font-size:14px; } .home-n{ font-weight:700; color:var(--accent); } .home-row > svg:last-child{ width:16px; height:16px; color:var(--text-muted); flex:none; }
+.home-clear{ display:flex; align-items:center; gap:12px; color:var(--teal); } .home-clear svg{ width:26px; height:26px; flex:none; } .home-clear strong{ color:var(--text); }
+.home-quick{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; }
+.home-q{ display:flex; align-items:center; gap:9px; border:1px solid var(--border); background:var(--surface-2); border-radius:12px; padding:11px 12px; font:inherit; font-size:13.5px; color:var(--text); text-align:start; cursor:pointer; min-height:46px; } .home-q svg{ width:17px; height:17px; color:var(--accent); flex:none; } .home-q:hover{ border-color:var(--accent); }
+.home-leave{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 0; border-bottom:1px solid var(--border); font-size:13.5px; } .home-leave:last-child{ border-bottom:0; }
+.ex-intro{ margin-bottom:14px; } .ex-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; }
+.ex-head{ display:flex; align-items:center; gap:10px; margin-bottom:8px; } .ex-head h3{ margin:0; font-size:15px; }
+.ex-big{ font-size:36px; font-weight:800; line-height:1.1; color:var(--accent); } .ex-label{ font-size:13px; font-weight:600; margin:2px 0; }
+.ex-bars{ margin-top:12px; display:flex; flex-direction:column; gap:7px; } .ex-bar{ display:grid; grid-template-columns:minmax(70px,34%) 1fr 34px; align-items:center; gap:8px; font-size:12.5px; }
+.ex-bl{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text-muted); } .ex-bt{ height:8px; border-radius:99px; background:var(--surface-2); overflow:hidden; } .ex-bt i{ display:block; height:100%; border-radius:99px; background:var(--accent); } .ex-bn{ font-weight:700; text-align:end; }
+.ex-picks{ display:flex; flex-direction:column; gap:8px; }
+
+/* ===== v76: announcements ===== */
+#urgentBar{ display:flex; align-items:center; gap:10px; background:var(--danger-tint); color:var(--text); border-bottom:1px solid var(--danger); padding:8px 14px; }
+#urgentBar > svg{ width:18px; height:18px; flex:none; } .ub-text{ flex:1; min-width:0; display:flex; flex-direction:column; font-size:12.5px; } .ub-text strong{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; } .ub-text span{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; opacity:.85; }
+.ub-more{ font-weight:700; font-size:12px; } #urgentBar .btn{ flex:none; }
+.ann-hero{ background:linear-gradient(135deg,var(--accent-tint),var(--surface)); border:1px solid var(--border); border-radius:16px; padding:18px 20px; margin-bottom:14px; } .ann-hero.urgent{ border-color:var(--danger); }
+.ann-h-top{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px; } .ann-h-tag{ display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--accent); } .ann-h-tag svg{ width:14px; height:14px; }
+.ann-hero h2{ margin:2px 0 6px; font-size:20px; overflow-wrap:anywhere; } .ann-h-foot{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px; }
+.ann-list{ display:flex; flex-direction:column; gap:12px; } .ann-card.unread{ border-inline-start:4px solid var(--accent); } .ann-card.urgent{ border-inline-start:4px solid var(--danger); }
+.ann-c-top{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; } .ann-c-top h3{ margin:0; flex:1 1 140px; min-width:0; overflow-wrap:anywhere; font-size:15px; }
+.ann-dot{ width:9px; height:9px; border-radius:50%; background:var(--accent); flex:none; } .ann-pin{ width:15px; height:15px; color:var(--accent); flex:none; }
+.ann-excerpt{ margin:8px 0; font-size:13.5px; line-height:1.55; color:var(--text-muted); overflow-wrap:anywhere; }
+.ann-c-foot{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; } .ann-c-foot .row-actions{ margin-inline-start:auto; }
+.ann-more{ display:flex; align-items:center; justify-content:center; gap:12px; margin:14px 0; flex-wrap:wrap; }
+.ann-tr-row{ display:flex; gap:6px; margin:6px 0; flex-wrap:wrap; } .ann-tr{ font-size:11.5px; font-weight:700; border-radius:999px; padding:2px 9px; background:var(--surface-2); color:var(--text-muted); } .ann-tr.ok{ background:var(--teal-tint); color:var(--teal); }
+.ann-tr-tools{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:6px 0; }
+.ann-reader{ width:min(640px,94vw); max-height:88dvh; overflow:auto; }
+.ann-r-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; } .ann-r-meta{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.ann-r-title{ margin:10px 0 2px; font-size:20px; overflow-wrap:anywhere; } .ann-r-body{ margin:12px 0; line-height:1.65; white-space:pre-wrap; overflow-wrap:anywhere; font-size:14.5px; }
+.ann-r-ack{ margin:12px 0; } .ann-r-nav{ display:flex; justify-content:space-between; gap:8px; border-top:1px solid var(--border); padding-top:12px; margin-top:8px; }
+
+/* ===== v76: Show more paging ===== */
+tr.pg-hide{ display:none !important; } .pg-bar{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; padding:6px 0; } .pg-count{ font-size:12.5px; color:var(--text-muted); }
+.pg-size{ display:inline-flex; align-items:center; gap:4px; font-size:12px; color:var(--text-muted); } .pg-chip{ border:1px solid var(--border); background:var(--surface); border-radius:8px; min-width:30px; height:28px; font:inherit; font-size:12px; cursor:pointer; color:var(--text); } .pg-chip.on{ background:var(--accent); color:#fff; border-color:var(--accent); }
+tr.pg-foot td{ border-bottom:0 !important; }
+
+/* ===== v76: org chart drill-down and People Directory ===== */
+.od-wrap{ display:flex; flex-direction:column; gap:12px; } .od-tools{ display:flex; gap:8px; align-items:flex-start; flex-wrap:wrap; }
+.od-search{ position:relative; flex:1 1 220px; min-width:0; } .od-search input{ width:100%; padding-inline-start:36px; height:42px; } .od-search-ic{ position:absolute; inset-inline-start:11px; top:11px; color:var(--text-muted); } .od-search-ic svg{ width:18px; height:18px; }
+.od-results{ display:none; position:absolute; z-index:20; inset-inline:0; top:46px; background:var(--surface); border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow-lg); max-height:260px; overflow:auto; }
+.od-res{ display:flex; flex-direction:column; align-items:flex-start; width:100%; border:0; background:transparent; font:inherit; text-align:start; padding:9px 12px; cursor:pointer; } .od-res span{ font-size:12px; color:var(--text-muted); } .od-res:hover{ background:var(--accent-tint); } .od-res.none{ color:var(--text-muted); font-size:13px; }
+.od-crumbs{ display:flex; align-items:center; flex-wrap:wrap; gap:2px 4px; font-size:12.5px; } .od-crumb{ border:0; background:transparent; font:inherit; color:var(--accent); cursor:pointer; padding:4px 6px; border-radius:8px; } .od-crumb.on{ color:var(--text); font-weight:700; cursor:default; } .od-sep{ color:var(--text-muted); }
+.od-card{ display:flex; align-items:center; gap:12px; width:100%; text-align:start; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:12px; font:inherit; color:var(--text); min-height:64px; cursor:pointer; } .od-card[data-od-leaf]{ cursor:default; }
+.od-card[data-od-go]:hover{ border-color:var(--accent); } .od-card.od-focus{ border:2px solid var(--accent); background:linear-gradient(135deg,var(--accent-tint),var(--surface)); cursor:default; } .od-card.me{ box-shadow:0 0 0 2px var(--accent-tint); }
+.od-av{ width:42px; height:42px; border-radius:50%; background:var(--accent-tint); color:var(--accent); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex:none; } .od-av svg{ width:20px; height:20px; }
+.od-main{ flex:1; min-width:0; display:flex; flex-direction:column; gap:1px; } .od-name{ font-weight:700; font-size:14.5px; overflow-wrap:anywhere; } .od-title{ font-size:12.5px; color:var(--text-muted); overflow-wrap:anywhere; } .od-dept{ font-size:11.5px; color:var(--text-muted); opacity:.85; }
+.od-you{ display:inline-block; font-size:10.5px; font-weight:700; background:var(--accent); color:#fff; border-radius:99px; padding:1px 7px; margin-inline-start:6px; vertical-align:middle; width:fit-content; }
+.od-counts{ display:flex; flex-direction:column; align-items:flex-end; text-align:end; font-size:11px; color:var(--text-muted); flex:none; } .od-counts b{ font-size:15px; color:var(--accent); line-height:1.1; } .od-counts i{ font-style:normal; } .od-none{ max-width:84px; }
+.od-chev{ width:16px; height:16px; color:var(--text-muted); flex:none; }
+.od-sub{ display:flex; align-items:center; gap:8px; margin-top:4px; } .od-sub h3{ margin:0; font-size:14px; }
+.od-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px; }
+.pd-top h3{ margin:0 0 2px; } .pd-tools{ display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 6px; } .pd-tools input{ flex:1 1 220px; min-width:0; } .pd-tools select{ flex:1 1 160px; min-width:0; }
+.pd-list{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px; margin-top:12px; }
+.pd-card{ display:flex; align-items:flex-start; gap:12px; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:12px; } .pd-card.open{ cursor:pointer; border-color:var(--accent-tint); } .pd-card.open:hover{ border-color:var(--accent); }
+.pd-main{ flex:1; min-width:0; } .pd-name{ font-weight:700; font-size:14.5px; overflow-wrap:anywhere; } .pd-title{ font-size:12.5px; color:var(--text-muted); overflow-wrap:anywhere; }
+.pd-meta{ display:flex; flex-wrap:wrap; gap:4px 12px; font-size:12px; color:var(--text-muted); margin-top:4px; } .pd-meta span{ display:inline-flex; align-items:center; gap:4px; } .pd-meta svg{ width:13px; height:13px; }
+.pd-mail{ display:inline-flex; align-items:center; gap:5px; font-size:12.5px; color:var(--accent); margin-top:5px; overflow-wrap:anywhere; text-decoration:none; } .pd-mail svg{ width:14px; height:14px; flex:none; }
+@media (max-width:700px){
+  .welcome-banner{ padding:14px; } .wb-hello{ font-size:18px; } .wb-chips{ width:100%; } .wb-chip{ flex:1 1 calc(50% - 8px); justify-content:center; }
+  .home-quick{ grid-template-columns:1fr 1fr; } .ex-grid, .od-grid, .pd-list{ grid-template-columns:1fr; } .ex-bar{ grid-template-columns:minmax(60px,38%) 1fr 30px; }
+  .ann-hero{ padding:14px; } .ann-hero h2{ font-size:18px; } .ann-reader{ width:100% !important; max-width:100% !important; max-height:92dvh; border-radius:16px 16px 0 0; }
+  #urgentBar{ padding:8px 10px; gap:8px; } .od-counts{ min-width:56px; } .pg-bar{ gap:8px; }
+}
+.wb-chip{ justify-content:flex-start; } .wb-l{ text-align:start; }
+@media (max-width:700px){ .wb-chip{ flex:1 1 auto; } }
 </style>
 </head>
 <body>
@@ -967,7 +1042,7 @@ html[dir="rtl"] .ih-fab{ right:auto; left:14px; }
         <button type="submit" class="btn primary" style="width:100%;justify-content:center">Continue</button>
       </form>
       <p class="gate-caveat">Sign in with your Employee ID.</p>
-      <div style="text-align:center;margin:-4px 0 8px"><button type="button" class="link-btn" id="langBtnLogin" data-notr>English / العربية</button></div>
+      <div style="text-align:center;margin:-4px 0 8px"><button type="button" class="link-btn" id="langBtnLogin" data-notr>English / Français / العربية</button></div>
       <div style="display:flex;gap:14px;justify-content:center;margin-top:2px">
         <button type="button" class="link-btn" id="forgotIdBtn">Forgot Employee ID?</button>
         <button type="button" class="link-btn" id="forgotPwBtn">First Sign-In or Forgot Password?</button>
@@ -1835,7 +1910,7 @@ const state = {
 const NAV_GROUPS = [
   { label:'Overview', items:[
     {key:'workflow', label:'How SNAP Works', icon:'flow', roles:['admin','employee'], color:'violet'},
-    {key:'dashboard', label:'Dashboard', icon:'home', roles:['admin','employee'], color:'violet'},
+    {key:'dashboard', label:'Dashboard', empLabel:'Home', icon:'home', roles:['admin','employee'], color:'violet'},
     {key:'analytics', label:'Analytics', icon:'chart', roles:['admin'], color:'violet', priv:'analytics'},
     {key:'orgchart', label:'Org Chart', icon:'sitemap', roles:['admin','employee'], color:'violet'}
   ]},
@@ -1901,7 +1976,7 @@ const META = {
   hrassistant:{ title:'HR Assistant', subtitle:'Ask about company policies, or search saved documents — instantly, no ticket needed.' }
 };
 const EMPLOYEE_META = {
-  dashboard:{ title:'My Dashboard', subtitle:'Your requests, courses, and reviews at a glance.' },
+  dashboard:{ title:'Home', subtitle:'What needs you today, and the quickest ways to get things done.' },
   employees:{ title:'Directory', subtitle:'Everyone at the company, for reference.' },
   leave:{ title:'My Leave & Attendance', subtitle:'Request leave, see your balance, and clock in and out.' },
   performance:{ title:'My Performance', subtitle:'Your goals, check-ins, and appraisal history.' },
@@ -2026,7 +2101,7 @@ function renderNav(){
     return `<div class="nav-dropdown">
       <button class="group-tab ${isActive?'active '+color:''}" data-idx="${i}">${icon(g.items[0].icon)}<span>${esc(g.label)}</span>${icon('chevDown','class="chev"')}</button>
       <div class="nav-dropdown-panel" id="navPanel${i}">
-        ${g.items.map(it => `<button class="dropdown-item ${state.route===it.key?'active '+it.color:''}" data-route="${it.key}">${icon(it.icon)}<span>${esc(it.label)}</span></button>`).join('')}
+        ${g.items.map(it => `<button class="dropdown-item ${state.route===it.key?'active '+it.color:''}" data-route="${it.key}">${icon(it.icon)}<span>${esc((isEmployeeRole() && it.empLabel) || it.label)}</span></button>`).join('')}
       </div>
     </div>`;
   }).join('');
@@ -2129,6 +2204,7 @@ function render(){
   }
   renderNav();
   renderHeaderChrome();
+  if(typeof v76Arrive === 'function') v76Arrive();
   const meta = (isEmployeeRole() && EMPLOYEE_META[state.route]) ? EMPLOYEE_META[state.route] : (META[state.route] || META.dashboard);
   $('#pageTitle').textContent = meta.title;
   $('#pageSubtitle').textContent = meta.subtitle;
@@ -2460,6 +2536,7 @@ function arrowSvg(){ return `<svg viewBox="0 0 24 24" fill="none" stroke="curren
 /* ============================== DASHBOARD ============================== */
 RENDERERS.dashboard = function(actionHost){
   const content = $('#content');
+  if(isEmployeeRole() && typeof renderHome === 'function') return renderHome(actionHost);
   if(isEmployeeRole()){
     const me = selfEmployee();
     const myLeave = state.leaveRequests.filter(l=>l.employeeId===state.ui.selfEmployeeId);
@@ -3721,6 +3798,7 @@ RENDERERS.orgchart = function(actionHost){
   else if(view === 'insights') renderOrgInsights(actionHost, host);
   else if(view === 'positions') renderOrgPositions(actionHost, host);
   else if(view === 'scenarios') renderOrgScenarios(actionHost, host);
+  else if((view==='hierarchy' || view==='chief') && typeof renderOrgDrill === 'function') renderOrgDrill(host, view);
   else {
     let bodyHtml;
     if(view==='chief') bodyHtml = buildChiefOrgHTML();
@@ -3842,6 +3920,7 @@ function renderEmpTable(canEdit){
   if(nextBtn) nextBtn.onclick = () => { state.ui.empPage = page+1; renderEmpTable(canEdit); };
 }
 async function exportDirectoryCSV(){
+  if(isEmployeeRole()){ toast('The full directory export is for HR admins only.', true); return; }
   if(!downloadsCap){ toast("Downloads aren't available in this view.", true); return; }
   const cols = [['ID','employeeNumber'],['Name','name'],['Job Title','jobTitle'],['Division','division'],['Department','department'],['Phone','phone'],
     ['Contract','contractType'],['Status','status'],['Eligibility','evalEligibility'],['Transfer','lastTransferNote']];
@@ -8442,7 +8521,7 @@ function themeMode(){ try{ return localStorage.getItem('snap-theme') || 'system'
 function cycleTheme(){ const order = ['system','light','dark']; const next = order[(order.indexOf(themeMode())+1) % 3]; applyTheme(next); paintHeaderButtons(); toast(next==='system' ? 'Theme: follows your device' : `Theme: ${next}`); }
 function paintHeaderButtons(){
   const tb = $('#themeBtn'); if(tb){ const m = themeMode(); tb.innerHTML = icon(m==='dark'?'moon':m==='light'?'sun':'contrast'); tb.title = m==='system' ? 'Theme: auto (click to change)' : `Theme: ${m} (click to change)`; }
-  const lb = $('#langBtn'); if(lb){ lb.textContent = LANG==='ar' ? 'EN' : 'ع'; lb.title = LANG==='ar' ? 'Switch to English' : 'التبديل إلى العربية'; }
+  const lb = $('#langBtn'); if(lb){ const nx = nextLanguage(); lb.textContent = nx==='en' ? 'EN' : nx==='fr' ? 'FR' : 'ع'; lb.title = nx==='en' ? 'Switch to English' : nx==='fr' ? 'Passer au français' : 'التبديل إلى العربية'; }
   const kb = $('#kbdBtn'); if(kb) kb.innerHTML = icon('keyboard');
 }
 
@@ -8907,6 +8986,7 @@ async function reportToPPTX(rep){
 }
 
 async function exportReport(rep, fmt){
+  if(typeof reportAllowed === 'function' && !reportAllowed(state.route)){ toast('Reports and exports aren’t available for your role.', true); return; }
   if(!downloadsCap){ toast('Downloads aren’t available in this view.', true); return; }
   const stamp = todayISO(), base = `snap-${String(rep.title).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}-${stamp}`;
   try{
@@ -8923,12 +9003,13 @@ async function exportReport(rep, fmt){
   }
 }
 function currentReport(){ const fn = REPORTS[state.route]; if(!fn) return null; try{ return fn(); }catch(e){ console.error(e); return null; } }
-function toggleExportMenu(){
+function toggleExportMenu(anchor){
+  if(typeof reportAllowed === 'function' && !reportAllowed(state.route)) return;
   let m = $('#exportMenu');
   if(m){ m.remove(); return; }
   const rep = currentReport(); if(!rep) return;
   m = document.createElement('div'); m.id = 'exportMenu'; m.className = 'og-menu';
-  const r = $('#exportBtn').getBoundingClientRect();
+  const r = ((anchor && anchor.getBoundingClientRect) ? anchor : $('#exportBtn')).getBoundingClientRect();
   m.style.cssText = `position:fixed;top:${Math.round(r.bottom + 8)}px;right:${Math.max(8, Math.round(window.innerWidth - r.right))}px;width:250px;z-index:60`;
   m.innerHTML = `<div class="og-menu-h">Export “${esc(rep.title)}”</div>
     <button class="og-menu-item" data-fmt="pptx"><span style="display:flex;align-items:center;gap:8px">${icon('presentation')}PowerPoint (.pptx)</span><em>slides</em></button>
@@ -8936,7 +9017,7 @@ function toggleExportMenu(){
     <button class="og-menu-item" data-fmt="csv"><span style="display:flex;align-items:center;gap:8px">${icon('download')}Excel / CSV</span><em>.csv</em></button>`;
   document.body.appendChild(m);
   $all('[data-fmt]', m).forEach(b => b.onclick = () => { const f = b.dataset.fmt; m.remove(); exportReport(currentReport() || rep, f); });
-  setTimeout(() => document.addEventListener('click', function once(e){ const mm = $('#exportMenu'); if(mm && !mm.contains(e.target) && e.target.closest('#exportBtn') == null){ mm.remove(); } document.removeEventListener('click', once); }, { once:false }), 0);
+  setTimeout(() => document.addEventListener('click', function once(e){ const mm = $('#exportMenu'); if(mm && !mm.contains(e.target) && e.target.closest('#exportBtn, #exportBtnPhone') == null){ mm.remove(); } document.removeEventListener('click', once); }, { once:false }), 0);
 }
 
 /* ============================== NOTIFICATION PROVIDERS, ANNOUNCEMENTS, FEATURE FLAGS, ADD-ON WIRING ============================== */
@@ -8969,77 +9050,9 @@ function bcastUnread(b){
   return !bcastReadMap()[b.id];
 }
 const PRIORITY_TONE = { Normal:'grey', Important:'gold', Urgent:'red' };
-NOTIF_PROVIDERS.push(() => myBroadcasts().filter(bcastUnread).map(b => ({ type: b.priority === 'Urgent' ? 'Urgent announcement' : 'Announcement', text: b.title, date: (b.createdAt || '').slice(0, 10), action: () => { go('announcements'); } })));
+NOTIF_PROVIDERS.push(() => myBroadcasts().filter(bcastUnread).map(b => ({ type: b.priority === 'Urgent' ? 'Urgent announcement' : 'Announcement', text: (typeof bcastLang === 'function' ? bcastLang(b).title : b.title), date: (b.createdAt || '').slice(0, 10), action: () => { go('announcements'); } })));
 
-function paintUrgentBar(){
-  let bar = $('#urgentBar');
-  const urgent = rolePicked && state.route !== 'announcements' ? myBroadcasts().filter(b => b.priority === 'Urgent' && bcastUnread(b))[0] : null;
-  if(!urgent){ if(bar) bar.remove(); return; }
-  if(!bar){ bar = document.createElement('div'); bar.id = 'urgentBar'; const main = $('main.main'); main.parentNode.insertBefore(bar, main); }
-  bar.innerHTML = `${icon('megaphone')}<strong>${esc(urgent.title)}</strong><span>${esc((urgent.body || '').slice(0, 140))}${(urgent.body || '').length > 140 ? '…' : ''}</span><button class="btn small ghost" id="urgentOpen">Read</button>`;
-  $('#urgentOpen').onclick = () => go('announcements');
-}
-
-RENDERERS.announcements = function(actionHost){
-  useCollections(['broadcasts', 'broadcastAcks']);
-  const isAdmin = !isEmployeeRole(), content = $('#content'), me = selfEmployee();
-  actionHost.innerHTML = isAdmin ? `<button class="btn primary" id="newBcastBtn">${icon('plus')}New Announcement</button>` : '';
-  if(isAdmin) $('#newBcastBtn').onclick = () => openBroadcastForm();
-  const list = isAdmin ? (state.broadcasts || []).slice().sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || '')) : myBroadcasts();
-  if(!list.length){ content.innerHTML = emptyBox('megaphone', 'violet', 'No announcements yet', isAdmin ? 'Post one to reach everyone, a division, a department or all managers.' : 'You’re all caught up.'); return; }
-  const headcount = b => state.employees.filter(e => (e.status||'Active') !== 'Offboarded' && bcastVisibleTo(b, e)).length;
-  content.innerHTML = list.map(b => {
-    const acks = (state.broadcastAcks || []).filter(a => a.broadcastId === b.id).length;
-    const reach = headcount(b);
-    const live = bcastActive(b);
-    const unread = !isAdmin && bcastUnread(b);
-    return `<div class="card" style="margin-bottom:14px;${unread?'border-color:var(--accent)':''}">
-      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-        <div style="min-width:0"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">${b.pinned?icon('flag','style="width:15px;height:15px;color:var(--amber)"'):''}<h3 style="margin:0">${esc(b.title)}</h3>${chip(b.priority||'Normal', PRIORITY_TONE[b.priority||'Normal'])}${unread?chip('New','green'):''}${isAdmin&&!live?chip('Not live','grey'):''}</div>
-          <p class="card-sub" style="margin:4px 0 8px">${esc(b.createdByName || 'HR')} · ${esc(fmtDate((b.createdAt||'').slice(0,10)))} · ${esc(b.audience==='all'||!b.audience?'Everyone':b.audience==='managers'?'All managers':(b.audience==='division'?'Division: ':'Department: ')+(b.audienceValue||''))}${b.expiresOn?` · until ${esc(fmtDate(b.expiresOn))}`:''}</p></div>
-        <div>${isAdmin ? rowActions(iconBtn('flag', `data-pin="${b.id}"`, b.pinned?'Unpin':'Pin to top'), iconBtn('edit', `data-edit="${b.id}"`, 'Edit'), iconBtn('trash', `data-del="${b.id}"`, 'Delete', true)) : ''}</div>
-      </div>
-      <div style="white-space:pre-wrap;font-size:14px;margin-bottom:10px">${esc(b.body || '')}</div>
-      ${b.attachment ? `<div style="margin-bottom:10px">${attachLink(b.attachment)}</div>` : ''}
-      ${isAdmin ? `<div style="font-size:12.5px;color:var(--text-muted)">${b.requiresAck ? `Acknowledged by <strong>${acks}</strong> of ${reach} (${pct(acks, reach)}%)` : `Reaches ${reach} people`}</div>`
-        : (b.requiresAck ? (me && bcastAcked(b, me.id) ? chip('You acknowledged this','green') : `<button class="btn small primary" data-ack="${b.id}">${icon('check')}I’ve Read and Understood</button>`)
-          : (unread ? `<button class="btn small ghost" data-read="${b.id}">Mark as Read</button>` : ''))}
-    </div>`;
-  }).join('');
-  wireDownloads(content);
-  $all('[data-read]', content).forEach(b => b.onclick = () => { markBcastRead(b.dataset.read); render(); });
-  $all('[data-ack]', content).forEach(b => b.onclick = async () => { try{ await setDoc('broadcastAcks', `${b.dataset.ack}_${me.id}`, { broadcastId:b.dataset.ack, employeeId:me.id, employeeName:me.name, at:new Date().toISOString() }); markBcastRead(b.dataset.ack); notify('Acknowledged'); }catch(err){ toast(errorMessage(err), true); } });
-  if(isAdmin){
-    $all('[data-edit]', content).forEach(b => b.onclick = () => openBroadcastForm(byId('broadcasts', b.dataset.edit)));
-    $all('[data-del]', content).forEach(b => b.onclick = async () => { if(await confirmAction('Delete this announcement?')){ try{ await removeDoc('broadcasts', b.dataset.del); notify('Announcement deleted'); }catch(err){ toast(errorMessage(err), true); } } });
-    $all('[data-pin]', content).forEach(b => b.onclick = async () => { const r = byId('broadcasts', b.dataset.pin); try{ await updateDoc('broadcasts', r.id, { pinned: !r.pinned }); }catch(err){ toast(errorMessage(err), true); } });
-  }
-};
-function openBroadcastForm(rec){
-  const divs = uniq(state.employees.map(e => e.division).filter(Boolean)).sort(), deps = uniq(state.employees.map(e => e.department).filter(Boolean)).sort();
-  const fields = [
-    { name:'title', label:'Headline', required:true, value:'' },
-    { name:'body', label:'Message', type:'textarea', rows:5, required:true },
-    { name:'audience', label:'Who should see it', type:'select', half:true, options:[{v:'all',l:'Everyone'},{v:'managers',l:'All managers'},{v:'division',l:'One division'},{v:'department',l:'One department'}] },
-    { name:'audienceValue', label:'Division / department (if narrowed)', half:true, list:'bcAudList', help:'Type or pick from the list.' },
-    { html:`<datalist id="bcAudList">${divs.concat(deps).map(v => `<option value="${esc(v)}">`).join('')}</datalist>` },
-    { name:'priority', label:'Priority', type:'select', half:true, options:['Normal','Important','Urgent'] },
-    { name:'startsOn', label:'Show from', type:'date', half:true, value:localISO() },
-    { name:'expiresOn', label:'Hide after (optional)', type:'date' },
-    { name:'requiresAck', type:'checkbox', label:'', checkLabel:'People must acknowledge it (tracked per person)' },
-    { name:'pinned', type:'checkbox', label:'', checkLabel:'Pin to the top' },
-    { name:'file', label:'Attachment (optional)', type:'file', help:'Up to ~180 KB.' }
-  ];
-  openForm(rec ? 'Edit announcement' : 'New announcement', fields, rec, async (d) => {
-    if((d.audience === 'division' || d.audience === 'department') && !(d.audienceValue||'').trim()) throw { code:'invalid_argument', message:'Pick which division or department this is for.' };
-    const me = selfEmployee();
-    const att = await attachFile(d.file, 180000);
-    const payload = { title:d.title.trim(), body:d.body.trim(), audience:d.audience, audienceValue:(d.audienceValue||'').trim(), priority:d.priority, startsOn:d.startsOn||'', expiresOn:d.expiresOn||'', requiresAck:!!d.requiresAck, pinned:!!d.pinned };
-    if(att) payload.attachment = att;
-    if(rec){ await updateDoc('broadcasts', rec.id, payload); notify(`Announcement updated: ${payload.title}`); }
-    else { await createDoc('broadcasts', Object.assign(payload, { createdAt:new Date().toISOString(), createdBy:me?me.id:'', createdByName:me?me.name:'HR' })); notify(`Announcement posted: ${payload.title}`); }
-  }, rec ? 'Save Changes' : 'Publish');
-}
+/* The announcements page, reader, urgent bar and composer live in mod_announce2.js. */
 
 /* ---------- Feature flags ---------- */
 RENDERERS.featureflags = function(actionHost){
@@ -9059,8 +9072,9 @@ RENDERERS.featureflags = function(actionHost){
 function postRender(){
   releaseUnusedCollections();
   paintHeaderButtons();
-  const eb = $('#exportBtn'); if(eb){ eb.style.display = REPORTS[state.route] ? 'flex' : 'none'; eb.innerHTML = icon('download'); }
+  const eb = $('#exportBtn'); if(eb){ eb.style.display = (REPORTS[state.route] && (typeof reportAllowed !== 'function' || reportAllowed(state.route))) ? 'flex' : 'none'; eb.innerHTML = icon('download'); }
   paintUrgentBar();
+  if(typeof v76PostRender === 'function') v76PostRender();
   OQ.paint();
   if(typeof demoPaintPill === 'function'){ demoPaintPill(); demoAuto(); }
   i18nApply();
@@ -9077,8 +9091,19 @@ function initAddons(){
 /* ============================== LANGUAGE (English / Arabic) with right-to-left layout ============================== */
 /* Interface text is translated from a built-in dictionary. Anything people typed (names, notes, titles) is shown exactly as entered. */
 let LANG = 'en';
-try{ LANG = localStorage.getItem('snap-lang') === 'ar' ? 'ar' : 'en'; }catch(e){}
+try{ const _l = localStorage.getItem('snap-lang'); LANG = (_l === 'ar' || _l === 'fr') ? _l : 'en'; }catch(e){}
 const AR = {};
+/* French works the same way as Arabic: a dictionary of English text to French text, plus sentence patterns. It covers the newest screens first; any text without a French version stays in English. */
+const FR = {};
+const FR_PATTERNS = [];
+let FRL = null, FRL_N = -1;
+function frLower(k){ const n = Object.keys(FR).length; if(!FRL || FRL_N !== n){ FRL = {}; FRL_N = n; for(const key in FR){ const l = key.toLowerCase(); if(!(l in FRL)) FRL[l] = FR[key]; } } return FRL[k.toLowerCase()]; }
+function frFor(trimmed){
+  if(FR[trimmed]) return FR[trimmed];
+  const lw = frLower(trimmed); if(lw) return lw;
+  for(const [re, fn] of FR_PATTERNS){ const m = trimmed.match(re); if(m){ const r = fn(m); if(r) return r; } }
+  return null;
+}
 const AR_PATTERNS = [
   [/^(\d[\d,]*) employees?$/, (m) => `${m[1]} موظف`],
   [/^(\d[\d,]*) people$/, (m) => `${m[1]} شخص`],
@@ -9092,10 +9117,11 @@ const AR_PATTERNS = [
 /* Lookups ignore capitalisation, so Title Case headings still find their translation. */
 let ARL = null, ARL_N = -1;
 function arLower(k){ const n = Object.keys(AR).length; if(!ARL || ARL_N !== n){ ARL = {}; ARL_N = n; for(const key in AR){ const l = key.toLowerCase(); if(!(l in ARL)) ARL[l] = AR[key]; } } return ARL[k.toLowerCase()]; }
-function t(s){ return LANG === 'ar' ? (AR[s] || arLower(s) || s) : s; }
+function t(s){ return LANG === 'ar' ? (AR[s] || arLower(s) || s) : LANG === 'fr' ? (FR[s] || frLower(s) || s) : s; }
 const I18N_ORIG = new WeakMap(), I18N_ATTR = new WeakMap();
 const I18N_ATTRS = ['placeholder', 'title', 'aria-label'];
 function arFor(trimmed){
+  if(LANG === 'fr') return frFor(trimmed);
   if(AR[trimmed]) return AR[trimmed];
   const lw = arLower(trimmed); if(lw) return lw;
   for(const [re, fn] of AR_PATTERNS){ const m = trimmed.match(re); if(m){ const r = fn(m); if(r) return r; } }
@@ -9116,7 +9142,7 @@ function i18nNode(node){
   }
 }
 function i18nApply(root){
-  if(LANG !== 'ar') return;
+  if(LANG === 'en') return;
   const r = root || document.body; if(!r) return;
   i18nObserverPause = true; i18nNode(r); i18nObserverPause = false;
 }
@@ -9129,7 +9155,7 @@ let i18nObserverPause = false, i18nObserver = null;
 function i18nSetDir(){
   const ar = LANG === 'ar';
   document.documentElement.setAttribute('dir', ar ? 'rtl' : 'ltr');
-  document.documentElement.setAttribute('lang', ar ? 'ar' : 'en');
+  document.documentElement.setAttribute('lang', LANG);
   if(ar && !document.getElementById('arFont')){
     const l = document.createElement('link'); l.id = 'arFont'; l.rel = 'stylesheet';
     l.href = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap'; document.head.appendChild(l);
@@ -9139,19 +9165,21 @@ function i18nInit(){
   i18nSetDir();
   if(!i18nObserver && typeof MutationObserver !== 'undefined'){
     i18nObserver = new MutationObserver(muts => {
-      if(LANG !== 'ar' || i18nObserverPause) return;
+      if(LANG === 'en' || i18nObserverPause) return;
       i18nObserverPause = true;
       muts.forEach(m => m.addedNodes.forEach(n => { if(n.nodeType === 1 || n.nodeType === 3) i18nNode(n.nodeType === 3 ? n : n); }));
       i18nObserverPause = false;
     });
     i18nObserver.observe(document.body, { childList:true, subtree:true });
   }
-  if(LANG === 'ar') i18nApply();
+  if(LANG !== 'en') i18nApply();
 }
+/* English -> French -> Arabic -> English. The header button shows the language you will get next. */
+function nextLanguage(){ return LANG === 'en' ? 'fr' : LANG === 'fr' ? 'ar' : 'en'; }
 function toggleLanguage(){
-  LANG = LANG === 'ar' ? 'en' : 'ar';
+  LANG = nextLanguage();
   try{ localStorage.setItem('snap-lang', LANG); }catch(e){}
-  if(LANG === 'en') i18nRestore();
+  i18nRestore();
   i18nSetDir();
   if(rolePicked) render(); else i18nApply();
   paintHeaderButtons();
@@ -10332,6 +10360,96 @@ AR_PATTERNS.push(
   [/^Poll Results — (.+)$/, m => `نتائج الاستطلاع — ${m[1]}`],
   [/^(.+) \((Live|Scheduled|Draft|Closed)\)$/, m => `${m[1]} (${AR[m[2]] || m[2]})`]
 );
+
+/* ---- Version 76: Home, Executive Summary, announcements, org chart drill-down, People Directory, paging ---- */
+/* French is offered for these new screens; anything not listed here stays in English. Names, job titles and what people typed are never translated. */
+(function(){
+  const D = [
+    // [English, Arabic, French]
+    ['Good morning', 'صباح الخير', 'Bonjour'], ['Good afternoon', 'مساء الخير', 'Bon après-midi'], ['Good evening', 'مساء الخير', 'Bonsoir'],
+    ['Unread Announcements', 'إعلانات غير مقروءة', 'Annonces non lues'], ['Unread announcements', 'إعلانات غير مقروءة', 'Annonces non lues'], ['Leave Waiting', 'إجازات بانتظار القرار', 'Congés en attente'], ['Open Tickets', 'تذاكر مفتوحة', 'Tickets ouverts'],
+    ['Your leave requests waiting for a decision', 'طلبات إجازتك بانتظار القرار', 'Vos demandes de congé en attente de décision'], ['Your travel requests waiting for a decision', 'طلبات سفرك بانتظار القرار', 'Vos demandes de voyage en attente de décision'],
+    ['Your open tickets', 'تذاكرك المفتوحة', 'Vos tickets ouverts'], ['Your tickets resolved — have a look', 'تذاكر تم حلها — ألقِ نظرة', 'Tickets résolus — jetez un œil'],
+    ['Polls waiting for your answer', 'استطلاعات بانتظار إجابتك', 'Sondages en attente de votre réponse'], ['Courses in progress', 'دورات قيد التقدم', 'Formations en cours'],
+    ['Team leave requests waiting for you', 'طلبات إجازة فريقك بانتظارك', 'Demandes de congé de votre équipe en attente'],
+    ['Request Leave', 'طلب إجازة', 'Demander un congé'], ['Raise a Ticket', 'فتح تذكرة', 'Ouvrir un ticket'], ['Share an Idea', 'شارك فكرة', 'Partager une idée'], ['My Learning', 'تعلّمي', 'Ma formation'], ['People Directory', 'دليل الأشخاص', 'Annuaire des personnes'], ['My Performance', 'أدائي', 'Ma performance'],
+    ['What Needs You Today', 'ما يحتاجك اليوم', 'Ce qui vous attend aujourd’hui'], ['Quick Actions', 'إجراءات سريعة', 'Actions rapides'], ['Recent Leave', 'الإجازات الأخيرة', 'Congés récents'],
+    ['You’re all caught up', 'لا يوجد شيء متأخر لديك', 'Vous êtes à jour'], ['Nothing needs you right now.', 'لا شيء يحتاجك الآن.', 'Rien ne vous attend pour le moment.'], ['No leave requested yet.', 'لم تطلب أي إجازة بعد.', 'Aucun congé demandé pour l’instant.'],
+    ['Home', 'الرئيسية', 'Accueil'], ['What needs you today, and the quickest ways to get things done.', 'ما يحتاجك اليوم وأسرع الطرق لإنجاز مهامك.', 'Ce qui vous attend aujourd’hui et les moyens les plus rapides d’avancer.'],
+    ['Executive Summary', 'الملخص التنفيذي', 'Synthèse de direction'], ['Executive Summary — company-wide summary page', 'الملخص التنفيذي — صفحة ملخص على مستوى الشركة', 'Synthèse de direction — page de synthèse pour toute l’entreprise'],
+    ['People in Your Line', 'الأشخاص في خط تقاريرك', 'Personnes dans votre ligne'], ['Leave and Absence', 'الإجازات والغياب', 'Congés et absences'], ['Waiting for a Decision', 'بانتظار القرار', 'En attente de décision'], ['HR Tickets', 'تذاكر الموارد البشرية', 'Tickets RH'],
+    ['Performance Snapshot', 'لمحة عن الأداء', 'Aperçu de la performance'], ['Learning', 'التعلّم', 'Formation'], ['Open Roles', 'الوظائف الشاغرة', 'Postes ouverts'], ['Joiners and Leavers', 'المنضمون والمغادرون', 'Arrivées et départs'],
+    ['People', 'الأشخاص', 'Personnes'], ['Out Today', 'خارج اليوم', 'Absents aujourd’hui'], ['Requests', 'طلبات', 'Demandes'], ['Open', 'مفتوحة', 'Ouverts'], ['Average Achievement', 'متوسط الإنجاز', 'Réalisation moyenne'], ['In Progress', 'قيد التقدم', 'En cours'], ['In progress', 'قيد التقدم', 'En cours'], ['Completed', 'مكتملة', 'Terminées'],
+    ['Joined (90 Days)', 'انضموا (٩٠ يومًا)', 'Arrivées (90 jours)'], ['Not Started', 'لم تبدأ', 'Non commencé'], ['Leave', 'إجازة', 'Congé'], ['Travel', 'سفر', 'Voyage'],
+    ['Across the company', 'على مستوى الشركة', 'Dans toute l’entreprise'], ['In the departments of your line', 'في أقسام خط تقاريرك', 'Dans les départements de votre ligne'],
+    ['Choose What to Show', 'اختر ما يُعرض', 'Choisir ce qui s’affiche'], ['Pick one to three summaries. Your choice is kept on this device.', 'اختر من ملخص إلى ثلاثة. يُحفظ اختيارك على هذا الجهاز.', 'Choisissez de une à trois synthèses. Votre choix reste sur cet appareil.'], ['Pick between one and three summaries.', 'اختر بين ملخص واحد وثلاثة.', 'Choisissez entre une et trois synthèses.'],
+    ['Executive Summary isn’t available', 'الملخص التنفيذي غير متاح', 'La synthèse de direction n’est pas disponible'], ['It is for Chiefs and Directors with people reporting to them, and for admins who were given this privilege.', 'هو لكبار المسؤولين والمديرين الذين لديهم مرؤوسون، وللمسؤولين الذين مُنحوا هذه الصلاحية.', 'Elle est réservée aux responsables et directeurs ayant des collaborateurs, et aux administrateurs disposant de ce privilège.'],
+    ['Whole company', 'الشركة كاملة', 'Toute l’entreprise'], ['Reporting line of', 'خط تقارير', 'Ligne hiérarchique de'], ['The few numbers that matter across your reporting line.', 'الأرقام القليلة المهمة في خط تقاريرك.', 'Les quelques chiffres qui comptent dans votre ligne hiérarchique.'],
+    ['Your scope: the whole company.', 'نطاقك: الشركة كاملة.', 'Votre périmètre : toute l’entreprise.'],
+    // announcements
+    ['Announcements', 'الإعلانات', 'Annonces'], ['All managers', 'كل المديرين', 'Tous les managers'], ['Everyone', 'الجميع', 'Tout le monde'], ['You acknowledged this', 'لقد أقررت بقراءته', 'Vous l’avez confirmé'], ['I’ve Read and Understood', 'قرأتُ وفهمت', 'J’ai lu et compris'],
+    ['Needs acknowledgement', 'يتطلب إقرارًا', 'Confirmation requise'], ['Needs your acknowledgement', 'يتطلب إقرارك', 'Votre confirmation est requise'], ['Not showing', 'غير ظاهر', 'Non affichée'],
+    ['Read Now', 'اقرأ الآن', 'Lire maintenant'], ['Read More', 'اقرأ المزيد', 'Lire la suite'], ['Previous', 'السابق', 'Précédent'], ['Next', 'التالي', 'Suivant'], ['Preview', 'معاينة', 'Aperçu'], ['Pinned', 'مثبّت', 'Épinglée'], ['Latest', 'الأحدث', 'Dernière'], ['New', 'جديد', 'Nouveau'], ['Close', 'إغلاق', 'Fermer'],
+    ['New Announcement', 'إعلان جديد', 'Nouvelle annonce'], ['No announcements yet', 'لا توجد إعلانات بعد', 'Aucune annonce pour l’instant'], ['Post one to reach everyone, a division, a department or all managers.', 'انشر إعلانًا ليصل إلى الجميع أو قسم أو إدارة أو كل المديرين.', 'Publiez-en une pour toucher tout le monde, une division, un département ou tous les managers.'],
+    ['You’re all caught up.', 'لا جديد لديك.', 'Vous êtes à jour.'], ['Delete this announcement?', 'حذف هذا الإعلان؟', 'Supprimer cette annonce ?'], ['Announcement deleted', 'تم حذف الإعلان', 'Annonce supprimée'],
+    ['No translation tool is connected to this app yet.', 'لم تُربط أداة ترجمة بهذا التطبيق بعد.', 'Aucun outil de traduction n’est encore connecté à cette application.'], ['The translation tool gave an answer that could not be read.', 'أعادت أداة الترجمة إجابة لا يمكن قراءتها.', 'L’outil de traduction a renvoyé une réponse illisible.'],
+    ['Who should see it', 'من يجب أن يراه', 'Qui doit la voir'], ['One division', 'قطاع واحد', 'Une division'], ['One department', 'إدارة واحدة', 'Un département'], ['Type or pick from the list.', 'اكتب أو اختر من القائمة.', 'Saisissez ou choisissez dans la liste.'], ['Show from', 'العرض من', 'Afficher à partir du'], ['Pin to the top', 'تثبيت في الأعلى', 'Épingler en haut'], ['Pin to top', 'تثبيت في الأعلى', 'Épingler en haut'], ['Unpin', 'إلغاء التثبيت', 'Désépingler'],
+    ['Translations (optional)', 'الترجمات (اختياري)', 'Traductions (facultatif)'], ['Readers see their own language when both the headline and the message are filled in. Otherwise they see the original.', 'يرى القرّاء لغتهم عند تعبئة العنوان والرسالة معًا، وإلا يرون النص الأصلي.', 'Les lecteurs voient leur langue lorsque le titre et le message sont renseignés. Sinon, ils voient l’original.'],
+    ['Arabic headline', 'العنوان بالعربية', 'Titre en arabe'], ['Arabic message', 'الرسالة بالعربية', 'Message en arabe'], ['French headline', 'العنوان بالفرنسية', 'Titre en français'], ['French message', 'الرسالة بالفرنسية', 'Message en français'],
+    ['Translate Now', 'ترجم الآن', 'Traduire maintenant'], ['Fills the empty language boxes so you can read and change them before you publish.', 'يملأ خانات اللغات الفارغة لتقرأها وتعدّلها قبل النشر.', 'Remplit les langues vides pour que vous puissiez les relire et les modifier avant de publier.'],
+    ['Translate empty languages automatically when I publish', 'ترجمة اللغات الفارغة تلقائيًا عند النشر', 'Traduire automatiquement les langues vides à la publication'],
+    ['Edit announcement', 'تعديل الإعلان', 'Modifier l’annonce'], ['New announcement', 'إعلان جديد', 'Nouvelle annonce'], ['Pick which division or department this is for.', 'اختر القطاع أو الإدارة المعنية.', 'Choisissez la division ou le département concerné.'],
+    ['Couldn’t translate automatically — the announcement is published in its original language.', 'تعذّرت الترجمة تلقائيًا — نُشر الإعلان بلغته الأصلية.', 'Traduction automatique impossible — l’annonce est publiée dans sa langue d’origine.'],
+    ['Announcement updated:', 'تم تحديث الإعلان:', 'Annonce mise à jour :'], ['Announcement posted:', 'تم نشر الإعلان:', 'Annonce publiée :'], ['Save Changes', 'حفظ التغييرات', 'Enregistrer les modifications'],
+    ['Write the headline and message first.', 'اكتب العنوان والرسالة أولًا.', 'Rédigez d’abord le titre et le message.'], ['Both languages already have text. Clear a language to translate it again.', 'اللغتان تحتويان على نص بالفعل. امسح إحداهما لترجمتها من جديد.', 'Les deux langues contiennent déjà du texte. Videz-en une pour la traduire à nouveau.'],
+    ['Done. Please read the translations and change anything you like before you publish.', 'تم. يرجى قراءة الترجمات وتعديل ما تريد قبل النشر.', 'Terminé. Relisez les traductions et modifiez ce que vous voulez avant de publier.'],
+    ['Automatic translation isn’t connected in this app yet. You can type the translations, or leave them empty — people will read the original.', 'الترجمة التلقائية غير مربوطة بهذا التطبيق بعد. يمكنك كتابة الترجمات أو تركها فارغة — وسيقرأ الناس النص الأصلي.', 'La traduction automatique n’est pas encore connectée. Vous pouvez saisir les traductions ou les laisser vides — les lecteurs verront l’original.'],
+    ['The translation didn’t work this time. Type it yourself, or publish without it.', 'لم تنجح الترجمة هذه المرة. اكتبها بنفسك أو انشر بدونها.', 'La traduction a échoué cette fois. Saisissez-la vous-même ou publiez sans elle.'],
+    ['Translate this HR announcement into', 'ترجم إعلان الموارد البشرية هذا إلى', 'Traduire cette annonce RH en'],
+    // org chart and directory
+    ['Whole organisation', 'المؤسسة بالكامل', 'Toute l’organisation'], ['No employees yet', 'لا يوجد موظفون بعد', 'Aucun employé pour l’instant'], ['Add employees with a manager to see the structure.', 'أضف موظفين مع مدير لعرض الهيكل.', 'Ajoutez des employés avec un manager pour voir la structure.'],
+    ['Find a person', 'ابحث عن شخص', 'Trouver une personne'], ['Up One Level', 'مستوى أعلى', 'Niveau supérieur'], ['Path', 'المسار', 'Chemin'], ['Direct', 'مباشر', 'Directs'], ['In Team', 'في الفريق', 'Dans l’équipe'], ['Direct Reports', 'المرؤوسون المباشرون', 'Collaborateurs directs'], ['No Direct Reports', 'بلا مرؤوسين مباشرين', 'Aucun collaborateur direct'], ['No one found', 'لم يُعثر على أحد', 'Personne trouvé'], ['You', 'أنت', 'Vous'],
+    ['Org Chart — Reporting Lines', 'الهيكل التنظيمي — خطوط التقارير', 'Organigramme — lignes hiérarchiques'], ['Who reports to whom. No contact or pay details are included.', 'من يتبع من. لا تتضمن بيانات اتصال أو رواتب.', 'Qui rend compte à qui. Aucune coordonnée ni donnée de rémunération.'], ['Reporting lines', 'خطوط التقارير', 'Lignes hiérarchiques'],
+    ['Job Title', 'المسمى الوظيفي', 'Intitulé du poste'], ['Reports To', 'يتبع', 'Rattaché à'], ['Team Size', 'حجم الفريق', 'Taille de l’équipe'], ['Levels', 'المستويات', 'Niveaux'], ['Managers', 'المديرون', 'Managers'], ['Level', 'المستوى', 'Niveau'], ['Division', 'القطاع', 'Division'], ['Department', 'الإدارة', 'Département'],
+    ['The org chart export is for HR admins only.', 'تصدير الهيكل التنظيمي لمسؤولي الموارد البشرية فقط.', 'L’export de l’organigramme est réservé aux administrateurs RH.'], ['Downloads aren’t available in this view.', 'التنزيلات غير متاحة في هذه الشاشة.', 'Les téléchargements ne sont pas disponibles ici.'], ['Nothing to export yet.', 'لا يوجد ما يُصدَّر بعد.', 'Rien à exporter pour l’instant.'],
+    ['Picture saved as SVG', 'تم حفظ الصورة بصيغة SVG', 'Image enregistrée en SVG'], ['Picture saved as PNG', 'تم حفظ الصورة بصيغة PNG', 'Image enregistrée en PNG'], ['Could not create that picture.', 'تعذّر إنشاء هذه الصورة.', 'Impossible de créer cette image.'],
+    ['Picture of This View', 'صورة لهذا العرض', 'Image de cette vue'], ['Image (PNG)', 'صورة (PNG)', 'Image (PNG)'], ['Vector (SVG)', 'متجهة (SVG)', 'Vectoriel (SVG)'], ['Reporting Lines', 'خطوط التقارير', 'Lignes hiérarchiques'], ['Excel / CSV', 'إكسل / CSV', 'Excel / CSV'], ['PDF', 'PDF', 'PDF'], ['PowerPoint', 'باوربوينت', 'PowerPoint'], ['Export', 'تصدير', 'Exporter'],
+    ['Find a colleague and how to reach them. You can open your own profile.', 'ابحث عن زميل وطريقة التواصل معه. يمكنك فتح ملفك الشخصي.', 'Trouvez un collègue et le moyen de le joindre. Vous pouvez ouvrir votre propre profil.'],
+    ['Find a colleague and how to reach them. You can open your own profile and your team’s.', 'ابحث عن زميل وطريقة التواصل معه. يمكنك فتح ملفك الشخصي وملفات فريقك.', 'Trouvez un collègue et le moyen de le joindre. Vous pouvez ouvrir votre profil et ceux de votre équipe.'],
+    ['Search by name, job title, department or location', 'ابحث بالاسم أو المسمى الوظيفي أو الإدارة أو الموقع', 'Rechercher par nom, poste, département ou lieu'], ['All Departments', 'كل الإدارات', 'Tous les départements'], ['Try a different name or clear the department.', 'جرّب اسمًا آخر أو أزل الإدارة.', 'Essayez un autre nom ou effacez le département.'],
+    // paging, policy
+    ['Translating…', 'جارٍ الترجمة…', 'Traduction en cours…'],
+    ['Showing', 'عرض', 'Affichage de'], ['of', 'من', 'sur'], ['Show More', 'عرض المزيد', 'Afficher plus'], ['Show Less', 'عرض أقل', 'Afficher moins'], ['Rows', 'الصفوف', 'Lignes'],
+    ['Reports and exports aren’t available for your role.', 'التقارير والتصدير غير متاحة لدورك.', 'Les rapports et exports ne sont pas disponibles pour votre rôle.'], ['Directory', 'الدليل', 'Annuaire'], ['My Team', 'فريقي', 'Mon équipe']
+  ];
+  D.forEach(([en, ar, fr]) => { if(!AR[en]) AR[en] = ar; FR[en] = fr; });
+  /* the same text for pages and links people already know, in French */
+  Object.assign(FR, { 'Dashboard':'Tableau de bord', 'Org Chart':'Organigramme', 'Network Graph':'Graphe du réseau', 'Classic Tree':'Arbre classique', 'Chief Org':'Organisation des dirigeants', 'Departments':'Départements', 'Divisions':'Divisions', 'Org Health':'Santé de l’organisation', 'Planned Positions':'Postes prévus', 'What-If Scenarios':'Scénarios hypothétiques',
+    'Employees':'Employés', 'Leave':'Congé', 'Travel':'Voyage', 'Tickets':'Tickets', 'Polls':'Sondages', 'Surveys':'Enquêtes', 'Training':'Formation', 'Performance':'Performance', 'Overview':'Vue d’ensemble', 'Cancel':'Annuler', 'Close':'Fermer', 'Save':'Enregistrer', 'Delete':'Supprimer', 'Edit':'Modifier', 'Search':'Rechercher', 'Title':'Titre', 'Message':'Message', 'Priority':'Priorité', 'Urgent':'Urgent', 'Normal':'Normal', 'Important':'Important', 'Low':'Faible', 'High':'Élevée',
+    'Export Summary':'Exporter la synthèse', 'Active Employees':'Employés actifs', 'Pending':'En attente', 'Approved':'Approuvé', 'Rejected':'Refusé', 'Status':'Statut', 'Type':'Type', 'Name':'Nom', 'Date':'Date', 'Page':'Page', 'Expand all':'Tout développer', 'Collapse all':'Tout réduire', 'Yes':'Oui', 'No':'Non', 'Cancel Request':'Annuler la demande', 'Ideas':'Idées', 'Idea Vault':'Coffre à idées', 'Sign out':'Se déconnecter', 'Sign Out':'Se déconnecter', 'Back':'Retour', 'Loading…':'Chargement…' });
+  /* counts and sentences with numbers */
+  const pAr = (n, one, two, few, many) => n === 1 ? one : n === 2 ? two : (n >= 3 && n <= 10) ? `${n} ${few}` : `${n} ${many}`;
+  AR_PATTERNS.push(
+    [/^Showing (\d+) of (\d+)$/, m => `عرض ${m[1]} من ${m[2]}`], [/^(\d+) of (\d+) \((\d+)%\)$/, m => `${m[1]} من ${m[2]} (${m[3]}٪)`], [/^of (\d+) \((\d+)%\)$/, m => `من ${m[1]} (${m[2]}٪)`],
+    [/^(\d+) direct · (\d+) managers?$/, m => `${m[1]} مباشر · ${m[2]} مديرين`], [/^(\d+) leave · (\d+) travel$/, m => `${m[1]} إجازة · ${m[2]} سفر`], [/^(\d+) starting in the next 14 days$/, m => `${m[1]} تبدأ خلال ١٤ يومًا القادمة`], [/^(\d+) past their deadline$/, m => `${m[1]} تجاوزت موعدها النهائي`],
+    [/^(\d+) of (\d+) people have objectives$/, m => `${m[1]} من ${m[2]} أشخاص لديهم أهداف`], [/^(\d+) completed$/, m => `${m[1]} مكتملة`], [/^(\d+) left in the same period$/, m => `${m[1]} غادروا في الفترة نفسها`],
+    [/^(\d+) top-level people$/, m => `${m[1]} من كبار المسؤولين`], [/^(\d+) persons? with no direct reports are not shown in this view\.$/, m => `${m[1]} شخص بلا مرؤوسين مباشرين غير ظاهر في هذا العرض.`], [/^(\d+) people with no direct reports are not shown in this view\.$/, m => `${m[1]} أشخاص بلا مرؤوسين مباشرين غير ظاهرين في هذا العرض.`],
+    [/^Your scope: your whole reporting line — (\d+) (?:person|people), direct and indirect\.$/, m => `نطاقك: خط تقاريرك بالكامل — ${m[1]} شخصًا، مباشرين وغير مباشرين.`], [/^(\d+) Direct$/, m => `${m[1]} مباشر`],
+    [/^(\d+) Direct Reports? · (\d+) in Total Team$/, m => `${m[1]} مرؤوسون مباشرون · ${m[2]} في الفريق الكلي`], [/^Reaches (\d+) people$/, m => `يصل إلى ${m[1]} شخصًا`], [/^Acknowledged by (\d+) of (\d+) \((\d+)%\)$/, m => `أقرّ ${m[1]} من ${m[2]} (${m[3]}٪)`],
+    [/^· (Department|Division): (.+) · until$/, m => `· ${m[1] === 'Department' ? 'الإدارة' : 'القطاع'}: ${m[2]} · حتى`], [/^(Department|Division): (.+)$/, m => `${m[1] === 'Department' ? 'الإدارة' : 'القطاع'}: ${m[2]}`], [/^until$/, () => 'حتى'], [/^· (.+) · until$/, m => `· ${m[1]} · حتى`]
+  );
+  FR_PATTERNS.push(
+    [/^Showing (\d+) of (\d+)$/, m => `Affichage de ${m[1]} sur ${m[2]}`], [/^(\d+) of (\d+) \((\d+)%\)$/, m => `${m[1]} sur ${m[2]} (${m[3]} %)`], [/^of (\d+) \((\d+)%\)$/, m => `sur ${m[1]} (${m[2]} %)`],
+    [/^(\d+) direct · (\d+) managers?$/, m => `${m[1]} directs · ${m[2]} managers`], [/^(\d+) leave · (\d+) travel$/, m => `${m[1]} congés · ${m[2]} voyages`], [/^(\d+) starting in the next 14 days$/, m => `${m[1]} commencent dans les 14 prochains jours`], [/^(\d+) past their deadline$/, m => `${m[1]} hors délai`],
+    [/^(\d+) of (\d+) people have objectives$/, m => `${m[1]} personnes sur ${m[2]} ont des objectifs`], [/^(\d+) completed$/, m => `${m[1]} terminées`], [/^(\d+) left in the same period$/, m => `${m[1]} départs sur la même période`],
+    [/^(\d+) top-level people$/, m => `${m[1]} personnes au sommet`], [/^(\d+) persons? with no direct reports are not shown in this view\.$/, m => `${m[1]} personne sans collaborateur direct n’apparaît pas dans cette vue.`], [/^(\d+) people with no direct reports are not shown in this view\.$/, m => `${m[1]} personnes sans collaborateur direct n’apparaissent pas dans cette vue.`],
+    [/^Your scope: your whole reporting line — (\d+) (?:person|people), direct and indirect\.$/, m => `Votre périmètre : toute votre ligne hiérarchique — ${m[1]} personnes, directes et indirectes.`], [/^(\d+) Direct$/, m => `${m[1]} directs`],
+    [/^(\d+) Direct Reports? · (\d+) in Total Team$/, m => `${m[1]} collaborateurs directs · ${m[2]} dans l’équipe totale`], [/^Reaches (\d+) people$/, m => `Touche ${m[1]} personnes`], [/^Acknowledged by (\d+) of (\d+) \((\d+)%\)$/, m => `Confirmé par ${m[1]} sur ${m[2]} (${m[3]} %)`],
+    [/^· (Department|Division): (.+) · until$/, m => `· ${m[1] === 'Department' ? 'Département' : 'Division'} : ${m[2]} · jusqu’au`], [/^(Department|Division): (.+)$/, m => `${m[1] === 'Department' ? 'Département' : 'Division'} : ${m[2]}`], [/^until$/, () => 'jusqu’au'], [/^· (.+) · until$/, m => `· ${m[1]} · jusqu’au`],
+    [/^(\d+) people$/, m => `${m[1]} personnes`], [/^(\d+) employees?$/, m => `${m[1]} employés`], [/^(\d+) days?$/, m => `${m[1]} jours`]
+  );
+  [AR_PATTERNS, FR_PATTERNS].forEach(L => L.forEach(pr => { if(!pr[0].ignoreCase) pr[0] = new RegExp(pr[0].source, pr[0].flags + 'i'); }));
+})();
 
 /* ---- Idea Hub ---- */
 /* Ideas, names, departments and anything people typed stay as entered. The certificate page is a separate document and stays in English. */
@@ -15908,11 +16026,11 @@ function renderMtRollup(actionHost, host){
 }
 
 registerReport('myteam', () => {
-  const mgr = mtManager(), comp = complianceGrid(), team = mgr ? teamOf(mgr, true) : [];
+  const mgr = mtManager(), comp = complianceGrid(), team = mgr ? directReportsOf(mgr) : [];   // direct reports only
   const rows = team.map(e => { const s = memberStats(e, comp); return [e.name, e.jobTitle || '', yearsMonthsBetween(e.hireDate), s.objCount, s.avgAch != null ? Math.round(s.avgAch) + '%' : '—', s.rating != null ? s.rating : '—', s.nb ? s.nb.label : '—', s.tc != null ? s.tc + '%' : '—']; });
   const mgrRows = isEmployeeRole() ? [] : managersList().map(m => [m.emp.name, m.direct.length, m.all.length]);
   return { title:`Team report — ${mgr ? mgr.name : ''}`, subtitle:'Objectives, ratings, 9-box placement and training compliance', sections:[
-    { type:'kpis', items:[{ label:'Direct Reports', value:mgr ? directReportsOf(mgr).length : 0 }, { label:'Total Team', value:team.length }] },
+    { type:'kpis', items:[{ label:'Direct Reports', value:mgr ? directReportsOf(mgr).length : 0 }, { label:'Team Members Listed', value:team.length }] },
     { type:'table', title:'Team members', head:['Name', 'Job', 'Tenure', 'Objectives', 'Achievement', 'Rating', '9-Box', 'Training'], rows }
   ].concat(mgrRows.length ? [{ type:'table', title:'All managers', head:['Manager', 'Direct reports', 'Total Team'], rows:mgrRows }] : []) };
 });
@@ -19595,6 +19713,657 @@ NOTIF_PROVIDERS.push(() => {
 addNavItem('Idea Hub', { key:'ideahub', label:'Idea Hub', icon:'bulb', roles:['admin', 'employee'], color:'amber' });
 (NAV_GROUPS.find(g => g.label === 'Idea Hub') || {}).direct = true;
 addMeta('ideahub', { title:'Idea Hub', subtitle:'Share ideas and initiatives any time. Your authorship is recorded, and the right people review it at the right time.' }, { title:'Idea Hub', subtitle:'Share an idea or initiative any time. Your authorship is recorded.' });
+
+/* ============================== VERSION 76 FOUNDATIONS: who sees what, silent redraws, "Show more" paging, scroll to top ============================== */
+PRIV_KEYS.push('execSummary');
+Object.assign(PRIV_LABELS, { execSummary:'Executive Summary — company-wide summary page' });
+Object.assign(ICONS, {
+  chevRight:'<path d="m9 6 6 6-6 6"/>', arrowUp:'<path d="M12 19V5"/><path d="m5 12 7-7 7 7"/>', arrowLeft:'<path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>',
+  languages:'<path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>',
+  pin:'<path d="M12 17v5"/><path d="M9 10.8V6a3 3 0 0 1 6 0v4.8l2 3.2H7z"/>', mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+  mapPin:'<path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>', layers:'<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/>',
+  sun:ICONS.sun || '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'
+});
+
+/* ---------- who sees what (section 6l) ---------- */
+function myDirectReports(){ return directReportsOf(selfEmployee()); }
+/** Chief or Director with people reporting to them, or an admin who was given the Executive Summary privilege (the Master Admin always has it). */
+function execAccess(){
+  const me = selfEmployee();
+  if(state.role === 'admin' && isRecognizedAdmin() && adminHasPriv('execSummary')) return true;
+  return !!me && /\b(chief|director)\b/i.test(String(me.jobTitle || '')) && directReportsOf(me).length > 0;
+}
+/** Admins: everything their privileges allow. Employees: the team report only for managers, the Executive Summary only for Chiefs and Directors, nothing else. */
+function reportAllowed(route){
+  route = route || state.route;
+  if(state.role === 'admin' && isRecognizedAdmin()) return route === 'execsummary' ? execAccess() : true;
+  if(route === 'myteam') return amManager();
+  if(route === 'execsummary') return execAccess();
+  return false;
+}
+/** The org chart picture and reporting-line files are for admins only. */
+function orgExportAllowed(){ return state.role === 'admin' && isRecognizedAdmin(); }
+
+/* ---------- animate only when the person arrives on a screen, never when live data refreshes it ---------- */
+let v76LastRoute = null, v76ArriveTimer = null;
+const PG_STATE = {};
+function v76Arrive(){
+  const c = document.getElementById('content'); if(!c) return;
+  if(v76LastRoute === state.route) return;
+  v76LastRoute = state.route;
+  Object.keys(PG_STATE).forEach(k => delete PG_STATE[k]);
+  c.classList.add('arriving'); clearTimeout(v76ArriveTimer); v76ArriveTimer = setTimeout(() => c.classList.remove('arriving'), 650);
+  try{ window.scrollTo(0, 0); if(document.scrollingElement) document.scrollingElement.scrollTop = 0; const m = document.querySelector('main.main'); if(m) m.scrollTop = 0; }catch(e){}
+}
+
+/* ---------- "Show more": every table shows a few rows first (5, 7 or 10; 10 by default) ---------- */
+function pgSize(){ try{ const n = Number(localStorage.getItem('snap-rows')); return [5, 7, 10].includes(n) ? n : 10; }catch(e){ return 10; } }
+function pgSetSize(n){ try{ localStorage.setItem('snap-rows', String(n)); }catch(e){} Object.keys(PG_STATE).forEach(k => delete PG_STATE[k]); document.querySelectorAll('table[data-pg]').forEach(t => t.removeAttribute('data-pg')); pgScan(); }
+function pgSkip(table){
+  if(table.closest('.og-shell, #modalRoot, [data-no-pg]')) return true;
+  const card = table.closest('.card, .table-wrap') || table.parentElement;
+  const txt = card ? card.textContent : '';
+  return /Page \d+ of \d+/.test(txt);   // lists that already page on their own keep doing so
+}
+function pgApply(table, idx){
+  const body = table.tBodies[0]; if(!body) return;
+  const rows = Array.from(body.rows).filter(r => !r.classList.contains('pg-foot'));
+  const size = pgSize();
+  table.setAttribute('data-pg', '1');
+  if(rows.length <= size + 2) return;     // a handful over the limit is not worth a button
+  const key = state.route + '#' + idx;
+  const shown = Math.max(size, PG_STATE[key] || size);
+  const cols = (table.tHead && table.tHead.rows[0]) ? table.tHead.rows[0].cells.length : 1;
+  const foot = document.createElement('tr'); foot.className = 'pg-foot';
+  const td = document.createElement('td'); td.colSpan = cols; td.className = 'td-span'; foot.appendChild(td); body.appendChild(foot);
+  const paint = () => {
+    const n = Math.min(rows.length, PG_STATE[key] || shown);
+    rows.forEach((r, i) => r.classList.toggle('pg-hide', i >= n));
+    const left = rows.length - n;
+    td.innerHTML = `<div class="pg-bar"><span class="pg-count">${t('Showing')} ${n} ${t('of')} ${rows.length}</span>${left > 0 ? `<button type="button" class="btn small ghost" data-pg-more>${t('Show More')}</button>` : ''}${n > size ? `<button type="button" class="btn small ghost" data-pg-less>${t('Show Less')}</button>` : ''}<span class="pg-size">${t('Rows')} ${[5, 7, 10].map(v => `<button type="button" class="pg-chip ${v === size ? 'on' : ''}" data-pg-size="${v}">${v}</button>`).join('')}</span></div>`;
+    const more = td.querySelector('[data-pg-more]'); if(more) more.onclick = () => { PG_STATE[key] = Math.min(rows.length, n + size); paint(); };
+    const less = td.querySelector('[data-pg-less]'); if(less) less.onclick = () => { PG_STATE[key] = size; paint(); table.scrollIntoView({ block:'nearest' }); };
+    td.querySelectorAll('[data-pg-size]').forEach(b => b.onclick = () => pgSetSize(Number(b.dataset.pgSize)));
+    if(typeof i18nApply === 'function') i18nApply(td);
+  };
+  PG_STATE[key] = PG_STATE[key] || shown; paint();
+}
+let pgBusy = false, pgTimer = null;
+function pgScan(){
+  if(pgBusy) return; pgBusy = true;
+  try{
+    const c = document.getElementById('content'); if(!c) return;
+    let i = 0; c.querySelectorAll('table').forEach(tb => { const idx = i++; if(tb.hasAttribute('data-pg')) return; if(pgSkip(tb)){ tb.setAttribute('data-pg', '0'); return; } pgApply(tb, idx); });
+  }catch(e){ console.error(e); }
+  pgBusy = false;
+}
+function pgStart(){
+  const c = document.getElementById('content'); if(!c || c.__pgWatch) return; c.__pgWatch = true;
+  try{ new MutationObserver(() => { if(pgBusy) return; clearTimeout(pgTimer); pgTimer = setTimeout(pgScan, 30); }).observe(c, { childList:true, subtree:true }); }catch(e){}
+  pgScan();
+}
+document.addEventListener('DOMContentLoaded', pgStart);
+if(document.readyState !== 'loading') pgStart();
+
+/* ---------- phone: the header export button is hidden to keep the header clear, so exports live in the page header there ---------- */
+function v76PostRender(){
+  try{ if(typeof annSignInPopup === 'function') annSignInPopup(); }catch(e){}
+  try{
+    const host = document.getElementById('pageAction'); if(!host) return;
+    const phone = !!(window.matchMedia && window.matchMedia('(max-width:700px)').matches);
+    let b = document.getElementById('exportBtnPhone');
+    const ok = phone && REPORTS[state.route] && reportAllowed(state.route) && !host.querySelector('#exportBtn, #odExport');
+    if(!ok){ if(b) b.remove(); return; }
+    if(!b){ b = document.createElement('button'); b.type = 'button'; b.id = 'exportBtnPhone'; b.className = 'btn ghost small'; b.innerHTML = icon('download') + 'Export'; b.onclick = e => { e.stopPropagation(); toggleExportMenu(b); }; host.appendChild(b); }
+  }catch(e){ console.error(e); }
+}
+
+/* ============================== ANNOUNCEMENTS (version 76): pinned hero, reader pop-up, acknowledge, urgent bar, translations ============================== */
+const ANN_LANGS = ['ar', 'fr'];
+const ANN_LANG_NAME = { ar:'Arabic', fr:'French' };
+
+/** The headline and message in the reader's language when a complete translation exists, otherwise the original. */
+function bcastLang(b){
+  const x = LANG !== 'en' && b.tr && b.tr[LANG];
+  if(x && String(x.title || '').trim() && String(x.body || '').trim()) return { title:x.title, body:x.body, translated:true };
+  return { title:b.title, body:b.body, translated:false };
+}
+function annAudienceText(b){ return b.audience === 'all' || !b.audience ? 'Everyone' : b.audience === 'managers' ? 'All managers' : (b.audience === 'division' ? 'Division: ' : 'Department: ') + (b.audienceValue || ''); }
+function annExcerpt(text, n){ const s = String(text || '').replace(/\s+/g, ' ').trim(); return s.length > n ? s.slice(0, n).trim() + '…' : s; }
+function annShownCount(key){ return PG_STATE[key] || pgSize(); }
+
+/* ---------- the reader pop-up ---------- */
+let annReaderIds = [], annReaderIdx = 0;
+function openAnnReader(ids, idx){
+  annReaderIds = ids.slice(); annReaderIdx = Math.max(0, Math.min(ids.length - 1, idx || 0));
+  paintAnnReader();
+}
+function closeAnnReader(){
+  const root = $('#modalRoot'); root.style.display = 'none'; root.innerHTML = '';
+  scheduleRender();
+}
+function paintAnnReader(){
+  const root = $('#modalRoot'), id = annReaderIds[annReaderIdx], b = id && byId('broadcasts', id);
+  if(!b){ closeAnnReader(); return; }
+  const me = selfEmployee(), txt = bcastLang(b), n = annReaderIds.length, isAdmin = !isEmployeeRole();
+  if(!isAdmin && !b.requiresAck) markBcastRead(b.id);
+  const acked = !!(me && bcastAcked(b, me.id));
+  root.innerHTML = `<div class="modal-backdrop" id="annBackdrop"><div class="modal ann-reader" role="dialog" aria-modal="true">
+    <div class="ann-r-top"><div class="ann-r-meta">${b.pinned ? icon('pin', 'class="ann-pin"') : ''}${chip(b.priority || 'Normal', PRIORITY_TONE[b.priority || 'Normal'])}${n > 1 ? `<span class="sub-note" data-notr>${annReaderIdx + 1} / ${n}</span>` : ''}</div><button type="button" class="icon-btn" id="annClose" aria-label="Close">${icon('close')}</button></div>
+    <h2 class="ann-r-title" dir="auto" data-notr>${esc(txt.title)}</h2>
+    <div class="sub-note ann-r-by"><span dir="auto" data-notr>${esc(b.createdByName || 'HR')} · ${esc(fmtDate((b.createdAt || '').slice(0, 10)))}</span></div>
+    <div class="ann-r-body" dir="auto" data-notr>${esc(txt.body || '')}</div>
+    ${b.attachment ? `<div style="margin:10px 0">${attachLink(b.attachment)}</div>` : ''}
+    ${!isAdmin && b.requiresAck ? `<div class="ann-r-ack">${acked ? chip('You acknowledged this', 'green') : `<button type="button" class="btn primary" id="annAck">${icon('check')}I’ve Read and Understood</button>`}</div>` : ''}
+    <div class="ann-r-nav"><button type="button" class="btn ghost small" id="annPrev" ${annReaderIdx <= 0 ? 'disabled' : ''}>${icon(document.documentElement.dir === 'rtl' ? 'chevRight' : 'chevLeft')}Previous</button><button type="button" class="btn ghost small" id="annNext" ${annReaderIdx >= n - 1 ? 'disabled' : ''}>Next${icon(document.documentElement.dir === 'rtl' ? 'chevLeft' : 'chevRight')}</button></div>
+  </div></div>`;
+  root.style.display = 'block';
+  $('#annClose').onclick = closeAnnReader;
+  $('#annBackdrop').addEventListener('click', e => { if(e.target.id === 'annBackdrop') closeAnnReader(); });
+  $('#annPrev').onclick = () => { annReaderIdx--; paintAnnReader(); };
+  $('#annNext').onclick = () => { annReaderIdx++; paintAnnReader(); };
+  const ack = $('#annAck');
+  if(ack) ack.onclick = async () => { try{ ack.disabled = true; await setDoc('broadcastAcks', `${b.id}_${me.id}`, { broadcastId:b.id, employeeId:me.id, employeeName:me.name, at:new Date().toISOString() }); markBcastRead(b.id); notify('Acknowledged'); paintAnnReader(); }catch(err){ ack.disabled = false; toast(errorMessage(err), true); } };
+  wireDownloads(root);
+  if(typeof i18nApply === 'function') i18nApply(root);
+}
+
+/* ---------- the urgent bar: the newest unread urgent announcement, never on the Announcements screen, dismissed per session ---------- */
+function annDismissed(){ try{ return JSON.parse(sessionStorage.getItem('snap-urgent-dismissed') || '[]'); }catch(e){ return []; } }
+function annDismiss(id){ try{ const d = annDismissed(); d.push(id); sessionStorage.setItem('snap-urgent-dismissed', JSON.stringify(d)); }catch(e){} }
+function paintUrgentBar(){
+  let bar = $('#urgentBar');
+  const gone = annDismissed();
+  const urgent = rolePicked && state.route !== 'announcements' ? myBroadcasts().filter(b => b.priority === 'Urgent' && bcastUnread(b) && !gone.includes(b.id)) : [];
+  const first = urgent[0];
+  if(!first){ if(bar) bar.remove(); return; }
+  const txt = bcastLang(first), sig = [first.id, LANG, txt.title, urgent.length].join('|');
+  if(bar && bar.dataset.sig === sig) return;     // nothing changed: leave the bar alone, so it never flickers or replays
+  if(!bar){ bar = document.createElement('div'); bar.id = 'urgentBar'; const main = $('main.main'); main.parentNode.insertBefore(bar, main); }
+  bar.dataset.sig = sig;
+  bar.innerHTML = `${icon('megaphone')}<div class="ub-text"><strong dir="auto" data-notr>${esc(txt.title)}</strong><span dir="auto" data-notr>${esc(annExcerpt(txt.body, 120))}</span></div>${urgent.length > 1 ? `<span class="ub-more" data-notr>+${urgent.length - 1}</span>` : ''}<button class="btn small ghost" id="urgentOpen">Read Now</button><button type="button" class="icon-btn xs" id="urgentX" aria-label="Dismiss">${icon('close')}</button>`;
+  $('#urgentOpen').onclick = () => { const ids = myBroadcasts().map(x => x.id); openAnnReader(ids, ids.indexOf(first.id)); };
+  $('#urgentX').onclick = () => { annDismiss(first.id); bar.remove(); paintUrgentBar(); };
+  if(typeof i18nApply === 'function') i18nApply(bar);
+}
+
+/* ---------- the unread pop-up when someone signs in ---------- */
+function annSignInPopup(){
+  try{
+    if(!rolePicked || sessionStorage.getItem('snap-ann-popup') === '1') return;
+    if(window.__I18N_MISS && !window.__annPopup) return;     // test builds stay quiet unless a test asks for it
+    if(state.route !== 'dashboard' || $('#modalRoot').style.display === 'block') return;
+    const unread = myBroadcasts().filter(bcastUnread); if(!unread.length) return;
+    sessionStorage.setItem('snap-ann-popup', '1');
+    const ids = myBroadcasts().map(x => x.id); openAnnReader(ids, ids.indexOf(unread[0].id));
+  }catch(e){}
+}
+
+/* ---------- the page ---------- */
+function annCard(b, opts){
+  const txt = bcastLang(b), unread = !opts.admin && bcastUnread(b), tone = PRIORITY_TONE[b.priority || 'Normal'];
+  return `<div class="card ann-card ${unread ? 'unread' : ''} ${b.priority === 'Urgent' ? 'urgent' : ''}" data-ann="${esc(b.id)}">
+    <div class="ann-c-top">${b.pinned ? icon('pin', 'class="ann-pin"') : ''}${unread ? '<span class="ann-dot" aria-label="New"></span>' : ''}<h3 dir="auto" data-notr>${esc(txt.title)}</h3>${chip(b.priority || 'Normal', tone)}</div>
+    <div class="sub-note"><span dir="auto" data-notr>${esc(b.createdByName || 'HR')} · ${esc(fmtDate((b.createdAt || '').slice(0, 10)))}</span></div>
+    <p class="ann-excerpt" dir="auto" data-notr>${esc(annExcerpt(txt.body, 220))}</p>
+    <div class="ann-c-foot"><button type="button" class="btn small ${unread ? 'primary' : 'ghost'}" data-ann-open="${esc(b.id)}">Read More</button>${b.requiresAck && !opts.admin ? (opts.me && bcastAcked(b, opts.me.id) ? chip('You acknowledged this', 'green') : chip('Needs your acknowledgement', 'gold')) : ''}</div>
+  </div>`;
+}
+function annHero(b, me){
+  const txt = bcastLang(b), unread = bcastUnread(b);
+  return `<div class="ann-hero ${b.priority === 'Urgent' ? 'urgent' : ''}" data-ann="${esc(b.id)}"><div class="ann-h-top">${b.pinned ? `<span class="ann-h-tag">${icon('pin')}Pinned</span>` : `<span class="ann-h-tag">${icon('megaphone')}Latest</span>`}${chip(b.priority || 'Normal', PRIORITY_TONE[b.priority || 'Normal'])}${unread ? chip('New', 'green') : ''}</div>
+    <h2 dir="auto" data-notr>${esc(txt.title)}</h2><p dir="auto" data-notr>${esc(annExcerpt(txt.body, 260))}</p>
+    <div class="ann-h-foot"><span class="sub-note" dir="ltr" data-notr>${esc(fmtDate((b.createdAt || '').slice(0, 10)))}</span><button type="button" class="btn primary" data-ann-open="${esc(b.id)}">Read More</button></div></div>`;
+}
+function annTransChips(b){
+  return ANN_LANGS.map(l => { const ok = b.tr && b.tr[l] && b.tr[l].title && b.tr[l].body, auto = ok && (b.trAuto || []).includes(l); return `<span class="ann-tr ${ok ? 'ok' : 'no'}" title="${esc(ANN_LANG_NAME[l])}${auto ? ' (written by the translation tool)' : ''}" data-notr>${l.toUpperCase()} ${ok ? '✓' : '✕'}${auto ? ' auto' : ''}</span>`; }).join('');
+}
+RENDERERS.announcements = function(actionHost){
+  useCollections(['broadcasts', 'broadcastAcks']);
+  const isAdmin = !isEmployeeRole(), content = $('#content'), me = selfEmployee();
+  actionHost.innerHTML = isAdmin ? `<button class="btn primary" id="newBcastBtn">${icon('plus')}New Announcement</button>` : '';
+  if(isAdmin) $('#newBcastBtn').onclick = () => openBroadcastForm();
+  const list = isAdmin ? (state.broadcasts || []).slice().sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || '')) : myBroadcasts();
+  if(!list.length){ content.innerHTML = emptyBox('megaphone', 'violet', 'No announcements yet', isAdmin ? 'Post one to reach everyone, a division, a department or all managers.' : 'You’re all caught up.'); return; }
+  const key = 'ann:' + (isAdmin ? 'a' : 'e');
+  const hero = isAdmin ? null : (list.find(b => b.pinned) || list[0]);
+  const rest = hero ? list.filter(b => b.id !== hero.id) : list;
+  const n = Math.min(rest.length, annShownCount(key)), shown = rest.slice(0, n);
+  const headcount = b => state.employees.filter(e => (e.status || 'Active') !== 'Offboarded' && bcastVisibleTo(b, e)).length;
+  const adminRow = b => {
+    const acks = (state.broadcastAcks || []).filter(a => a.broadcastId === b.id).length, reach = headcount(b), live = bcastActive(b);
+    return `<div class="card ann-card ${b.priority === 'Urgent' ? 'urgent' : ''}" data-ann="${esc(b.id)}"><div class="ann-c-top">${b.pinned ? icon('pin', 'class="ann-pin"') : ''}<h3 dir="auto" data-notr>${esc(b.title)}</h3>${chip(b.priority || 'Normal', PRIORITY_TONE[b.priority || 'Normal'])}${!live ? chip('Not showing', 'grey') : ''}${b.requiresAck ? chip('Needs acknowledgement', 'blue') : ''}</div>
+      <div class="sub-note"><span dir="auto" data-notr>${esc(b.createdByName || 'HR')} · ${esc(fmtDate((b.createdAt || '').slice(0, 10)))}</span> · ${esc(annAudienceText(b))}${b.expiresOn ? ` · until <span data-notr>${esc(fmtDate(b.expiresOn))}</span>` : ''}</div>
+      <p class="ann-excerpt" dir="auto" data-notr>${esc(annExcerpt(b.body, 200))}</p>
+      <div class="ann-tr-row">${annTransChips(b)}</div>
+      <div class="sub-note">${b.requiresAck ? `Acknowledged by <strong>${acks}</strong> of ${reach} (${pct(acks, reach)}%)` : `Reaches ${reach} people`}</div>
+      <div class="ann-c-foot"><button type="button" class="btn small ghost" data-ann-open="${esc(b.id)}">Preview</button>${rowActions(iconBtn('flag', `data-pin="${b.id}"`, b.pinned ? 'Unpin' : 'Pin to top'), iconBtn('edit', `data-edit="${b.id}"`, 'Edit'), iconBtn('trash', `data-del="${b.id}"`, 'Delete', true))}</div></div>`;
+  };
+  content.innerHTML = `${hero ? annHero(hero, me) : ''}<div class="ann-list">${shown.map(b => isAdmin ? adminRow(b) : annCard(b, { admin:false, me })).join('')}</div>
+    ${rest.length > n ? `<div class="ann-more"><span class="sub-note">${t('Showing')} ${n} ${t('of')} ${rest.length}</span><button type="button" class="btn ghost" id="annMore">${t('Show More')}</button></div>` : ''}`;
+  const ids = list.map(b => b.id);
+  $all('[data-ann-open]', content).forEach(b => b.onclick = () => openAnnReader(ids, ids.indexOf(b.dataset.annOpen)));
+  const more = $('#annMore'); if(more) more.onclick = () => { PG_STATE[key] = Math.min(rest.length, n + pgSize()); render(); };
+  if(isAdmin){
+    $all('[data-edit]', content).forEach(b => b.onclick = () => openBroadcastForm(byId('broadcasts', b.dataset.edit)));
+    $all('[data-del]', content).forEach(b => b.onclick = async () => { if(await confirmAction('Delete this announcement?')){ try{ await removeDoc('broadcasts', b.dataset.del); notify('Announcement deleted'); }catch(err){ toast(errorMessage(err), true); } } });
+    $all('[data-pin]', content).forEach(b => b.onclick = async () => { const r = byId('broadcasts', b.dataset.pin); try{ await updateDoc('broadcasts', r.id, { pinned: !r.pinned }); }catch(err){ toast(errorMessage(err), true); } });
+  }
+};
+
+/* ---------- translating announcements ---------- */
+/** Asks the language model for Arabic and French versions. Returns { ar:{title,body}, fr:{title,body} } for the languages asked. Throws when no translation tool is available or the answer is not usable. */
+async function annLLM(prompt){
+  const c = window.claude;
+  if(c && typeof c.complete === 'function'){ const r = await c.complete(prompt); return typeof r === 'string' ? r : (r && (r.text || r.completion || r.content)) || ''; }
+  if(typeof window.snapTranslate === 'function') return await window.snapTranslate(prompt);
+  throw { code:'unavailable', message:'No translation tool is connected to this app yet.' };
+}
+async function annTranslate(title, body, langs){
+  if(!langs.length) return {};
+  const names = langs.map(l => `"${l}" (${ANN_LANG_NAME[l]})`).join(' and ');
+  const prompt = `Translate this HR announcement into ${names}. Keep the tone warm and professional, keep names, numbers, dates and line breaks exactly, and do not add anything. Reply with JSON only, shaped like {"ar":{"title":"…","body":"…"},"fr":{"title":"…","body":"…"}} with only the languages asked for.\n\nTITLE:\n${title}\n\nMESSAGE:\n${body}`;
+  const raw = await annLLM(prompt);
+  const m = String(raw).match(/\{[\s\S]*\}/); if(!m) throw { code:'bad_answer', message:'The translation tool gave an answer that could not be read.' };
+  const j = JSON.parse(m[0]), out = {};
+  langs.forEach(l => { const x = j[l]; if(x && String(x.title || '').trim() && String(x.body || '').trim()) out[l] = { title:String(x.title).trim(), body:String(x.body).trim() }; });
+  if(!Object.keys(out).length) throw { code:'bad_answer', message:'The translation tool gave an answer that could not be read.' };
+  return out;
+}
+
+function openBroadcastForm(rec){
+  const divs = uniq(state.employees.map(e => e.division).filter(Boolean)).sort(), deps = uniq(state.employees.map(e => e.department).filter(Boolean)).sort();
+  const trv = (l, k) => (rec && rec.tr && rec.tr[l] && rec.tr[l][k]) || '';
+  const fields = [
+    { name:'title', label:'Headline', required:true, value:'' },
+    { name:'body', label:'Message', type:'textarea', rows:5, required:true },
+    { name:'audience', label:'Who should see it', type:'select', half:true, options:[{v:'all',l:'Everyone'},{v:'managers',l:'All managers'},{v:'division',l:'One division'},{v:'department',l:'One department'}] },
+    { name:'audienceValue', label:'Division / department (if narrowed)', half:true, list:'bcAudList', help:'Type or pick from the list.' },
+    { html:`<datalist id="bcAudList">${divs.concat(deps).map(v => `<option value="${esc(v)}">`).join('')}</datalist>` },
+    { name:'priority', label:'Priority', type:'select', half:true, options:['Normal','Important','Urgent'] },
+    { name:'startsOn', label:'Show from', type:'date', half:true, value:localISO() },
+    { name:'expiresOn', label:'Hide after (optional)', type:'date' },
+    { name:'requiresAck', type:'checkbox', label:'', checkLabel:'People must acknowledge it (tracked per person)' },
+    { name:'pinned', type:'checkbox', label:'', checkLabel:'Pin to the top' },
+    { html:`<div class="form-section">Translations (optional)</div><p class="sub-note" style="margin:-4px 0 8px">Readers see their own language when both the headline and the message are filled in. Otherwise they see the original.</p>` },
+    { name:'tr_ar_title', label:'Arabic headline', value:trv('ar', 'title') }, { name:'tr_ar_body', label:'Arabic message', type:'textarea', rows:3, value:trv('ar', 'body') },
+    { name:'tr_fr_title', label:'French headline', value:trv('fr', 'title') }, { name:'tr_fr_body', label:'French message', type:'textarea', rows:3, value:trv('fr', 'body') },
+    { html:`<div class="ann-tr-tools"><button type="button" class="btn ghost small" id="annTrNow">${icon('languages')}Translate Now</button><span class="sub-note" id="annTrNote">Fills the empty language boxes so you can read and change them before you publish.</span></div>` },
+    { name:'autoTr', type:'checkbox', label:'', checkLabel:'Translate empty languages automatically when I publish', value:true },
+    { name:'file', label:'Attachment (optional)', type:'file', help:'Up to ~180 KB.' }
+  ];
+  let snap = {};   // what the translation tool wrote into the boxes, to tell it apart from hand-typed text
+  const close = openForm(rec ? 'Edit announcement' : 'New announcement', fields, rec, async (d) => {
+    if((d.audience === 'division' || d.audience === 'department') && !(d.audienceValue||'').trim()) throw { code:'invalid_argument', message:'Pick which division or department this is for.' };
+    const me = selfEmployee(), att = await attachFile(d.file, 180000);
+    const title = d.title.trim(), body = d.body.trim();
+    const payload = { title, body, audience:d.audience, audienceValue:(d.audienceValue||'').trim(), priority:d.priority, startsOn:d.startsOn||'', expiresOn:d.expiresOn||'', requiresAck:!!d.requiresAck, pinned:!!d.pinned };
+    if(att) payload.attachment = att;
+    /* translations: only complete pairs are kept */
+    const tr = {}, auto = [], englishChanged = !!rec && (rec.title !== title || rec.body !== body);
+    ANN_LANGS.forEach(l => {
+      const tt = (d['tr_' + l + '_title'] || '').trim(), bb = (d['tr_' + l + '_body'] || '').trim();
+      if(!(tt && bb)) return;
+      const wasAuto = !!rec && (rec.trAuto || []).includes(l) && rec.tr && rec.tr[l] && rec.tr[l].title === tt && rec.tr[l].body === bb;
+      const fresh = snap[l] && snap[l].title === tt && snap[l].body === bb;
+      if(wasAuto && englishChanged && !fresh) return;      // a machine-written version of the old English text: refreshed below, never kept stale
+      tr[l] = { title:tt, body:bb }; if(wasAuto || fresh) auto.push(l);
+    });
+    const missing = ANN_LANGS.filter(l => !tr[l] && !(d['tr_' + l + '_title'] || '').trim() && !(d['tr_' + l + '_body'] || '').trim());
+    if(d.autoTr && missing.length){
+      try{ const got = await annTranslate(title, body, missing); Object.keys(got).forEach(l => { tr[l] = got[l]; auto.push(l); }); }
+      catch(err){ console.warn(err); toast('Couldn’t translate automatically — the announcement is published in its original language.', true); }
+    }
+    payload.tr = tr; payload.trAuto = auto;
+    if(rec){ await updateDoc('broadcasts', rec.id, payload); notify(`Announcement updated: ${payload.title}`); }
+    else { await createDoc('broadcasts', Object.assign(payload, { createdAt:new Date().toISOString(), createdBy:me?me.id:'', createdByName:me?me.name:'HR' })); notify(`Announcement posted: ${payload.title}`); }
+  }, rec ? 'Save Changes' : 'Publish');
+  const btn = $('#annTrNow');
+  if(btn) btn.onclick = async () => {
+    const f = n => $('#modalForm [name=' + n + ']'), title = f('title').value.trim(), body = f('body').value.trim(), note = $('#annTrNote');
+    if(!title || !body){ note.textContent = 'Write the headline and message first.'; return; }
+    const need = ANN_LANGS.filter(l => !f('tr_' + l + '_title').value.trim() && !f('tr_' + l + '_body').value.trim());
+    if(!need.length){ note.textContent = 'Both languages already have text. Clear a language to translate it again.'; return; }
+    btn.disabled = true; note.textContent = 'Translating…';
+    try{
+      const got = await annTranslate(title, body, need);
+      Object.keys(got).forEach(l => { f('tr_' + l + '_title').value = got[l].title; f('tr_' + l + '_body').value = got[l].body; snap[l] = got[l]; });
+      note.textContent = 'Done. Please read the translations and change anything you like before you publish.';
+    }catch(err){ note.textContent = (err && err.code === 'unavailable') ? 'Automatic translation isn’t connected in this app yet. You can type the translations, or leave them empty — people will read the original.' : 'The translation didn’t work this time. Type it yourself, or publish without it.'; }
+    btn.disabled = false;
+  };
+}
+
+/* ============================== HOME, WELCOME BANNER AND EXECUTIVE SUMMARY (version 76) ============================== */
+
+/* ---------- welcome banner: greeting by time of day, first name, shortcut chips with live counts ---------- */
+function greetingText(){ const h = new Date().getHours(); return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening'; }
+function unreadAnnouncements(){ try{ return myBroadcasts().filter(bcastUnread); }catch(e){ return []; } }
+function welcomeChips(){
+  const out = [], push = (route, ic, label, n, ui) => { const it = NAV_INDEX[route]; if(it && navAllowed(it)) out.push({ route, ic, label, n, ui }); };
+  push('announcements', 'megaphone', 'Unread Announcements', unreadAnnouncements().length);
+  if(!isEmployeeRole()){
+    push('leave', 'calendar', 'Leave Waiting', state.leaveRequests.filter(l => l.status === 'Pending').length, { leaveTab:'requests' });
+    push('tickets', 'ticket', 'Open Tickets', state.tickets.filter(x => !['Resolved', 'Closed'].includes(x.status)).length);
+  }
+  return out;
+}
+function welcomeBanner(){
+  const me = selfEmployee(), first = me ? String(me.name || '').split(' ')[0] : '';
+  const chips = welcomeChips();
+  return `<div class="welcome-banner" id="welcomeBanner"><div class="wb-text"><div class="wb-hello"><span>${greetingText()}</span><span data-notr>${first ? ', ' + esc(first) : ''}</span></div><div class="wb-sub">${me ? `<span data-notr>${esc(me.jobTitle || '')}</span>` : ''}</div></div>
+    ${chips.length ? `<div class="wb-chips">${chips.map((c, i) => `<button type="button" class="wb-chip ${c.n ? 'has' : ''}" data-wb="${i}">${icon(c.ic)}<span class="wb-n">${c.n}</span><span class="wb-l">${esc(c.label)}</span></button>`).join('')}</div>` : ''}</div>`;
+}
+function wireWelcome(root){
+  const chips = welcomeChips();
+  $all('[data-wb]', root).forEach(b => b.onclick = () => { const c = chips[Number(b.dataset.wb)]; if(c) go(c.route, c.ui || null); });
+}
+
+/* ---------- Home: for every employee (replaces the dashboard; no company figures, no charts) ---------- */
+function homeItems(){
+  const me = selfEmployee(), id = state.ui.selfEmployeeId, out = [];
+  const add = (route, ic, text, n, ui, tone) => { if(n > 0) out.push({ route, ic, text, n, ui, tone: tone || 'amber' }); };
+  add('announcements', 'megaphone', 'Unread announcements', unreadAnnouncements().length, null, 'violet');
+  add('leave', 'calendar', 'Your leave requests waiting for a decision', state.leaveRequests.filter(l => l.employeeId === id && l.status === 'Pending').length);
+  add('travel', 'plane', 'Your travel requests waiting for a decision', state.travelRequests.filter(x => x.employeeId === id && x.status === 'Pending').length);
+  const mine = state.tickets.filter(x => x.employeeId === id);
+  add('tickets', 'ticket', 'Your open tickets', mine.filter(x => !['Resolved', 'Closed'].includes(x.status)).length, null, 'blue');
+  add('tickets', 'check', 'Your tickets resolved — have a look', mine.filter(x => x.status === 'Resolved').length, null, 'green');
+  try{ if(typeof plMine === 'function' && featureOn('polls')){ useCollections(['polls']); add('polls', 'poll', 'Polls waiting for your answer', plMine().filter(p => plStatus(p) === 'Live' && plDone(p.id) === false).length, null, 'violet'); } }catch(e){}
+  add('training', 'book', 'Courses in progress', state.trainings.filter(t => (t.enrollments || []).some(e => e.employeeId === id && e.status !== 'Completed')).length, null, 'blue');
+  if(me && amManager()){
+    const ids = new Set(directReportsOf(me).map(e => e.id));
+    add('myteam', 'users', 'Team leave requests waiting for you', state.leaveRequests.filter(l => ids.has(l.employeeId) && l.status === 'Pending').length, { mtTab:'leave' });
+  }
+  return out.filter(x => { const it = NAV_INDEX[x.route]; return it && navAllowed(it); });
+}
+function renderHome(actionHost){
+  actionHost.innerHTML = '';
+  const content = $('#content'), id = state.ui.selfEmployeeId;
+  const items = homeItems();
+  const myLeave = state.leaveRequests.filter(l => l.employeeId === id).slice().sort((a, b) => (b.requestedDate || b.startDate || '').localeCompare(a.requestedDate || a.startDate || '')).slice(0, 3);
+  const quick = [['leave', 'calendar', 'Request Leave', () => { go('leave'); setTimeout(() => { const me = selfEmployee(); if(me) openLeaveForm(me); }, 60); }], ['tickets', 'ticket', 'Raise a Ticket', () => { go('tickets'); setTimeout(() => { const me = selfEmployee(); if(me) openTicketForm(me); }, 60); }],
+    ['ideahub', 'bulb', 'Share an Idea', () => { if(typeof ihOpenSubmit === 'function') ihOpenSubmit(); }], ['training', 'book', 'My Learning', () => go('training')], ['employees', 'users', 'People Directory', () => go('employees')], ['performance', 'star', 'My Performance', () => go('performance')]]
+    .filter(q => { const it = NAV_INDEX[q[0]]; return it && navAllowed(it); });
+  content.innerHTML = `${welcomeBanner()}
+    <div class="card home-card"><h3>What Needs You Today</h3>
+      ${items.length ? `<div class="home-list">${items.map((x, i) => `<button type="button" class="home-row" data-home="${i}"><span class="nav-badge ${x.tone}">${icon(x.ic)}</span><span class="home-text">${esc(x.text)}</span><span class="home-n">${x.n}</span>${icon(document.documentElement.dir === 'rtl' ? 'chevLeft' : 'chevRight', 'class="home-chev"')}</button>`).join('')}</div>`
+        : `<div class="home-clear">${icon('check')}<div><strong>You’re all caught up</strong><div class="sub-note">Nothing needs you right now.</div></div></div>`}
+    </div>
+    <div class="card home-card"><h3>Quick Actions</h3><div class="home-quick">${quick.map((q, i) => `<button type="button" class="home-q" data-hq="${i}">${icon(q[1])}<span>${esc(q[2])}</span></button>`).join('')}</div></div>
+    <div class="card home-card"><h3>Recent Leave</h3>${myLeave.length ? myLeave.map(l => `<div class="home-leave"><span>${esc(l.type)} · <span data-notr>${esc(fmtDate(l.startDate))}</span></span>${statusPill(l.status)}</div>`).join('') : `<div class="empty">No leave requested yet.</div>`}</div>`;
+  wireWelcome(content);
+  $all('[data-home]', content).forEach(b => b.onclick = () => { const x = items[Number(b.dataset.home)]; if(x) go(x.route, x.ui || null); });
+  $all('[data-hq]', content).forEach(b => b.onclick = () => quick[Number(b.dataset.hq)][3]());
+}
+/* the administrator dashboard keeps everything it had and gains the welcome banner on top */
+(function(){
+  const base = RENDERERS.dashboard;
+  RENDERERS.dashboard = function(actionHost){
+    if(isEmployeeRole()) return renderHome(actionHost);
+    base(actionHost);
+    const c = $('#content'); if(c){ c.insertAdjacentHTML('afterbegin', welcomeBanner()); wireWelcome(c); }
+  };
+})();
+
+/* ---------- Executive Summary ---------- */
+const EX_WIDGETS = [
+  { key:'people', title:'People in Your Line', icon:'users' }, { key:'leave', title:'Leave and Absence', icon:'calendar' }, { key:'approvals', title:'Waiting for a Decision', icon:'clipboard' },
+  { key:'tickets', title:'HR Tickets', icon:'ticket' }, { key:'performance', title:'Performance Snapshot', icon:'star' }, { key:'learning', title:'Learning', icon:'book' },
+  { key:'hiring', title:'Open Roles', icon:'briefcase' }, { key:'movement', title:'Joiners and Leavers', icon:'history' }
+];
+function exScope(){
+  const me = selfEmployee();
+  const company = state.role === 'admin' && isRecognizedAdmin() && adminHasPriv('execSummary') && !(me && directReportsOf(me).length);
+  const people = company ? state.employees.filter(e => (e.status || 'Active') !== 'Offboarded') : (me ? teamOf(me, true) : []);
+  return { company, people, ids:new Set(people.map(e => e.id)), me, direct: me ? directReportsOf(me) : [] };
+}
+function exPick(){
+  const me = selfEmployee(); let saved = null;
+  try{ saved = JSON.parse(localStorage.getItem('snap-exec-' + (me ? me.id : 'x')) || 'null'); }catch(e){}
+  const valid = Array.isArray(saved) ? saved.filter(k => EX_WIDGETS.some(w => w.key === k)).slice(0, 3) : [];
+  return valid.length ? valid : ['people', 'approvals', 'leave'];
+}
+function exSavePick(keys){ const me = selfEmployee(); try{ localStorage.setItem('snap-exec-' + (me ? me.id : 'x'), JSON.stringify(keys.slice(0, 3))); }catch(e){} }
+function exData(key, sc){
+  const ids = sc.ids, today = localISO(), rows = [];
+  const byCount = (arr, f, n) => { const m = {}; arr.forEach(x => { const k = f(x) || 'Other'; m[k] = (m[k] || 0) + 1; }); return Object.entries(m).sort((a, b) => b[1] - a[1]).slice(0, n || 5); };
+  if(key === 'people'){
+    const mgrs = sc.people.filter(e => directReportsOf(e).length).length;
+    return { big:sc.people.length, label:'People', sub:`${sc.direct.length} direct · ${mgrs} managers`, bars:byCount(sc.people, e => e.department, 5) };
+  }
+  if(key === 'leave'){
+    const lv = state.leaveRequests.filter(l => ids.has(l.employeeId));
+    const out = lv.filter(l => l.status === 'Approved' && l.startDate <= today && (l.endDate || l.startDate) >= today);
+    const soon = lv.filter(l => l.status === 'Approved' && l.startDate > today && l.startDate <= addDaysISO(today, 14));
+    return { big:out.length, label:'Out Today', sub:`${soon.length} starting in the next 14 days`, bars:byCount(out.concat(soon), l => l.type, 5) };
+  }
+  if(key === 'approvals'){
+    const lp = state.leaveRequests.filter(l => ids.has(l.employeeId) && l.status === 'Pending'), tp = state.travelRequests.filter(x => ids.has(x.employeeId) && x.status === 'Pending');
+    return { big:lp.length + tp.length, label:'Requests', sub:`${lp.length} leave · ${tp.length} travel`, bars:[['Leave', lp.length], ['Travel', tp.length]].filter(r => r[1]) };
+  }
+  if(key === 'tickets'){
+    const tk = state.tickets.filter(x => ids.has(x.employeeId) && !['Resolved', 'Closed'].includes(x.status));
+    let br = 0; try{ br = tk.filter(x => ticketSlaState(x) === 'Breached').length; }catch(e){}
+    return { big:tk.length, label:'Open', sub:`${br} past their deadline`, bars:byCount(tk, x => x.category, 5) };
+  }
+  if(key === 'performance'){
+    const objs = state.objectives.filter(o => ids.has(o.employeeId)), scored = objs.filter(o => o.achievementPct !== '' && o.achievementPct != null);
+    const avgA = scored.length ? Math.round(scored.reduce((a, o) => a + Number(o.achievementPct || 0), 0) / scored.length) : null;
+    const withObj = new Set(objs.map(o => o.employeeId)).size;
+    return { big:avgA == null ? '—' : avgA + '%', label:'Average Achievement', sub:`${withObj} of ${sc.people.length} people have objectives`, bars:byCount(objs, o => o.status || 'Not Started', 5) };
+  }
+  if(key === 'learning'){
+    let done = 0, going = 0; state.trainings.forEach(t => (t.enrollments || []).forEach(e => { if(!ids.has(e.employeeId)) return; if(e.status === 'Completed') done++; else going++; }));
+    return { big:going, label:'In Progress', sub:`${done} completed`, bars:[['In progress', going], ['Completed', done]].filter(r => r[1]) };
+  }
+  if(key === 'hiring'){
+    const deps = new Set(sc.people.map(e => e.department)); const jobs = state.jobs.filter(j => j.status === 'Open' && (sc.company || deps.has(j.department)));
+    return { big:jobs.length, label:'Open Roles', sub:sc.company ? 'Across the company' : 'In the departments of your line', bars:byCount(jobs, j => j.department, 5) };
+  }
+  const since = addDaysISO(today, -90);
+  const joined = sc.people.filter(e => (e.hireDate || '') >= since), left = state.employees.filter(e => e.status === 'Offboarded' && (sc.company || sc.people.some(p => p.department === e.department)) && (e.lastWorkingDay || e.offboardDate || '') >= since);
+  return { big:joined.length, label:'Joined (90 Days)', sub:`${left.length} left in the same period`, bars:byCount(joined, e => e.department, 5) };
+}
+function exCard(w, d){
+  const max = Math.max(1, ...d.bars.map(b => b[1]));
+  return `<div class="card ex-card"><div class="ex-head"><span class="nav-badge violet">${icon(w.icon)}</span><h3>${esc(w.title)}</h3></div><div class="ex-big">${esc(String(d.big))}</div><div class="ex-label">${esc(d.label)}</div><div class="sub-note">${esc(d.sub)}</div>
+    ${d.bars.length ? `<div class="ex-bars">${d.bars.map(b => `<div class="ex-bar"><span class="ex-bl" title="${esc(b[0])}">${esc(b[0])}</span><span class="ex-bt"><i style="width:${Math.max(4, Math.round(b[1] / max * 100))}%"></i></span><span class="ex-bn">${b[1]}</span></div>`).join('')}</div>` : ''}</div>`;
+}
+RENDERERS.execsummary = function(actionHost){
+  actionHost.innerHTML = `<button class="btn ghost small" id="exPickBtn">${icon('sliders')}Choose What to Show</button>`;
+  const content = $('#content'), sc = exScope();
+  if(!execAccess()){ content.innerHTML = emptyBox('shield', 'slate', 'Executive Summary isn’t available', 'It is for Chiefs and Directors with people reporting to them, and for admins who were given this privilege.'); return; }
+  const keys = exPick();
+  content.innerHTML = `<div class="card ex-intro"><div class="sub-note">${sc.company ? 'Your scope: the whole company.' : `Your scope: your whole reporting line — ${sc.people.length} ${sc.people.length === 1 ? 'person' : 'people'}, direct and indirect.`}</div></div>
+    <div class="ex-grid">${keys.map(k => { const w = EX_WIDGETS.find(x => x.key === k); return exCard(w, exData(k, sc)); }).join('')}</div>`;
+  $('#exPickBtn').onclick = () => {
+    const cur = new Set(exPick());
+    openModal('Choose What to Show', `<p class="sub-note" style="margin-top:0">Pick one to three summaries. Your choice is kept on this device.</p><div class="ex-picks">${EX_WIDGETS.map(w => `<label class="check-item"><input type="checkbox" name="w_${w.key}" ${cur.has(w.key) ? 'checked' : ''}> ${esc(w.title)}</label>`).join('')}</div>`, async data => {
+      const chosen = EX_WIDGETS.filter(w => data['w_' + w.key] === 'on').map(w => w.key);
+      if(!chosen.length || chosen.length > 3) throw { code:'invalid_argument', message:'Pick between one and three summaries.' };
+      exSavePick(chosen); render();
+    }, 'Save');
+  };
+};
+registerReport('execsummary', () => {
+  const sc = exScope(), keys = exPick();
+  return { title:'Executive Summary', subtitle:sc.company ? 'Whole company' : `Reporting line of ${sc.me ? sc.me.name : ''}`, sections:keys.map(k => { const w = EX_WIDGETS.find(x => x.key === k), d = exData(k, sc);
+    return { type:'table', title:w.title, head:['Measure', 'Value'], rows:[[d.label, String(d.big)], ['Detail', d.sub]].concat(d.bars.map(b => [b[0], String(b[1])])) }; }) };
+});
+addNavItem('Overview', { key:'execsummary', label:'Executive Summary', icon:'layers', roles:['admin', 'employee'], color:'violet', when:() => execAccess() }, 'dashboard');
+addMeta('execsummary', { title:'Executive Summary', subtitle:'The few numbers that matter across your reporting line.' }, { title:'Executive Summary', subtitle:'The few numbers that matter across your reporting line.' });
+
+/* ============================== ORG CHART DRILL-DOWN, EXPORT AND THE PEOPLE DIRECTORY (version 76) ============================== */
+
+/* ---------- the reporting structure, built once per draw from each person's manager name ---------- */
+function orgIndex(){
+  const act = state.employees.filter(e => (e.status || 'Active') !== 'Offboarded');
+  const byName = new Map(); act.forEach(e => { if(!byName.has(norm(e.name))) byName.set(norm(e.name), e); });
+  const kids = new Map(), roots = [], parent = new Map();
+  act.forEach(e => { const m = e.managerName && byName.get(norm(e.managerName)); if(m && m.id !== e.id){ if(!kids.has(m.id)) kids.set(m.id, []); kids.get(m.id).push(e); parent.set(e.id, m); } else roots.push(e); });
+  const size = new Map();
+  const team = (e, seen) => { if(size.has(e.id)) return size.get(e.id); seen = seen || new Set(); if(seen.has(e.id)) return 0; seen.add(e.id); let n = 0; (kids.get(e.id) || []).forEach(c => { n += 1 + team(c, seen); }); size.set(e.id, n); return n; };
+  act.forEach(e => team(e));
+  const level = new Map(); const walk = (e, d, seen) => { if(seen.has(e.id)) return; seen.add(e.id); level.set(e.id, d); (kids.get(e.id) || []).forEach(c => walk(c, d + 1, seen)); };
+  const seenL = new Set(); roots.forEach(r => walk(r, 1, seenL));
+  const virtual = roots.length > 1 ? { id:'__root', name:'Whole organisation', jobTitle:roots.length + ' top-level people', virtual:true } : null;
+  if(virtual){ kids.set('__root', roots.slice()); size.set('__root', act.length); }
+  const find = id => id === '__root' ? virtual : act.find(e => e.id === id);
+  return { act, kids, roots, parent, size, level, virtual, top: virtual || roots[0] || null, find, sortKids:(arr) => arr.slice().sort((a, b) => (size.get(b.id) || 0) - (size.get(a.id) || 0) || String(a.name).localeCompare(String(b.name))) };
+}
+function odPath(ix, focus){ const out = []; let cur = focus; const seen = new Set(); while(cur && !seen.has(cur.id)){ seen.add(cur.id); out.unshift(cur); cur = cur.virtual ? null : (ix.parent.get(cur.id) || ix.virtual); } return out; }
+
+/* ---------- the drill-down card view (Classic Tree shows everyone, Chief Org shows people who lead others) ---------- */
+function renderOrgDrill(host, mode){
+  const ix = orgIndex();
+  if(!ix.top){ host.innerHTML = emptyBox('sitemap', 'violet', 'No employees yet', 'Add employees with a manager to see the structure.'); return; }
+  state.ui.orgFocus = state.ui.orgFocus || {};
+  let focus = ix.find(state.ui.orgFocus[mode]) || ix.top;
+  const chief = mode === 'chief';
+  const rawKids = ix.sortKids(ix.kids.get(focus.id) || []);
+  const kids = chief ? rawKids.filter(k => (ix.kids.get(k.id) || []).length) : rawKids;
+  const hidden = chief ? rawKids.length - kids.length : 0;
+  const path = odPath(ix, focus), up = path.length > 1 ? path[path.length - 2] : null;
+  const card = (e, big) => {
+    const n = (ix.kids.get(e.id) || []).length, tot = ix.size.get(e.id) || 0, meE = selfEmployee(), me = !!meE && e.id === meE.id;
+    return `<button type="button" class="od-card ${big ? 'od-focus' : ''} ${me ? 'me' : ''}" ${big || !n ? '' : `data-od-go="${esc(e.id)}"`} ${!big && !n ? 'data-od-leaf="1"' : ''}>
+      <span class="od-av ${e.virtual ? 'org' : ''}">${e.virtual ? icon('sitemap') : esc(initials(e.name))}</span>
+      <span class="od-main"><span class="od-name" dir="auto" ${e.virtual ? '' : 'data-notr'}>${esc(e.name)}</span>${me ? `<span class="od-you">You</span>` : ''}<span class="od-title" dir="auto" ${e.virtual ? '' : 'data-notr'}>${esc(e.jobTitle || '')}</span>${e.department && !e.virtual ? `<span class="od-dept" data-notr>${esc(e.department)}</span>` : ''}</span>
+      <span class="od-counts">${n ? `<b>${n}</b><i>Direct</i>` : '<i class="od-none">No Direct Reports</i>'}${tot > n ? `<b>${tot}</b><i>In Team</i>` : ''}</span>${!big && n ? icon(document.documentElement.dir === 'rtl' ? 'chevLeft' : 'chevRight', 'class="od-chev"') : ''}</button>`;
+  };
+  host.innerHTML = `<div class="od-wrap">
+    <div class="od-tools"><div class="od-search"><span class="od-search-ic">${icon('search')}</span><input type="search" id="odSearch" placeholder="Find a person" autocomplete="off"><div class="od-results" id="odResults"></div></div>
+      ${up ? `<button type="button" class="btn ghost small" id="odUp">${icon('arrowUp')}Up One Level</button>` : ''}</div>
+    <nav class="od-crumbs" aria-label="Path">${path.map((p, i) => `<button type="button" class="od-crumb ${i === path.length - 1 ? 'on' : ''}" data-od-go="${esc(p.id)}" data-notr>${esc(p.virtual ? t('Whole organisation') : String(p.name).split(' ').slice(0, 2).join(' '))}</button>`).join('<span class="od-sep">›</span>')}</nav>
+    ${card(focus, true)}
+    <div class="od-sub"><h3>${kids.length ? 'Direct Reports' : 'No Direct Reports'}</h3>${kids.length ? `<span class="sub-note">${kids.length}</span>` : ''}</div>
+    <div class="od-grid">${kids.map(k => card(k, false)).join('')}</div>
+    ${hidden ? `<p class="sub-note">${hidden} ${hidden === 1 ? 'person' : 'people'} with no direct reports are not shown in this view.</p>` : ''}
+  </div>`;
+  const go2 = id => { state.ui.orgFocus[mode] = id; render(); };
+  $all('[data-od-go]', host).forEach(b => b.onclick = () => go2(b.dataset.odGo));
+  const upb = $('#odUp'); if(upb) upb.onclick = () => go2(up.id);
+  const inp = $('#odSearch'), res = $('#odResults');
+  inp.oninput = () => {
+    const q = inp.value.trim().toLowerCase(); if(!q){ res.innerHTML = ''; res.style.display = 'none'; return; }
+    const hits = ix.act.filter(e => `${e.name} ${e.jobTitle || ''} ${e.department || ''}`.toLowerCase().includes(q)).slice(0, 6);
+    res.innerHTML = hits.length ? hits.map(e => `<button type="button" class="od-res" data-od-pick="${esc(e.id)}"><strong data-notr>${esc(e.name)}</strong><span data-notr>${esc(e.jobTitle || '')}</span></button>`).join('') : `<div class="od-res none">No one found</div>`;
+    res.style.display = 'block'; $all('[data-od-pick]', res).forEach(b => b.onclick = () => go2(b.dataset.odPick));
+    if(typeof i18nApply === 'function') i18nApply(res);
+  };
+}
+
+/* ---------- export: reporting lines (PDF, PowerPoint, Excel/CSV) and a picture of the view (admins only; never email, phone or salary) ---------- */
+function orgReportRows(){
+  const ix = orgIndex(), rows = [];
+  const walk = (e, seen) => { if(seen.has(e.id)) return; seen.add(e.id); const mg = ix.parent.get(e.id);
+    rows.push([e.name || '', e.jobTitle || '', e.department || '', e.division || '', mg ? mg.name : '—', ix.level.get(e.id) || '', (ix.kids.get(e.id) || []).length, ix.size.get(e.id) || 0]);
+    ix.sortKids(ix.kids.get(e.id) || []).forEach(c => walk(c, seen)); };
+  const seen = new Set(); ix.sortKids(ix.roots).forEach(r => walk(r, seen));
+  return { ix, rows };
+}
+registerReport('orgchart', () => {
+  const { ix, rows } = orgReportRows();
+  return { title:'Org Chart — Reporting Lines', subtitle:'Who reports to whom. No contact or pay details are included.', sections:[
+    { type:'kpis', items:[{ label:'People', value:ix.act.length }, { label:'Managers', value:ix.act.filter(e => (ix.kids.get(e.id) || []).length).length }, { label:'Levels', value:Math.max(0, ...Array.from(ix.level.values())) }] },
+    { type:'table', title:'Reporting lines', head:['Name', 'Job Title', 'Department', 'Division', 'Reports To', 'Level', 'Direct Reports', 'Team Size'], rows }
+  ] };
+});
+const SVGE = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+function orgPictureSVG(){
+  const mode = state.ui.orgChartView === 'chief' ? 'chief' : 'hierarchy', ix = orgIndex(); if(!ix.top) return null;
+  const focus = ix.find((state.ui.orgFocus || {})[mode]) || ix.top;
+  let kids = ix.sortKids(ix.kids.get(focus.id) || []); if(mode === 'chief') kids = kids.filter(k => (ix.kids.get(k.id) || []).length);
+  const cut = (s, n) => { s = String(s || ''); return s.length > n ? s.slice(0, n - 1) + '…' : s; };
+  const CW = 250, CH = 74, G = 16, cols = Math.max(1, Math.min(3, kids.length)), rowsN = Math.ceil(kids.length / cols);
+  const W = Math.max(cols * CW + (cols + 1) * G, 520), top = 92, fy = top, ky = fy + CH + 46, H = ky + rowsN * (CH + G) + 24;
+  const cardSvg = (e, x, y, w, strong) => { const n = (ix.kids.get(e.id) || []).length, tot = ix.size.get(e.id) || 0;
+    return `<g transform="translate(${x},${y})"><rect width="${w}" height="${CH}" rx="12" fill="#fff" stroke="${strong ? '#7D519F' : '#E7E1F0'}" stroke-width="${strong ? 2 : 1}"/><circle cx="30" cy="${CH / 2}" r="18" fill="#F0E8F6"/><text x="30" y="${CH / 2 + 4}" text-anchor="middle" font-size="12" font-weight="700" fill="#7D519F">${SVGE(e.virtual ? 'ORG' : initials(e.name))}</text>
+      <text x="58" y="26" font-size="13.5" font-weight="700" fill="#332C3D">${SVGE(cut(e.name, 24))}</text><text x="58" y="43" font-size="11.5" fill="#78708A">${SVGE(cut(e.jobTitle, 30))}</text><text x="58" y="60" font-size="11" fill="#7D519F">${n} direct${tot > n ? ' · ' + tot + ' in team' : ''}</text></g>`; };
+  const body = cardSvg(focus, (W - 360) / 2, fy, 360, true) + `<line x1="${W / 2}" y1="${fy + CH}" x2="${W / 2}" y2="${ky - 12}" stroke="#C9BCD8"/>` + kids.map((k, i) => { const r = Math.floor(i / cols), c = i % cols, rowW = Math.min(cols, kids.length - r * cols) * CW + (Math.min(cols, kids.length - r * cols) - 1) * G, x0 = (W - rowW) / 2; return cardSvg(k, x0 + c * (CW + G), ky + r * (CH + G), CW, false); }).join('');
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="Inter, Arial, sans-serif"><rect width="100%" height="100%" fill="#F7F5FB"/><text x="${G}" y="34" font-size="18" font-weight="700" fill="#332C3D">SNAP · Org Chart</text><text x="${G}" y="56" font-size="12" fill="#78708A">${SVGE(focus.virtual ? 'Whole organisation' : focus.name)} · ${new Date().toISOString().slice(0, 10)}</text>${body}</svg>`;
+  return { svg, W, H };
+}
+async function exportOrgPicture(fmt){
+  if(!orgExportAllowed()){ toast('The org chart export is for HR admins only.', true); return; }
+  if(!downloadsCap){ toast('Downloads aren’t available in this view.', true); return; }
+  const pic = orgPictureSVG(); if(!pic){ toast('Nothing to export yet.', true); return; }
+  const stamp = todayISO();
+  try{
+    if(fmt === 'svg'){ await downloadsCap.save({ filename:`snap-org-chart-${stamp}.svg`, data:pic.svg }); toast('Picture saved as SVG'); return; }
+    const img = new Image(); const url = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(pic.svg);
+    await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = url; });
+    const c = document.createElement('canvas'), k = 2; c.width = pic.W * k; c.height = pic.H * k; const g = c.getContext('2d'); g.scale(k, k); g.drawImage(img, 0, 0, pic.W, pic.H);
+    const blob = await new Promise(r => c.toBlob(r, 'image/png')); const buf = new Uint8Array(await blob.arrayBuffer());
+    await downloadsCap.save({ filename:`snap-org-chart-${stamp}.png`, data:buf }); toast('Picture saved as PNG');
+  }catch(err){ console.error(err); toast('Could not create that picture.', true); }
+}
+function openOrgExportMenu(anchor){
+  if(!orgExportAllowed()) return;
+  let m = $('#orgExportMenu'); if(m){ m.remove(); return; }
+  m = document.createElement('div'); m.id = 'orgExportMenu'; m.className = 'og-menu';
+  const r = anchor.getBoundingClientRect();
+  m.style.cssText = `position:fixed;top:${Math.round(r.bottom + 8)}px;${document.documentElement.dir === 'rtl' ? 'left' : 'right'}:${Math.max(8, Math.round(document.documentElement.dir === 'rtl' ? r.left : window.innerWidth - r.right))}px;width:250px;z-index:60`;
+  m.innerHTML = `<div class="og-menu-h">Picture of This View</div><button class="og-menu-item" data-pic="png"><span style="display:flex;align-items:center;gap:8px">${icon('download')}Image (PNG)</span></button><button class="og-menu-item" data-pic="svg"><span style="display:flex;align-items:center;gap:8px">${icon('download')}Vector (SVG)</span></button>
+    <div class="og-menu-h">Reporting Lines</div><button class="og-menu-item" data-rep="pdf"><span style="display:flex;align-items:center;gap:8px">${icon('fileText')}PDF</span></button><button class="og-menu-item" data-rep="pptx"><span style="display:flex;align-items:center;gap:8px">${icon('presentation')}PowerPoint</span></button><button class="og-menu-item" data-rep="csv"><span style="display:flex;align-items:center;gap:8px">${icon('download')}Excel / CSV</span></button>`;
+  document.body.appendChild(m);
+  $all('[data-pic]', m).forEach(b => b.onclick = () => { m.remove(); exportOrgPicture(b.dataset.pic); });
+  $all('[data-rep]', m).forEach(b => b.onclick = () => { m.remove(); exportReport(REPORTS.orgchart(), b.dataset.rep); });
+  if(typeof i18nApply === 'function') i18nApply(m);
+  setTimeout(() => document.addEventListener('click', function once(e){ const mm = $('#orgExportMenu'); if(mm && !mm.contains(e.target)) mm.remove(); document.removeEventListener('click', once); }), 0);
+}
+/* an Export button on the drill-down views (admins only) */
+(function(){
+  const base = RENDERERS.orgchart;
+  RENDERERS.orgchart = function(actionHost){
+    base(actionHost);
+    const v = state.ui.orgChartView;
+    if(orgExportAllowed() && (v === 'hierarchy' || v === 'chief')){
+      actionHost.insertAdjacentHTML('beforeend', `<button type="button" class="btn ghost small" id="odExport">${icon('download')}Export</button>`);
+      $('#odExport').onclick = e => { e.stopPropagation(); openOrgExportMenu(e.currentTarget); };
+    }
+  };
+})();
+
+/* ---------- the People Directory: what an employee sees on the Employees screen ---------- */
+function profileOpenAllowed(id){ const me = selfEmployee(); return !!me && (id === me.id || directReportsOf(me).some(e => e.id === id)); }
+function renderPeopleDirectory(actionHost){
+  actionHost.innerHTML = '';
+  const content = $('#content'), me = selfEmployee();
+  const q = (state.ui.pdQuery || '').trim().toLowerCase(), dep = state.ui.pdDept || '';
+  const act = state.employees.filter(e => (e.status || 'Active') !== 'Offboarded');
+  const deps = uniq(act.map(e => e.department).filter(Boolean)).sort();
+  const list = act.filter(e => (!dep || e.department === dep) && (!q || `${e.name} ${e.jobTitle || ''} ${e.department || ''} ${e.location || ''} ${e.email || ''}`.toLowerCase().includes(q))).sort((a, b) => String(a.name).localeCompare(String(b.name)));
+  const key = 'pd', n = Math.min(list.length, annShownCount(key)), shown = list.slice(0, n);
+  const card = e => { const open = profileOpenAllowed(e.id);
+    return `<div class="pd-card ${open ? 'open' : ''}" ${open ? `data-pd-open="${esc(e.id)}" role="button" tabindex="0"` : ''}><span class="od-av">${esc(initials(e.name))}</span>
+      <div class="pd-main"><div class="pd-name" dir="auto" data-notr>${esc(e.name)}${me && e.id === me.id ? ' <span class="od-you">You</span>' : ''}</div><div class="pd-title" dir="auto" data-notr>${esc(e.jobTitle || '')}</div>
+      <div class="pd-meta">${e.department ? `<span data-notr>${icon('layers')}${esc(e.department)}</span>` : ''}${e.location ? `<span data-notr>${icon('mapPin')}${esc(e.location)}</span>` : ''}</div>
+      ${e.email ? `<a class="pd-mail" href="mailto:${esc(e.email)}" data-notr>${icon('mail')}${esc(e.email)}</a>` : ''}</div>${open ? icon(document.documentElement.dir === 'rtl' ? 'chevLeft' : 'chevRight', 'class="od-chev"') : ''}</div>`; };
+  content.innerHTML = `<div class="card pd-top"><h3>People Directory</h3><p class="card-sub">Find a colleague and how to reach them. You can open your own profile${me && amManager() ? ' and your team’s' : ''}.</p>
+    <div class="pd-tools"><input type="search" id="pdSearch" placeholder="Search by name, job title, department or location" value="${esc(state.ui.pdQuery || '')}"><select id="pdDept"><option value="">All Departments</option>${deps.map(d => `<option ${d === dep ? 'selected' : ''}>${esc(d)}</option>`).join('')}</select></div>
+    <div class="sub-note" id="pdCount">${list.length} ${list.length === 1 ? 'person' : 'people'}</div></div>
+    <div class="pd-list" id="pdList">${shown.length ? shown.map(card).join('') : emptyBox('users', 'slate', 'No one found', 'Try a different name or clear the department.')}</div>
+    ${list.length > n ? `<div class="ann-more"><span class="sub-note">${t('Showing')} ${n} ${t('of')} ${list.length}</span><button type="button" class="btn ghost" id="pdMore">${t('Show More')}</button></div>` : ''}`;
+  const redraw = () => { const keep = $('#pdSearch'); const pos = keep ? keep.selectionStart : null; render(); const k2 = $('#pdSearch'); if(k2 && pos != null){ k2.focus(); try{ k2.setSelectionRange(pos, pos); }catch(e){} } };
+  $('#pdSearch').oninput = e => { state.ui.pdQuery = e.target.value; PG_STATE[key] = pgSize(); redraw(); };
+  $('#pdDept').onchange = e => { state.ui.pdDept = e.target.value; PG_STATE[key] = pgSize(); render(); };
+  const more = $('#pdMore'); if(more) more.onclick = () => { PG_STATE[key] = Math.min(list.length, n + pgSize()); render(); };
+  $all('[data-pd-open]', content).forEach(c => { const go2 = ev => { if(ev.target.closest('a')) return; state.ui.employeeOpenId = c.dataset.pdOpen; render(); }; c.onclick = go2; c.onkeydown = ev => { if(ev.key === 'Enter') go2(ev); }; });
+}
+(function(){
+  const base = RENDERERS.employees;
+  RENDERERS.employees = function(actionHost){
+    if(isEmployeeRole()){
+      const open = state.ui.employeeOpenId;
+      if(open && profileOpenAllowed(open)) return base(actionHost);
+      state.ui.employeeOpenId = null;
+      return renderPeopleDirectory(actionHost);
+    }
+    return base(actionHost);
+  };
+})();
 
 /* ============================== DEMO DATA ============================== */
 /* A removable demo organisation for testing every part of SNAP: a full company from the CEO down to the newest joiner, plus realistic records for each section.
