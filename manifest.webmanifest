@@ -1,7 +1,7 @@
 {
- "name": "SNAP \u2014 HR Operations (Test)",
+ "name": "SNAP \u2014 HR Operations",
  "short_name": "SNAP",
- "description": "SNAP HR operations: test app with a fictional demo company.",
+ "description": "SNAP HR operations (test app with a fictional demo company).",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",

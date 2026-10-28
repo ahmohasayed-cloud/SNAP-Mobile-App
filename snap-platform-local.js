@@ -75,7 +75,7 @@
     }
     function loadSeed(seed) {
       Object.keys(store).forEach(function (c) { delete store[c]; });
-      var cols = seed.collections || {}, rows = [];
+      var cols = seed.collections || seed, rows = [];   // the app's own demo-data.json is a plain { collection: { id: doc } } map
       Object.keys(cols).forEach(function (c) {
         store[c] = new Map();
         Object.keys(cols[c]).forEach(function (id) { store[c].set(id, cols[c][id]); rows.push({ k: c + '/' + id, c: c, id: id, d: cols[c][id] }); });
@@ -83,7 +83,7 @@
       return tx(['docs', 'meta'], 'readwrite', function (t) {
         t.objectStore('docs').clear();
         rows.forEach(function (r) { t.objectStore('docs').put(r); });
-        t.objectStore('meta').put({ k: 'seedVersion', v: seed.version || '' });
+        t.objectStore('meta').put({ k: 'seedVersion', v: opts.seedVersion || seed.version || '' });
       }).catch(function () { /* in-memory only */ });
     }
 
@@ -101,8 +101,8 @@
       var have = (meta.filter(function (m) { return m.k === 'seedVersion'; })[0] || {}).v;
       rows.forEach(function (r) { coll(r.c).set(r.id, r.d); });
       var needSeed = rows.length === 0;
-      if (!needSeed && opts.versionUrl) {
-        try { var v = await fetchJson(opts.versionUrl, true); if (v && v.version && v.version !== have) needSeed = true; } catch (e) { /* offline: keep what is here */ }
+      if (opts.versionUrl) {
+        try { var v = await fetchJson(opts.versionUrl, true); if (v && v.version) { opts.seedVersion = v.version; if (!needSeed && v.version !== have) needSeed = true; } } catch (e) { /* offline: keep what is here */ }
       }
       if (needSeed && opts.seedUrl) {
         await loadSeed(await fetchJson(opts.seedUrl, true));
@@ -123,18 +123,49 @@
         delete: async function () { coll(c).delete(id); persist({ c: c, id: id, del: true }); emit(c); }
       };
     }
+    /* where / orderBy / limit / get, matching the real store: one orderBy, up to 10 filters, limit 1-1000 */
+    function cmp(a, b) { return a < b ? -1 : a > b ? 1 : 0; }
+    function matchOp(v, op, x) {
+      if (v === undefined) return op === '!=' || op === 'not-in';
+      if (op === '==') return v === x; if (op === '!=') return v !== x;
+      if (op === '<') return v < x; if (op === '<=') return v <= x; if (op === '>') return v > x; if (op === '>=') return v >= x;
+      if (op === 'in') return Array.isArray(x) && x.indexOf(v) >= 0; if (op === 'not-in') return Array.isArray(x) && x.indexOf(v) < 0;
+      if (op === 'array-contains') return Array.isArray(v) && v.indexOf(x) >= 0;
+      throw { code: 'invalid_argument', message: 'bad operator' };
+    }
+    function snapOf(c, rows) {
+      var docs = (rows || Array.from(coll(c).entries())).map(function (e) { return { id: e[0], data: function () { return clone(e[1]); } }; });
+      return { docs: docs, size: docs.length, empty: !docs.length };
+    }
+    function mkQuery(c, spec) {
+      var run = function () {
+        var rows = Array.from(coll(c).entries()).filter(function (e) { return spec.w.every(function (w) { return matchOp(e[1][w[0]], w[1], w[2]); }); });
+        if (spec.o) {
+          var f = spec.o[0], sgn = spec.o[1] === 'desc' ? -1 : 1;
+          rows.sort(function (A, B) { var a = A[1][f], b = B[1][f]; if (a === undefined && b === undefined) return cmp(A[0], B[0]); if (a === undefined) return 1; if (b === undefined) return -1; return (cmp(a, b) * sgn) || cmp(A[0], B[0]); });
+        } else rows.sort(function (A, B) { return cmp(A[0], B[0]); });
+        if (spec.l) rows = rows.slice(0, spec.l);
+        return snapOf(c, rows);
+      };
+      var q = {
+        where: function (f, op, v) { if (spec.w.length >= 10) throw { code: 'invalid_argument' }; return mkQuery(c, { w: spec.w.concat([[f, op, v]]), o: spec.o, l: spec.l }); },
+        orderBy: function (f, dir) { if (spec.o) throw { code: 'invalid_argument' }; return mkQuery(c, { w: spec.w, o: [f, dir || 'asc'], l: spec.l }); },
+        limit: function (n) { if (!(n >= 1 && n <= 1000)) throw { code: 'invalid_argument' }; return mkQuery(c, { w: spec.w, o: spec.o, l: n }); },
+        get: async function () { return run(); },
+        onSnapshot: function (ok) {
+          var live = true, fn = function () { if (live) ok(run()); };
+          var set = (listeners[c] = listeners[c] || new Set()); set.add(fn); setTimeout(fn, 0);
+          return function () { live = false; set.delete(fn); };
+        }
+      };
+      return q;
+    }
     var dbCap = {
       collection: function (c) {
-        return {
+        return Object.assign(mkQuery(c, { w: [], o: null, l: null }), {
           add: async function (d) { var id = 'l' + Date.now().toString(36) + (++n).toString(36) + Math.random().toString(36).slice(2, 6); var v = clone(d); coll(c).set(id, v); persist({ c: c, id: id, d: v }); emit(c); return { id: id }; },
-          doc: function (id) { return docRef(c, id); },
-          onSnapshot: function (ok) {
-            var set = (listeners[c] = listeners[c] || new Set());
-            var fn = function () { ok({ docs: Array.from(coll(c).entries()).map(function (e) { return { id: e[0], data: function () { return clone(e[1]); } }; }) }); };
-            set.add(fn); setTimeout(fn, 0);
-            return function () { set.delete(fn); };
-          }
-        };
+          doc: function (id) { return docRef(c, id); }
+        });
       },
       doc: function (path) { var i = String(path).indexOf('/'); return docRef(path.slice(0, i), path.slice(i + 1)); }
     };
@@ -147,7 +178,7 @@
         return v;
       } catch (e) { return opts.fallbackUid || 'u_local_device_000000'; }
     }
-    var userCap = { id: deviceUid };
+    var userCap = { id: deviceUid, isOwner: function () { return false; }, canEdit: function () { return false; } };
 
     return {
       use: async function (name) {
